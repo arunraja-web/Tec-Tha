@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-primary: #2563eb;
+  --brand-dark: #1e3a8a;
+  --brand-light: #eff6ff;
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.6);
+  --glass-shadow: 0 8px 32px rgba(30, 58, 138, 0.12);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f0f7ff;
+  min-height: 100vh;
+}
+
+.font-display {
+  font-family: 'Sora', system-ui, sans-serif;
+}
+
+/* Auth background */
+.auth-bg {
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(37, 99, 235, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(30, 58, 138, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+    linear-gradient(135deg, #f0f7ff 0%, #e8f0fe 50%, #f0f4ff 100%);
+  min-height: 100vh;
+}
+
+/* Glass card */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+/* Input styles */
+.auth-input {
+  @apply w-full px-4 py-3 bg-white/80 border border-blue-100 rounded-xl text-slate-800 placeholder-slate-400 text-sm font-medium transition-all duration-200 outline-none;
+}
+
+.auth-input:focus {
+  @apply border-blue-400 bg-white ring-2 ring-blue-100;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+}
+
+.auth-input.error {
+  @apply border-red-300 bg-red-50/50;
+}
+
+.auth-input.error:focus {
+  @apply border-red-400 ring-2 ring-red-100;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.08);
+}
+
+/* Primary button */
+.btn-primary {
+  @apply w-full py-3 px-6 bg-black hover:bg-neutral-800 text-white font-semibold rounded-none transition-all duration-200 flex items-center justify-center gap-2 text-sm;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+.btn-primary:disabled {
+  @apply opacity-70 cursor-not-allowed;
+  transform: none;
+}
+
+/* Secondary button */
+.btn-secondary {
+  @apply w-full py-3 px-6 bg-white border border-blue-200 hover:border-blue-300 text-slate-700 hover:text-blue-700 font-semibold rounded-xl transition-all duration-200 flex items-center justify-center gap-2 text-sm;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.btn-secondary:hover {
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+  transform: translateY(-1px);
+}
+
+/* OTP input */
+.otp-input {
+  @apply w-12 h-14 text-center text-xl font-bold bg-white/80 border-2 border-blue-100 rounded-xl text-blue-900 transition-all duration-200 outline-none;
+}
+
+.otp-input:focus {
+  @apply border-blue-500 bg-white;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.otp-input.filled {
+  @apply border-blue-400 bg-blue-50;
+}
+
+/* Decorative orb */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Animated gradient border */
+.gradient-border {
+  position: relative;
+  background: linear-gradient(white, white) padding-box,
+    linear-gradient(135deg, #2563eb, #60a5fa, #2563eb) border-box;
+  border: 2px solid transparent;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-float { animation: float 4s ease-in-out infinite; }
+
+.loading-shimmer {
+  background: linear-gradient(90deg, #f0f7ff 25%, #e0edff 50%, #f0f7ff 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Password strength bar */
+.strength-bar {
+  height: 3px;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+@keyframes loginAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-login {
+  animation: loginAnimation 0.8s ease-out forwards;
+}
+@keyframes navbarSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-navbar {
+  animation: navbarSlide 0.8s ease-out;
+}
