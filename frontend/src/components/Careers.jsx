@@ -74,7 +74,7 @@ import "swiper/css/navigation";
 
         {/* Careers Hero Section */}
    {/* Careers Intro */}
-<section className="py-28 bg-white">
+<section className="py-40 bg-white">
   <div className="max-w-5xl mx-auto text-center px-6">
 
     <span className="text-indigo-600 uppercase tracking-[4px] text-2xl font-bold">
@@ -110,7 +110,7 @@ import "swiper/css/navigation";
 </section>
 <section
   id="opportunities"
-  className="py-24 bg-slate-100"
+  className="py-10 bg-slate-100"
 >
 
   <div className="max-w-7xl mx-auto px-6 lg:px-3">
@@ -127,7 +127,7 @@ import "swiper/css/navigation";
       Find the role that matches your skills and passion.
     </p>
 <button
-  onClick={() => navigate("/careers")}
+ onClick={() => navigate("/careers")}
   className="
     mt-10
     px-8 py-4
@@ -144,164 +144,7 @@ import "swiper/css/navigation";
     
 
 </section>
-{/* Why Join Tec Tha */}
-<section className="py-28 bg-white">
 
-  <div className="max-w-7xl mx-auto px-6 lg:px-10">
-
-    {/* Heading */}
-    <div className="text-center max-w-3xl mx-auto">
-
-      <span className="text-indigo-600 uppercase tracking-[4px] text-sm font-semibold">
-        Why Join Tec Tha
-      </span>
-
-      <h2 className="mt-4 text-5xl font-bold text-slate-900">
-        Build More Than a Career
-      </h2>
-
-      <p className="mt-6 text-lg text-slate-600">
-        Join a team where innovation thrives, ideas matter,
-        and every contribution creates impact.
-      </p>
-
-    </div>
-
-    {/* Content */}
-    <div className="mt-20 grid lg:grid-cols-2 gap-12 items-center">
-
-      {/* Left Side Image */}
-      <div className="relative">
-
-        <img
-          src="/why-join-team.png"
-          alt="Tec Tha Team"
-          className="
-            w-full
-            h-[700px]
-            object-cover
-            rounded-[40px]
-            shadow-2xl
-          "
-        />
-
-        {/* Floating Box */}
-        <div
-          className="
-            absolute
-            bottom-8
-            left-8
-            bg-white/90
-            backdrop-blur-md
-            rounded-3xl
-            p-6
-            shadow-xl
-          "
-        >
-
-          <p className="text-3xl font-bold text-slate-900">
-            50+
-          </p>
-
-          <p className="text-slate-600">
-            Passionate professionals driving innovation.
-          </p>
-
-        </div>
-
-      </div>
-
-      {/* Right Side Cards */}
-      <div className="grid gap-6">
-
-        {[
-          {
-            number: "01",
-            title: "Innovation Culture",
-            description:
-              "Work on meaningful products and solve real-world challenges.",
-          },
-          {
-            number: "02",
-            title: "Career Growth",
-            description:
-              "Continuous learning, mentorship and leadership opportunities.",
-          },
-          {
-            number: "03",
-            title: "Ownership",
-            description:
-              "Take initiative, contribute ideas and make an impact.",
-          },
-          {
-            number: "04",
-            title: "Collaborative Teams",
-            description:
-              "Grow alongside talented people who support your success.",
-          },
-        ].map((item) => (
-
-          <div
-            key={item.number}
-            className="
-              bg-slate-50
-              border border-slate-200
-              rounded-3xl
-              p-8
-              hover:shadow-xl
-              transition-all
-              duration-300
-              hover:-translate-y-1
-            "
-          >
-
-            <div className="flex items-start gap-6">
-
-              {/* Number */}
-              <div
-                className="
-                  w-16
-                  h-16
-                  flex-shrink-0
-                  rounded-2xl
-                  bg-indigo-100
-                  text-indigo-600
-                  flex
-                  items-center
-                  justify-center
-                  text-xl
-                  font-bold
-                "
-              >
-                {item.number}
-              </div>
-
-              {/* Text */}
-              <div>
-
-                <h3 className="text-2xl font-bold text-slate-900">
-                  {item.title}
-                </h3>
-
-                <p className="mt-3 text-slate-600 leading-relaxed">
-                  {item.description}
-                </p>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        ))}
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
       
 </section>
 

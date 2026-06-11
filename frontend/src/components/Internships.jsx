@@ -83,7 +83,7 @@ export default function Internships() {
       />
 
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-slate-950/85 -z-10" />
+      <div className="absolute inset-0 bg-slate-900/80 -z-10" />
 
       <div className="max-w-[1600px] mx-auto px-6 lg:px-10">
 
@@ -209,11 +209,11 @@ export default function Internships() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
           className="
-            mt-24
+            mt-20
             bg-white
-            rounded-[40px]
-            px-2
-            py-4
+            rounded-[20px]
+            px-1
+            py-1
             text-center
           "
         >
@@ -222,7 +222,7 @@ export default function Internships() {
             Ready to Start Your Journey?
           </h3>
 
-          <p className="mt-5 text-lg text-slate-600">
+          <p className="mt-3 text-lg text-slate-600">
             Take the first step towards building real-world skills
             and gaining valuable industry experience with Tec Tha.
           </p>
@@ -231,7 +231,7 @@ export default function Internships() {
             to="/internship-apply"
             className="
               inline-block
-              mt-10
+              mt-5
               px-10
               py-4
               bg-black

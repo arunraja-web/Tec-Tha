@@ -11,7 +11,7 @@ import ResetPassword from './pages/ResetPassword';
 import Dashboard from './pages/Dashboard';
 import InternshipApply from "./pages/InternshipApply";
 import AdminDashboard from "./pages/AdminDashboard";
-
+import CareersPage from "./pages/CareersPage";
 export default function App() {
   return (
     <BrowserRouter>
@@ -50,6 +50,7 @@ export default function App() {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/verify-otp" element={<VerifyOTP />} />
           <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="/careers" element={<CareersPage />} />
           <Route
   path="/internship-apply"
   element={<InternshipApply />}
