@@ -1,31 +1,69 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
+import {
+  FaReact,
+  FaNodeJs,
+  FaFigma,
+  FaDatabase,
+} from "react-icons/fa";
+
+import {
+  SiTailwindcss,
+  SiJavascript,
+  SiExpress,
+  SiMongodb,
+} from "react-icons/si";
+
 export default function Internships() {
   const internships = [
     {
       title: "Frontend Developer Intern",
-      image: "/frontend-intern.png",
+      logos: [
+        <FaReact className="text-sky-500" />,
+        <SiTailwindcss className="text-cyan-500" />,
+        <SiJavascript className="text-yellow-400" />,
+      ],
+      duration: "8 Weeks",
+      mode: "Hybrid",
       description:
-        "Build responsive and modern user interfaces using React, Tailwind CSS and JavaScript.",
+        "Build responsive and modern user interfaces using industry-standard frontend technologies.",
     },
     {
       title: "Backend Developer Intern",
-      image: "/backend-intern.webp",
+      logos: [
+        <FaNodeJs className="text-green-500" />,
+        <SiExpress className="text-slate-300" />,
+        <SiMongodb className="text-green-400" />,
+      ],
+      duration: "8 Weeks",
+      mode: "Remote",
       description:
-        "Develop secure APIs, manage databases and work with Node.js backend systems.",
+        "Develop secure APIs, manage databases and work with backend systems.",
     },
     {
       title: "Full Stack Developer Intern",
-      image: "/fullstack-intern.png",
+      logos: [
+        <FaReact className="text-sky-500" />,
+        <FaNodeJs className="text-green-500" />,
+        <FaDatabase className="text-indigo-400" />,
+      ],
+      duration: "12 Weeks",
+      mode: "Hybrid",
       description:
         "Gain hands-on experience in both frontend and backend development workflows.",
     },
     {
       title: "UI/UX Designer Intern",
-      image: "/uiux-intern.jpg",
+      logos: [
+        <FaFigma className="text-pink-500" />,
+        <FaReact className="text-sky-500" />,
+        <FaDatabase className="text-orange-400" />,
+      ],
+      duration: "6 Weeks",
+      mode: "Remote",
       description:
-        "Create intuitive user experiences through wireframing, prototyping and visual design.",
+        "Create intuitive user experiences through research and visual design.",
     },
   ];
 
@@ -38,15 +76,14 @@ export default function Internships() {
       <div
         className="absolute inset-0 -z-20"
         style={{
-          backgroundImage: "url('/internship-bg.png')",
+          backgroundImage: "url('/internship-bg.jpeg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
         }}
       />
 
-      {/* White Overlay */}
-      <div className="absolute inset-0 bg-white/40 -z-10"></div>
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-slate-950/85 -z-10" />
 
       <div className="max-w-[1600px] mx-auto px-6 lg:px-10">
 
@@ -58,15 +95,15 @@ export default function Internships() {
           viewport={{ once: true }}
           className="text-center max-w-4xl mx-auto"
         >
-          <h2 className="text-5xl lg:text-6xl font-extrabold text-slate-900">
+          <h2 className="text-5xl lg:text-6xl font-extrabold text-white">
             Internship Program
           </h2>
 
-          <h3 className="mt-4 text-xl lg:text-2xl font-semibold text-slate-700">
+          <h3 className="mt-4 text-xl lg:text-2xl font-semibold text-slate-300">
             Launch Your Career With Tec Tha
           </h3>
 
-          <p className="mt-6 text-lg text-slate-600">
+          <p className="mt-6 text-lg text-slate-400">
             Gain real-world experience by working on live projects,
             collaborating with our development team and learning
             industry best practices.
@@ -74,7 +111,7 @@ export default function Internships() {
         </motion.div>
 
         {/* Internship Cards */}
-        <div className="mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="mt-20 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8">
 
           {internships.map((internship, index) => (
             <motion.div
@@ -82,48 +119,81 @@ export default function Internships() {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{
-                duration: 0.5,
-                delay: index * 0.12,
+                duration: 0.9,
+                delay: index * 0.1,
               }}
               viewport={{ once: true }}
               className="
-                bg-white/90
-                backdrop-blur-sm
-                border border-white/50
-                overflow-hidden
-                shadow-lg
+                bg-slate-50
+                rounded-3xl
+                border border-slate-800
+                p-8
+                shadow-sm
                 hover:shadow-2xl
-                hover:-translate-y-2
+                hover:-translate-y-6
+                hover:border-indigo-500/50
                 transition-all
                 duration-300
                 flex flex-col
-                h-full
               "
             >
-              {/* Internship Image */}
-              <img
-                src={internship.image}
-                alt={internship.title}
-                className="
-                  w-full
-                  h-52
-                  object-cover
-                "
-              />
 
-              {/* Content */}
-              <div className="p-6 flex flex-col flex-grow">
+              {/* Accent Line */}
+              <div className="w-14 h-1 bg-indigo-500 rounded-full"></div>
 
-                {/* Accent Line */}
-                <div className="w-12 h-1 bg-indigo-500 rounded-full mb-4"></div>
+              {/* Title */}
+              <h3 className="mt-8 text-2xl font-bold text-black">
+                {internship.title}
+              </h3>
 
-                <h3 className="text-2xl font-bold text-slate-900">
-                  {internship.title}
-                </h3>
+              {/* Stack Logos */}
+              <div className="mt-6 flex items-center gap-4">
 
-                <p className="mt-4 text-slate-600 leading-relaxed flex-grow">
-                  {internship.description}
-                </p>
+                {internship.logos.map((logo, logoIndex) => (
+                  <div
+                    key={logoIndex}
+                    className="
+                      w-14 h-14
+                      rounded-2xl
+                      bg-slate-800
+                      flex items-center justify-center
+                      text-3xl
+                      shadow-sm
+                    "
+                  >
+                    {logo}
+                  </div>
+                ))}
+
+              </div>
+
+              {/* Description */}
+              <p className="mt-6 text-slate-70 leading-relaxed flex-grow">
+                {internship.description}
+              </p>
+
+              {/* Duration & Mode */}
+              <div className="mt-8 space-y-3">
+
+                <div className="flex justify-between">
+                  <span className="text-slate-500">
+                    Duration
+                  </span>
+
+                  <span className="text-black">
+                    {internship.duration}
+                  </span>
+                </div>
+
+                <div className="flex justify-between">
+                  <span className="text-slate-600">
+                    Mode
+                  </span>
+
+                  <span className="font-semibold text-indigo-400">
+                    {internship.mode}
+                  </span>
+                </div>
 
               </div>
 
@@ -132,32 +202,52 @@ export default function Internships() {
 
         </div>
 
-        {/* Single Apply Button */}
+        {/* Apply CTA */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="mt-20 flex justify-center"
+          className="
+            mt-24
+            bg-white
+            rounded-[40px]
+            px-2
+            py-4
+            text-center
+          "
         >
+
+          <br></br><h3 className="text-4xl font-bold text-slate-900">
+            Ready to Start Your Journey?
+          </h3>
+
+          <p className="mt-5 text-lg text-slate-600">
+            Take the first step towards building real-world skills
+            and gaining valuable industry experience with Tec Tha.
+          </p>
+
           <Link
             to="/internship-apply"
             className="
+              inline-block
+              mt-10
               px-10
               py-4
               bg-black
               text-white
               font-semibold
               rounded-xl
-              shadow-lg
               hover:bg-slate-800
-              hover:scale-105
+              hover:-translate-y-1
+              hover:shadow-xl
               transition-all
               duration-300
             "
           >
             Apply For Internship
           </Link>
+
         </motion.div>
 
       </div>

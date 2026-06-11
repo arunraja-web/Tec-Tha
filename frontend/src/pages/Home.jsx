@@ -2,6 +2,8 @@ import Navbar from "../components/Navbar";
 import HeroSection from "../components/HeroSection";
 import WhatWeDo from "../components/WhatWeDo";
 import Internships from "../components/Internships";
+import Careers from "../components/Careers";
+
 
 export default function Home() {
   return (
@@ -10,7 +12,9 @@ export default function Home() {
   <Navbar />
   <HeroSection />
   <WhatWeDo />
-  <Internships />   
+  <Internships />
+  
+   <Careers />   
 </>
 </>
   );

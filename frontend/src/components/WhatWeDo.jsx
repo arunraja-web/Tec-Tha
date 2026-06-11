@@ -149,6 +149,7 @@ export default function WhatWeDo() {
         </div>
 
       </div>
+      
     </section>
   );
 }
