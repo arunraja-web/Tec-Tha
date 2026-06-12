@@ -13,6 +13,7 @@ import InternshipApply from "./pages/InternshipApply";
 import AdminDashboard from "./pages/AdminDashboard";
 import CareersPage from "./pages/CareersPage";
 import AboutUs from "./components/AboutUs";
+import Contact from "./components/Contact";
 export default function App() {
   return (
     <BrowserRouter>
@@ -53,6 +54,7 @@ export default function App() {
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/careers" element={<CareersPage />} />
           <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/contact" element={<Contact />} /> 
           <Route
   path="/internship-apply"
   element={<InternshipApply />}

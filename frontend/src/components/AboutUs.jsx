@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
+import Tilt from "react-parallax-tilt";
 
 export default function AboutUs() {
   return (
     <div className="bg-white">
 
       {/* Hero Section */}
-     <section className="max-w-7xl mx-auto px-6 py-28">
+     <section className="max-w-7xl mx-auto px-6 pt-10 pb-20">
         <div className="text-center mb-16">
 
   <span className="text-[#324896] font-semibold tracking-[0.25em] uppercase text-lg">
@@ -39,13 +40,28 @@ export default function AboutUs() {
 </div> 
           
 
-          <div>
-            <img
-              src="/about-team.jpg"
-              alt="About Tec Tha"
-              className="w-full rounded-3xl shadow-2xl"
-            />
-          </div>
+          <Tilt
+  tiltMaxAngleX={10}
+  tiltMaxAngleY={10}
+  perspective={1000}
+  scale={1.03}
+  transitionSpeed={1500}
+  gyroscope={true}
+  className="rounded-3xl"
+>
+  <img
+    src="/about-team.jpg"
+    alt="About Tec Tha"
+    className="
+      w-full
+      rounded-3xl
+      shadow-2xl
+      transition-all
+      duration-500
+    "
+  />
+</Tilt>
+
 
         </div>
       </section>
@@ -53,13 +69,27 @@ export default function AboutUs() {
       <section className="max-w-7xl mx-auto px-6 py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
 
-          <div>
-            <img
-              src="/who-we-are.jpg"
-              alt="Who We Are"
-              className="w-full rounded-3xl shadow-2xl"
-            />
-          </div>
+          <Tilt
+  tiltMaxAngleX={10}
+  tiltMaxAngleY={10}
+  perspective={1000}
+  scale={1.03}
+  transitionSpeed={1500}
+  gyroscope={true}
+  className="rounded-3xl"
+>
+  <img
+    src="/who-we-are.jpg"
+    alt="Who We Are"
+    className="
+      w-full
+      rounded-3xl
+      shadow-2xl
+      transition-all
+      duration-500
+    "
+  />
+</Tilt>
 
           <div>
             <span className="text-[#324896] font-semibold tracking-widest uppercase">

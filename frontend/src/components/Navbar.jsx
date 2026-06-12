@@ -17,7 +17,7 @@ export default function Navbar() {
         "WhatWeDo",
         "internships",
         "careers",
-        "about",
+        "about-us",
         "contact",
       ];
 
@@ -89,7 +89,7 @@ export default function Navbar() {
           {/* Navigation */}
           <nav className="hidden md:flex   items-center gap-14">
 
-            <a href="#Herosection" className={navLink("home")}>
+            <a href="#home" className={navLink("home")}>
               Home
             </a>
 
@@ -105,9 +105,9 @@ export default function Navbar() {
               Careers
             </a>
 
-            <Link to="/about-us" className={navLink("about")}>
-               About Us
-            </Link>
+            <a href="#about-us" className={navLink("about-us")}>
+              About Us
+            </a>
 
             <a href="#contact" className={navLink("contact")}>
               Contact

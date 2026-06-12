@@ -74,7 +74,7 @@ import "swiper/css/navigation";
 
         {/* Careers Hero Section */}
    {/* Careers Intro */}
-<section className="py-40 bg-white">
+<section className="py-20 bg-white">
   <div className="max-w-5xl mx-auto text-center px-6">
 
     <span className="text-indigo-600 uppercase tracking-[4px] text-2xl font-bold">
@@ -91,7 +91,7 @@ import "swiper/css/navigation";
     </p>
 
   </div>
-  <section className="pb-24 bg-white">
+  <section className="pb-12 bg-white">
   <div className="max-w-7xl mx-auto px-6">
 
     <img
