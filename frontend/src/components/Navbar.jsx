@@ -105,9 +105,9 @@ export default function Navbar() {
               Careers
             </a>
 
-            <a href="#about" className={navLink("about")}>
-              About Us
-            </a>
+            <Link to="/about-us" className={navLink("about")}>
+               About Us
+            </Link>
 
             <a href="#contact" className={navLink("contact")}>
               Contact
