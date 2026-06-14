@@ -68,7 +68,7 @@ export default function CareersPage() {
 
         {/* Open Positions */}
         {/* Open Positions */}
-<section className="pb-0 bg-slate-100 overflow-hidden">
+<section className="pb-2 bg-slate-100 overflow-hidden">
 
   {/* Banner */}
   <div
@@ -165,7 +165,7 @@ export default function CareersPage() {
   </div>
 
   {/* Cards */}
-  <div className="px-4 lg:px-10">
+  <div className="px-4 lg:px-40">
 
     <Swiper
       modules={[Navigation]}

@@ -9,6 +9,7 @@ export default function InternshipApply() {
   const [loading, setLoading] = useState(false);
 
   const [form, setForm] = useState({
+    
     fullName: "",
     email: "",
     phone: "",
@@ -42,19 +43,21 @@ export default function InternshipApply() {
         formData.append(key, form[key]);
       });
 
-      await axios.post(
-        "http://localhost:5000/api/internships/apply",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+     await axios.post(
+  "http://localhost:5000/api/internships/apply",
+  formData,
+  {
+    withCredentials: true,
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  }
+);
 
       toast.success("Application submitted successfully!");
 
       setForm({
+      
         fullName: "",
         email: "",
         phone: "",

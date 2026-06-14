@@ -20,6 +20,7 @@ export const applyInternship = async (req, res) => {
     const application =
       await prisma.internshipApplication.create({
         data: {
+userId: req.user.id,
           fullName,
           email,
           phone,

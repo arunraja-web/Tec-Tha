@@ -8,7 +8,7 @@ import Signup from './pages/Signup';
 import ForgotPassword from './pages/ForgotPassword';
 import VerifyOTP from './pages/VerifyOTP';
 import ResetPassword from './pages/ResetPassword';
-import Dashboard from './pages/Dashboard';
+import UserDashboard from "./pages/UserDashboard";
 import InternshipApply from "./pages/InternshipApply";
 import AdminDashboard from "./pages/AdminDashboard";
 import CareersPage from "./pages/CareersPage";
@@ -55,19 +55,21 @@ export default function App() {
           <Route path="/careers" element={<CareersPage />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/contact" element={<Contact />} /> 
+         <Route
+  path="/dashboard"
+  element={<UserDashboard />}
+/>
+
+<Route
+  path="/admin-dashboard"
+  element={<AdminDashboard />}
+/>
           <Route
   path="/internship-apply"
   element={<InternshipApply />}
 />
           <Route path="/admin" element={<AdminDashboard />} />
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute>
-                <Dashboard />
-              </ProtectedRoute>
-            }
-          />
+        
          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </AuthProvider>

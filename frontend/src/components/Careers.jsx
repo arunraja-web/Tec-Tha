@@ -7,16 +7,18 @@ import {
   Briefcase,
   MapPin,
 } from "lucide-react";
-
+import { UserRound,Code2, Database, PenTool, Quote } from "lucide-react";
+import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-
+import { useRef } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 
     export default function Careers() {
     const navigate = useNavigate();
     const { user } = useAuth();
+    const swiperRef = useRef(null);
 
     const jobs = [
         {
@@ -110,7 +112,7 @@ import "swiper/css/navigation";
 </section>
 <section
   id="opportunities"
-  className="py-10 bg-slate-100"
+  className="py-6 bg-slate-100"
 >
 
   <div className="max-w-7xl mx-auto px-6 lg:px-3">

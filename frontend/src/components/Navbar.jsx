@@ -2,11 +2,39 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 
+import { useNavigate } from "react-router-dom";
+import { ChevronDown, LayoutDashboard, LogOut } from "lucide-react";
+
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
-  const { user } = useAuth();
+  const [showDropdown, setShowDropdown] = useState(false);
+
+const navigate = useNavigate();
+
+const { user, logout } = useAuth();
+
+const handleLogout = async () => {
+  try {
+    await logout();
+
+    navigate("/");
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const handleDashboard = () => {
+  setShowDropdown(false);
+
+  if (user?.role === "ADMIN") {
+    navigate("/admin-dashboard");
+  } else {
+    navigate("/dashboard");
+  }
+};
 
   useEffect(() => {
     const handleScroll = () => {
@@ -117,33 +145,116 @@ export default function Navbar() {
 
           {/* Right Side */}
           <div className="flex items-center gap-6">
+{user ? (
 
-            {!user ? (
-              <>
-                <Link
-                  to="/login"
-                  className="font-medium text-slate-800 hover:text-black transition duration-300"
-                >
-                  Login
-                </Link>
+  <div className="relative">
 
-                <button className="px-7 py-3 bg-black text-white rounded-md font-medium transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-slate-800">
-                  Get Started
-                </button>
-              </>
-            ) : (
-              <div className="flex items-center gap-3">
+    <button
+      onClick={() =>
+        setShowDropdown(!showDropdown)
+      }
+      className="
+        flex items-center gap-2
+        px-5 py-3
+        rounded-full
+        bg-slate-100
+        hover:bg-slate-200
+        transition-all duration-300
+      "
+    >
 
-                <div className="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center font-semibold">
-                  {user.fullName?.charAt(0).toUpperCase()}
-                </div>
+      <div
+        className="
+          w-9 h-9
+          rounded-full
+          bg-indigo-600
+          text-white
+          flex items-center justify-center
+          font-bold
+        "
+      >
+        {user.fullName?.charAt(0)}
+      </div>
 
-                <span className="font-semibold text-slate-800">
-                  {user.fullName}
-                </span>
+      <span className="font-semibold">
+        {user.fullName}
+      </span>
 
-              </div>
-            )}
+      <ChevronDown size={18} />
+
+    </button>
+
+    {showDropdown && (
+
+      <div
+        className="
+          absolute
+          right-0
+          mt-3
+          w-64
+          bg-white
+          rounded-3xl
+          shadow-2xl
+          border border-slate-200
+          overflow-hidden
+          z-50
+        "
+      >
+
+        <button
+          onClick={handleDashboard}
+          className="
+            w-full
+            flex items-center gap-3
+            px-6 py-5
+            hover:bg-slate-50
+            transition-all
+          "
+        >
+          <LayoutDashboard size={20} />
+
+          {user.role === "ADMIN"
+            ? "Admin Dashboard"
+            : "My Dashboard"}
+        </button>
+
+        <button
+          onClick={handleLogout}
+          className="
+            w-full
+            flex items-center gap-3
+            px-6 py-5
+            text-red-600
+            hover:bg-red-50
+            transition-all
+          "
+        >
+          <LogOut size={20} />
+
+          Logout
+        </button>
+
+      </div>
+
+    )}
+
+  </div>
+
+) : (
+
+  <button
+    onClick={() => navigate("/login")}
+    className="
+      px-6 py-3
+      bg-black
+      text-white
+      rounded-xl
+    "
+  >
+    Login
+  </button>
+
+)}
 
           </div>
 

@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 
+import { motion } from "framer-motion";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import {
   FaReact,
   FaNodeJs,
@@ -16,6 +17,8 @@ import {
 } from "react-icons/si";
 
 export default function Internships() {
+  const navigate = useNavigate();
+const { user } = useAuth();
   const internships = [
     {
       title: "Frontend Developer Intern",
@@ -66,6 +69,17 @@ export default function Internships() {
         "Create intuitive user experiences through research and visual design.",
     },
   ];
+  const handleApply = () => {
+  if (user) {
+    navigate("/internship-apply");
+  } else {
+    navigate("/login", {
+      state: {
+        from: "/internship-apply",
+      },
+    });
+  }
+};
 
   return (
     <section
@@ -227,27 +241,26 @@ export default function Internships() {
             and gaining valuable industry experience with Tec Tha.
           </p>
 
-          <Link
-            to="/internship-apply"
-            className="
-              inline-block
-              mt-5
-              px-10
-              py-4
-              bg-black
-              text-white
-              font-semibold
-              rounded-xl
-              hover:bg-slate-800
-              hover:-translate-y-1
-              hover:shadow-xl
-              transition-all
-              duration-300
-            "
-          >
-            Apply For Internship
-          </Link>
-
+          <button
+  onClick={handleApply}
+  className="
+    inline-block
+    mt-5
+    px-10
+    py-4
+    bg-black
+    text-white
+    font-semibold
+    rounded-xl
+    hover:bg-slate-800
+    hover:-translate-y-1
+    hover:shadow-xl
+    transition-all
+    duration-300
+  "
+>
+  Apply For Internship
+</button>
         </motion.div>
 
       </div>
