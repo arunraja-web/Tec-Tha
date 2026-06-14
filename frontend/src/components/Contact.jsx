@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import {
   FaInstagram,
   FaLinkedinIn,
@@ -6,7 +7,7 @@ import {
 
 export default function Contact() {
   return (
-    <section
+    <motion.section
       id="contact"
       className="py-24 bg-slate-100"
     >
@@ -22,7 +23,13 @@ export default function Contact() {
           "
         >
 {/* Left Side */}
-<div className="bg-[#324896] text-white p-12 flex flex-col justify-between">
+<motion.div
+  initial={{ opacity: 0, x: -80 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.8 }}
+  viewport={{ once: true }}
+  className="bg-[#374151] hover:bg-[#1F2937] text-white p-12 flex flex-col justify-between"
+>
 
   <div>
 
@@ -135,9 +142,15 @@ export default function Contact() {
 
   </div>
 
-</div>
+</motion.div>
           {/* Right Side */}
-<div className="bg-white p-12">
+<motion.div
+  initial={{ opacity: 0, x: 80 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.8, delay: 0.2 }}
+  viewport={{ once: true }}
+  className="bg-white p-12"
+>
 
   <h2 className="text-5xl font-bold text-slate-900">
     Let's Build Something Great
@@ -214,7 +227,8 @@ export default function Contact() {
       type="submit"
       className="
         w-full
-        bg-[#324896]
+        bg-[#374151]
+        hover:bg-[#1F2937]
         text-white
         py-4
         rounded-xl
@@ -228,11 +242,11 @@ export default function Contact() {
 
   </form>
 
-</div>
+</motion.div>
 
         </div>
 
       </div>
-    </section>
+    </motion.section>
   );
 }
