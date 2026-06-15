@@ -21,3 +21,5 @@ uploads/
 # Operating System files
 .DS_Store
 Thumbs.db
+
+google-service-account.json

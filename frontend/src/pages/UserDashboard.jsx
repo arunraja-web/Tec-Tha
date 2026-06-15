@@ -1,4 +1,4 @@
-import { useState } from "react";
+
 import {
   User,
   FileText,
@@ -9,13 +9,16 @@ import {
 
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function UserDashboard() {
   const [activeTab, setActiveTab] =
     useState("profile");
 
   const { user, logout } = useAuth();
-
+const [applications, setApplications] =
+  useState([]);
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -50,6 +53,76 @@ export default function UserDashboard() {
       icon: Settings,
     },
   ];
+  
+  const cancelApplication =
+  async (id) => {
+
+    const confirmed =
+      window.confirm(
+
+        "Are you sure you want to cancel this application?"
+
+      );
+
+    if (!confirmed) return;
+
+    try {
+
+      await axios.delete(
+
+        `http://localhost:5000/api/internships/cancel/${id}`,
+
+        {
+          withCredentials: true,
+        }
+
+      );
+
+      setApplications(
+
+        applications.filter(
+
+          (app) =>
+            app.id !== id
+
+        )
+
+      );
+
+      alert(
+        "Application cancelled successfully"
+      );
+
+    } catch (error) {
+
+      alert(
+
+        error.response?.data?.message ||
+
+        "Failed to cancel application"
+
+      );
+
+    }
+
+};
+  useEffect(() => {
+
+  axios.get(
+
+    "http://localhost:5000/api/internships/my-applications",
+
+    {
+      withCredentials: true,
+    }
+
+  )
+
+  .then((res) =>
+    setApplications(res.data)
+  );
+
+}, []);
 
   return (
     <div className="min-h-screen bg-slate-100">
@@ -239,43 +312,157 @@ export default function UserDashboard() {
                   My Applications
                 </h2>
 
-                <div className="mt-8 space-y-6">
+               <div className="mt-8 space-y-6">
 
-                  <div
-                    className="
-                      border
-                      rounded-2xl
-                      p-6
-                    "
-                  >
+  {applications.length === 0 ? (
 
-                    <h3 className="text-xl font-bold">
-                      Frontend Developer Intern
-                    </h3>
+    <div className="text-center py-10">
 
-                    <p className="mt-2 text-slate-600">
-                      Applied on: 14 June 2026
-                    </p>
+      <p className="text-slate-500 text-lg">
+        You haven't applied for any internships yet.
+      </p>
 
-                    <span
-                      className="
-                        inline-block
-                        mt-4
-                        px-4
-                        py-2
-                        rounded-full
-                        bg-yellow-100
-                        text-yellow-700
-                        font-semibold
-                      "
-                    >
-                      Pending
-                    </span>
+    </div>
 
-                  </div>
+  ) : (
 
-                </div>
+    applications.map((app) => (
 
+      <div
+        key={app.id}
+        className="
+          border
+          rounded-2xl
+          p-6
+        "
+      >
+
+        <h3 className="text-xl font-bold">
+          {app.internshipRole}
+        </h3>
+
+        <p className="mt-2 text-slate-600">
+          Applied on:{" "}
+          {new Date(
+            app.createdAt
+          ).toLocaleDateString()}
+        </p>
+
+        <div className="mt-4">
+
+          {app.status === "PENDING" && (
+
+            <span
+              className="
+                inline-block
+                px-4 py-2
+                rounded-full
+                bg-yellow-100
+                text-yellow-700
+                font-semibold
+              "
+            >
+              Under Review
+            </span>
+
+          )}
+
+          {app.status === "APPROVED" && (
+
+            <div>
+
+              <span
+                className="
+                  inline-block
+                  px-4 py-2
+                  rounded-full
+                  bg-green-100
+                  text-green-700
+                  font-semibold
+                "
+              >
+                Approved 🎉
+              </span>
+
+              <p className="mt-4 text-green-700">
+
+                Congratulations! Your
+                application has been approved.
+                Our team will contact you
+                shortly with the next steps.
+
+              </p>
+
+            </div>
+
+          )}
+          {app.status === "PENDING" && (
+
+  <button
+
+    onClick={() =>
+      cancelApplication(app.id)
+    }
+
+    className="
+      mt-4
+      px-4
+      py-2
+      bg-red-600
+      text-white
+      rounded-lg
+      hover:bg-red-700
+    "
+
+  >
+
+    Cancel Application
+
+  </button>
+
+)}
+
+          {app.status === "REJECTED" && (
+
+            <div>
+
+              <span
+                className="
+                  inline-block
+                  px-4 py-2
+                  rounded-full
+                  bg-red-100
+                  text-red-700
+                  font-semibold
+                "
+              >
+                Rejected
+              </span>
+
+              <p className="mt-4 text-red-600">
+
+                Thank you for applying to
+                Tec Tha. Although you were
+                not selected this time,
+                keep building your skills
+                and continue exploring new
+                opportunities.
+
+              </p>
+
+            </div>
+
+          )}
+
+        </div>
+
+      </div>
+
+    ))
+
+  )}
+
+</div>
               </div>
             )}
 
@@ -342,3 +529,4 @@ export default function UserDashboard() {
     </div>
   );
 }
+

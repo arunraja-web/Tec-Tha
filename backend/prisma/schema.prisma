@@ -45,30 +45,26 @@ model RefreshToken {
 }
 
 model InternshipApplication {
-  id              Int      @id @default(autoincrement())
+  id Int @id @default(autoincrement())
 
-  // Relation with User
-  userId          String?
-  user            User?    @relation(fields: [userId], references: [id])
+  userId String?
+  user   User?   @relation(fields: [userId], references: [id])
 
-  fullName        String
-  email           String
-  phone           String
-  college         String
-  department      String
-  year            String
+  fullName       String
+  email          String
+  phone          String
+  college        String
+  department     String
+  year           String
+  internshipRole String
+  github         String?
+  linkedin       String?
 
-  internshipRole  String
-  skills          String?
+  resumeUrl String
 
-  github          String?
-  linkedin        String?
+  status ApplicationStatus @default(PENDING)
 
-  resumeUrl       String
-
-  status          ApplicationStatus @default(PENDING)
-
-  createdAt       DateTime @default(now())
+  createdAt DateTime @default(now())
 }
 
 enum Role {
@@ -78,6 +74,6 @@ enum Role {
 
 enum ApplicationStatus {
   PENDING
-  SELECTED
+  APPROVED
   REJECTED
 }
