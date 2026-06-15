@@ -12,6 +12,7 @@ import UserDashboard from "./pages/UserDashboard";
 import InternshipApply from "./pages/InternshipApply";
 import AdminDashboard from "./pages/AdminDashboard";
 import CareersPage from "./pages/CareersPage";
+import CareerApply from "./pages/CareerApply";
 import AboutUs from "./components/AboutUs";
 import Contact from "./components/Contact";
 export default function App() {
@@ -53,6 +54,7 @@ export default function App() {
           <Route path="/verify-otp" element={<VerifyOTP />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/careers" element={<CareersPage />} />
+          <Route path="/career-apply" element={<CareerApply />}/>
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/contact" element={<Contact />} /> 
          <Route

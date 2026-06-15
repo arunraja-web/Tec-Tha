@@ -1,3 +1,15 @@
+import { motion } from "framer-motion";
+
+import {
+  FileText,
+  Search,
+  MessageSquare,
+  Handshake,
+  Rocket,
+  Users,
+  Shield,
+  Star,
+} from "lucide-react";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -6,7 +18,6 @@ import { Navigation } from "swiper/modules";
 import { useRef, useEffect } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
-
 import { Briefcase, MapPin } from "lucide-react";
 import { fillOffset } from "framer-motion";
 
@@ -48,13 +59,43 @@ const jobs = [
     description: "Lead and manage software development projects.",
   },
 ];
-
+const steps = [
+  {
+    number: "01",
+    title: "Apply",
+    description:
+      "Submit your application and share your resume with us.",
+    icon: FileText,
+  },
+  {
+    number: "02",
+    title: "Screening",
+    description:
+      "Our team reviews your profile and evaluates your skills.",
+    icon: Search,
+  },
+  {
+    number: "03",
+    title: "Interview",
+    description:
+      "Meet with our team to discuss your experience and aspirations.",
+    icon: MessageSquare,
+  },
+  {
+    number: "04",
+    title: "Get Started",
+    description:
+      "Receive your offer and begin your journey with Tec Tha.",
+    icon: Handshake,
+  },
+];
 export default function CareersPage() {
     const navigate = useNavigate();
     const swiperRef = useRef(null);
      useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  
   return (
     <>
       
@@ -419,100 +460,212 @@ export default function CareersPage() {
 
         {/* Hiring Process */}
         {/* Hiring Process */}
-<section className="py-24 bg-slate-650">
-  <div className="max-w-7xl mx-auto px-6 lg:px-10">
+{/* Hiring Process */}
+<section className="relative py-28 overflow-hidden bg-slate-50">
 
-    {/* Heading */}
-    <div className="text-center max-w-3xl mx-auto">
-      <span className="text-indigo-600  uppercase tracking-[4px] text-2xl font-semibold">
+  {/* Left Office Background */}
+  <div className="hidden xl:block absolute left-0 top-0 h-full w-[28%] overflow-hidden rounded-r-[120px]">
+
+    <img
+      src="/office-bg3.jpg"
+      alt=""
+      className="w-full h-full object-cover"
+    />
+
+    <div className="absolute inset-0 bg-white/50 backdrop-blur-sm"></div>
+
+  </div>
+
+  {/* Purple Dots */}
+  <div className="hidden xl:grid absolute top-20 right-16 grid-cols-5 gap-3">
+
+    {[...Array(25)].map((_, i) => (
+      <div
+        key={i}
+        className="w-1.5 h-1.5 rounded-full bg-indigo-300"
+      />
+    ))}
+
+  </div>
+
+  <div className="max-w-7xl mx-auto px-6 relative z-10">
+
+    <div className="text-center">
+
+      <span className="text-indigo-600 uppercase tracking-[4px] text-sm font-semibold">
         Hiring Process
       </span>
 
-     <h1  className="text-white text-5xl font-bold mt-4">
+      <h2 className="mt-4 text-5xl font-bold text-slate-900">
         Your Journey With Us
-      </h1>
-      <br></br>
+      </h2>
 
-      <p className="text-slate-400">
+      <p className="mt-6 text-slate-600 max-w-2xl mx-auto">
         Our hiring process is designed to help you showcase your skills and find the right opportunity at Tec Tha.
       </p>
+
     </div>
 
-    {/* Steps */}
-    <div className="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div className="relative mt-24">
 
-      {[
-        {
-          number: "01",
-          title: "Apply",
-          description:
-            "Submit your application and share your resume with us.",
-        },
-        {
-          number: "02",
-          title: "Screening",
-          description:
-            "Our team reviews your profile and evaluates your skills.",
-        },
-        {
-          number: "03",
-          title: "Interview",
-          description:
-            "Meet with our team to discuss your experience and aspirations.",
-        },
-        {
-          number: "04",
-          title: "Get Started",
-          description:
-            "Receive your offer and begin your journey with Tec Tha.",
-        },
-      ].map((step) => (
-        <div
-          key={step.number}
-          className="
-            bg-white
-            rounded-3xl
-            p-8
-            border border-slate-200
-            shadow-sm
-            hover:shadow-xl
-            hover:-translate-y-2
-            transition-all
-            duration-300
-          "
-        >
-          <div
-            className="
-              w-16 h-16
-              rounded-2xl
-              bg-indigo-100
-              hover:border-indigo-300
-              text-indigo-600
-              flex items-center justify-center
-              text-2xl font-bold
-              border border-slate-200 hover:border-indigo-300
-            "
-          >
-            {step.number}
-          </div>
+      {/* Timeline */}
+      <div className="hidden lg:block absolute left-1/2 top-0 -translate-x-1/2 w-[4px] h-full bg-gradient-to-b from-indigo-300 via-indigo-600 to-indigo-300 shadow-[0_0_25px_rgba(99,102,241,0.5)]"></div>
 
-          <h3 className="mt-8 text-2xl font-bold text-slate-900">
-            {step.title}
-          </h3>
+      <div className="space-y-20">
 
-          <p className="mt-4 text-slate-600 leading-relaxed">
-            {step.description}
-          </p>
-        </div>
-      ))}
+        {steps.map((step, index) => {
+
+          const Icon = step.icon;
+
+          return (
+
+            <motion.div
+              key={step.number}
+              initial={{
+                opacity: 0,
+                x: index % 2 === 0 ? -80 : 80,
+              }}
+              whileInView={{
+                opacity: 1,
+                x: 0,
+              }}
+              transition={{
+                duration: 0.8,
+              }}
+              viewport={{ once: true }}
+              className={`relative flex items-center ${
+                index % 2 === 0
+                  ? "lg:flex-row"
+                  : "lg:flex-row-reverse"
+              } flex-col gap-10`}
+            >
+
+              {/* Card */}
+              <div className="relative w-full lg:w-5/12">
+
+                <div className="bg-white rounded-3xl p-8 shadow-xl">
+
+                  <div className="flex items-center gap-5">
+
+                    <div className="w-20 h-20 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-600">
+
+                      <Icon size={38} />
+
+                    </div>
+
+                    <div>
+
+                      <h3 className="text-4xl font-bold text-slate-900">
+                        {step.title}
+                      </h3>
+
+                      <p className="mt-3 text-slate-600">
+                        {step.description}
+                      </p>
+
+                      <div className="mt-5 w-12 h-1 rounded-full bg-indigo-600"></div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+              {/* Number */}
+              <div className="relative z-20">
+
+                <div className="absolute inset-0 rounded-full bg-indigo-400 blur-xl opacity-40 animate-pulse"></div>
+
+                <div className="relative w-24 h-24 rounded-full bg-indigo-600 ring-[12px] ring-indigo-100 flex items-center justify-center text-white text-3xl font-bold shadow-[0_0_35px_rgba(99,102,241,0.6)]">
+
+                  {step.number}
+
+                </div>
+
+              </div>
+
+              {/* Empty */}
+              <div className="hidden lg:block w-5/12"></div>
+
+            </motion.div>
+
+          );
+        })}
+
+      </div>
+
+    </div>
+
+    {/* Bottom Benefits */}
+    <div className="mt-28 bg-white rounded-[40px] shadow-xl p-10">
+
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
+
+        {[
+          {
+            icon: Rocket,
+            title: "Growth Opportunities",
+            desc: "Learn, grow and advance your career.",
+          },
+          {
+            icon: Users,
+            title: "Great Culture",
+            desc: "Collaborate with talented teams.",
+          },
+          {
+            icon: Shield,
+            title: "Work-Life Balance",
+            desc: "We value your time and well-being.",
+          },
+          {
+            icon: Star,
+            title: "Make an Impact",
+            desc: "Work on meaningful projects.",
+          },
+        ].map((item) => {
+
+          const Icon = item.icon;
+
+          return (
+
+            <div key={item.title} className="flex gap-4">
+
+              <div className="w-16 h-16 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-600">
+
+                <Icon size={30} />
+
+              </div>
+
+              <div>
+
+                <h4 className="font-bold text-lg">
+                  {item.title}
+                </h4>
+
+                <p className="text-slate-600 text-sm">
+                  {item.desc}
+                </p>
+
+              </div>
+
+            </div>
+
+          );
+        })}
+
+      </div>
 
     </div>
 
   </div>
-  <section
+
+</section>
+<section
   className="relative py-24 overflow-hidden"
   style={{
-    backgroundImage: "url('/career-cta-bg.jpg')",
+    backgroundImage: "url('/internship-bg.jpeg')",
     backgroundSize: "cover",
     backgroundPosition: "center",
   }}
@@ -547,20 +700,21 @@ export default function CareersPage() {
       <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
 
         <button
-          className="
-            px-8 py-4
-            bg-black
-            text-white
-            rounded-xl
-            font-semibold
-            hover:bg-slate-800
-            hover:-translate-y-1
-            transition-all
-            duration-300
-          "
-        >
-          Submit Your Resume
-        </button>
+  onClick={() => navigate("/career-apply")}
+  className="
+    px-8 py-4
+    bg-black
+    text-white
+    rounded-xl
+    font-semibold
+    hover:bg-slate-800
+    hover:-translate-y-1
+    transition-all
+    duration-300
+  "
+>
+  Submit Your Resume
+</button>
 
     
 
@@ -570,8 +724,6 @@ export default function CareersPage() {
 
   </div>
 </section>
-</section>
-
         
 
         {/* Resume CTA */}
