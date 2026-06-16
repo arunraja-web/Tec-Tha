@@ -69,7 +69,7 @@ export default function WhatWeDo() {
           viewport={{ once: true }}
           className="text-center max-w-3xl mx-auto"
         >
-          <span className="text-sm uppercase tracking-[4px] text-slate-500 font-semibold">
+          <span className="text-sm uppercase tracking-[4px] text-[#061B4E] text-xl font-semibold">
             Our Services
           </span>
 
@@ -131,7 +131,7 @@ export default function WhatWeDo() {
                 {/* Accent Line */}
                 <div className="w-12 h-1 bg-indigo-500 rounded-full mb-5"></div>
 
-                <h3 className="text-2xl font-bold text-slate-900">
+                <h3 className="text-2xl font-bold text-[#061B4E] mb-3">
                   {service.title}
                 </h3>
 

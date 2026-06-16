@@ -21,6 +21,8 @@ model User {
   // Internship Applications
   internshipApplications InternshipApplication[]
 
+  contactConversations ContactConversation[]
+
   @@map("users")
 }
 
@@ -67,6 +69,57 @@ model InternshipApplication {
   createdAt DateTime @default(now())
 }
 
+model ContactConversation {
+
+  id              Int       @id @default(autoincrement())
+
+  userId          String
+
+  subject         String
+
+  status          ContactStatus @default(OPEN)
+
+  deletedByUser   Boolean   @default(false)
+
+  deletedAt       DateTime?
+
+  createdAt       DateTime  @default(now())
+
+  updatedAt       DateTime  @updatedAt
+
+  user            User      @relation(
+    fields: [userId],
+    references: [id]
+  )
+
+  messages        ContactMessage[]
+
+}
+
+model ContactMessage {
+
+  id                Int       @id @default(autoincrement())
+
+  conversationId    String
+    userId          String
+
+  
+
+  senderType        SenderType
+
+  message           String
+
+  createdAt         DateTime  @default(now())
+
+  conversation      ContactConversation
+                    @relation(
+                      fields: [conversationId],
+                      references: [id],
+                      onDelete: Cascade
+                    )
+
+}
+
 enum Role {
   USER
   ADMIN
@@ -76,4 +129,22 @@ enum ApplicationStatus {
   PENDING
   APPROVED
   REJECTED
+}
+
+enum ContactStatus {
+
+  OPEN
+
+  ADMIN_REPLIED
+
+  USER_DELETED
+
+}
+
+enum SenderType {
+
+  USER
+
+  ADMIN
+
 }

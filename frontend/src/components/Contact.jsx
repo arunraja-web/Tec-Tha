@@ -7,10 +7,15 @@ import {
 
 export default function Contact() {
   return (
+
+    
     <motion.section
       id="contact"
       className="py-24 bg-slate-100"
     >
+
+
+      
       <div className="max-w-7xl mx-auto px-6">
 
         <div
@@ -28,7 +33,7 @@ export default function Contact() {
   whileInView={{ opacity: 1, x: 0 }}
   transition={{ duration: 0.8 }}
   viewport={{ once: true }}
-  className="bg-[#374151] hover:bg-[#1F2937] text-white p-12 flex flex-col justify-between"
+  className="bg-blue-900 hover:bg-blue-900 text-white p-12 flex flex-col justify-between"
 >
 
   <div>
@@ -227,7 +232,7 @@ export default function Contact() {
       type="submit"
       className="
         w-full
-        bg-[#374151]
+        bg-blue-900
         hover:bg-[#1F2937]
         text-white
         py-4
@@ -247,6 +252,8 @@ export default function Contact() {
         </div>
 
       </div>
+      
     </motion.section>
+    
   );
 }

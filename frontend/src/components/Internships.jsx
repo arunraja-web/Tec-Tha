@@ -156,7 +156,7 @@ const { user } = useAuth();
               <div className="w-14 h-1 bg-indigo-500 rounded-full"></div>
 
               {/* Title */}
-              <h3 className="mt-8 text-2xl font-bold text-black">
+              <h3 className="mt-8 text-2xl font-bold text-[#061B4E]">
                 {internship.title}
               </h3>
 
@@ -204,7 +204,7 @@ const { user } = useAuth();
                     Mode
                   </span>
 
-                  <span className="font-semibold text-indigo-400">
+                  <span className="font-semibold text-[#061B4E]">
                     {internship.mode}
                   </span>
                 </div>
@@ -248,11 +248,11 @@ const { user } = useAuth();
     mt-5
     px-10
     py-4
-    bg-black
+    bg-blue-900
     text-white
     font-semibold
     rounded-xl
-    hover:bg-slate-800
+    hover:bg-blue-900
     hover:-translate-y-1
     hover:shadow-xl
     transition-all

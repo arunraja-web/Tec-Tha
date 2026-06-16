@@ -103,7 +103,7 @@ body {
 
 /* OTP input */
 .otp-input {
-  @apply w-12 h-14 text-center text-xl font-bold bg-white/80 border-2 border-blue-100 rounded-xl text-blue-900 transition-all duration-200 outline-none;
+  @apply w-12 h-14 text-center text-xl font-bold bg-white/80 border-2 border-blue-100 rounded-xl text-[#061B4E] transition-all duration-200 outline-none;
 }
 
 .otp-input:focus {

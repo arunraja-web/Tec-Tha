@@ -77,45 +77,104 @@ const handleDashboard = () => {
     };
   }, []);
 
-  const navLink = (section) =>
-    `relative text-slate-800 hover:text-black font-medium transition duration-300
-    after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-black
-    after:transition-all after:duration-300
-    ${
-      activeSection === section
-        ? "after:w-full text-black"
-        : "after:w-0 hover:after:w-full"
-    }`;
-
+ const navLink = (section) => `
+  relative
+  font-bold
+  text-lg
+  text-blue-900
+  hover:text-blue-900
+  transition-all
+  duration-300
+  ${
+    activeSection === section
+      ? "text-[#061B4E] after:absolute after:left-0 after:-bottom-2 after:w-full after:h-[2px] after:bg-gradient-to-r after:from-blue-900 after:to-cyan-700"
+      : ""
+  }
+`;
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white/95 backdrop-blur-xl shadow-lg"
-          : "bg-white/80 "
-      }`}
+       className="
+    fixed
+    top-0
+    left-0
+    w-full
+    z-50
+    bg-white/90
+    backdrop-blur-md
+    border-b
+    border-slate-200
+    transition-all
+    duration-300
+  "
     >
       <div className="max-w-[1600px] mx-auto px-12 lg:px-20">
 
         <div className="flex items-center justify-between h-20">
 
-          {/* Logo */}
-          <div className="flex items-center gap-4">
+       {/* Logo */}
+<div className="flex items-center gap-4 cursor-pointer">
 
-            <div className="w-12 h-12 bg-black flex items-center justify-center transition-all duration-300 hover:rotate-6 hover:scale-110 cursor-pointer">
-              <span className="text-white font-bold text-lg">
-                #
-              </span>
-            </div>
+  <div
+   className="
+  w-14
+  h-14
+  object-contain
+  transition-all
+  duration-300
+  hover:scale-110
+  hover:drop-shadow-[0_0_12px_rgba(59,130,246,0.5)]
+"
+  >
 
-            <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">
-              Tec Tha
-            </h1>
+    <img
+      src="/TecTha Logo.jpeg"
+      alt="Tec Tha Logo"
+      className="
+        w-14
+        h-14
+        object-contain
+        rounded-xl
+      "
+    />
 
-          </div>
+  </div>
+
+  <div>
+
+    <h1
+      className="
+        text-3xl
+        font-extrabold
+        tracking-tight
+        bg-gradient-to-r
+        from-[#061B4E]
+        via-[#061B4E]
+        to-cyan-500
+        bg-clip-text
+        text-transparent
+      "
+    >
+      Tec Tha
+    </h1>
+
+    <p
+      className="
+        text-xs
+        text-slate-500
+        tracking-widest
+        uppercase
+      "
+    >
+      Innovating The Future
+    </p>
+
+  </div>
+
+</div>
+ 
 
           {/* Navigation */}
-          <nav className="hidden md:flex   items-center gap-14">
+          <nav className="hidden md:flex   items-center gap-20">
 
             <a href="#home" className={navLink("home")}>
               Home
@@ -142,6 +201,7 @@ const handleDashboard = () => {
             </a>
 
           </nav>
+        
 
           {/* Right Side */}
           <div className="flex items-center gap-6">
@@ -157,7 +217,7 @@ const handleDashboard = () => {
         flex items-center gap-2
         px-5 py-3
         rounded-full
-        bg-slate-100
+        bg-slate-700
         hover:bg-slate-200
         transition-all duration-300
       "
@@ -246,9 +306,13 @@ const handleDashboard = () => {
     onClick={() => navigate("/login")}
     className="
       px-6 py-3
-      bg-black
-      text-white
+      bg-blue-900
+      text-slate-50
+      font-medium
+      hover:bg-[#061B4E]
+      transition-all duration-300
       rounded-xl
+
     "
   >
     Login

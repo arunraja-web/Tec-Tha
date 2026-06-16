@@ -8,17 +8,17 @@ export default function HeroSection() {
 
       <div className="max-w-2xl ">
 
-      <br></br> <br></br><h1 className="text-6xl lg:text-7xl font-extrabold leading-tight text-white ">
+      <br></br> <br></br><h2 className="text-6xl lg:text-7xl font-extrabold leading-tight text-white ">
           Building Digital
           <br />
 
-          <span className="bg-gradient-to-r from-blue-200 to-blue-200 bg-clip-text text-transparent ">
+          <span className="bg-gradient-to-r text-white bg-clip-text text-transparent ">
             Products That
           </span>
 
           <br />
           Scale
-        </h1>
+        </h2>
 
         <p className="mt-8 text-xl text-slate-300 leading-relaxed">
           Tec Tha helps startups, entrepreneurs and businesses build
@@ -28,12 +28,12 @@ export default function HeroSection() {
 
         <div className="mt-10 flex flex-wrap gap-5">
 
-          <button className="px-8 py-4 bg-white text-black font-semibold  hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
-  Get Started
+          <button className="px-6 py-4 bg-blue-900 text-white text-lg font-bold  hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+  Book a Consultation
 </button>
 
-          <button className="px-8 py-4 border border-slate-500 text-white  font-semibold hover:bg-white/10 transition">
-            View Projects
+          <button className="px-8 py-4 border border-slate-500 text-white  font-extrabold hover:bg-white/10 transition">
+            Explore Our Works
           </button>
 
         </div>
@@ -53,11 +53,11 @@ export default function HeroSection() {
 
           <div>
             <h3 className="text-5xl font-bold text-white">
-              10+
+              50+
             </h3>
 
             <p className="text-slate-400 mt-2">
-              Happy Clients
+              Internship Applicants
             </p>
           </div>
 
@@ -81,7 +81,7 @@ export default function HeroSection() {
     <div className="absolute inset-0">
 
       <img
-        src="/office.png"
+        src="/office-bg.jpg.jpeg"
         alt="Office"
         className="w-full h-full object-cover"
       />
@@ -90,7 +90,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-black/10" />
 
       {/* Left dark fade */}
-      <div className="absolute inset-y-0 left-0 w-[60%] bg-gradient-to-r from-slate-950 via-slate-950/90 to-transparent" />
+           <div className="absolute inset-y-0 left-0 w-[60%] bg-gradient-to-r from-slate-900 via-slate-900/80 to-transparent" />
 
     </div>
 

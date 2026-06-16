@@ -79,7 +79,7 @@ import "swiper/css/navigation";
 <section className="py-20 bg-white">
   <div className="max-w-5xl mx-auto text-center px-6">
 
-    <span className="text-indigo-600 uppercase tracking-[4px] text-2xl font-bold">
+    <span className="text-blue-900 uppercase tracking-[4px] text-2xl font-bold">
       Our Careers
     </span>
 
@@ -117,7 +117,7 @@ import "swiper/css/navigation";
 
   <div className="max-w-7xl mx-auto px-6 lg:px-3">
 
-    <span className="text-indigo-600 uppercase tracking-[3px] text-sm font-semibold">
+    <span className="text-blue-900 uppercase tracking-[3px] text-sm font-bold">
       Open Positions
     </span>
 
@@ -133,10 +133,10 @@ import "swiper/css/navigation";
   className="
     mt-10
     px-8 py-4
-    bg-black text-white
+    bg-blue-900 text-white
     rounded-xl
     font-semibold
-    hover:bg-slate-800
+    hover:bg-blue-900
     transition-all duration-300
   "
 >

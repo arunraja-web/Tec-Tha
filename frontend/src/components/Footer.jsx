@@ -6,10 +6,10 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-900 text-white">
+    <footer className="bg-[#041540] text-white">
 
-      <div className="max-w-7xl mx-auto px-6 py-20">
-
+      <div className="max-w-7xl mx-auto px-6 py-16">
+    
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
 
           {/* Tec Tha Info */}
@@ -17,8 +17,17 @@ export default function Footer() {
 
             <div className="flex items-center gap-3">
 
-              <div className="w-12 h-12 bg-white text-black flex items-center justify-center font-bold text-xl">
-                #
+              <div className="w-12 h-12 bg-blue-900 text-white flex items-center justify-center font-bold text-xl">
+                  <img
+      src="/TecTha Logo.jpeg"
+      alt="Tec Tha Logo"
+      className="
+        w-14
+        h-14
+        object-contain
+        rounded-xl
+      "
+    />
               </div>
 
               <h2 className="text-3xl font-bold">
@@ -86,11 +95,11 @@ export default function Footer() {
           {/* Quick Links */}
           <div>
 
-            <h3 className="text-2xl font-semibold mb-6">
+            <h3 className="text-2xl font-bold mb-6">
               Quick Links
             </h3>
 
-            <div className="space-y-4 text-slate-400">
+            <div className="space-y-4 text-slate-100">
 
               <a href="#home" className="block hover:text-white transition">
                 Home
@@ -123,11 +132,11 @@ export default function Footer() {
           {/* Services */}
           <div>
 
-            <h3 className="text-2xl font-semibold mb-6">
+            <h3 className="text-2xl font-bold mb-6">
               Services
             </h3>
 
-            <div className="space-y-4 text-slate-400">
+            <div className="space-y-4 text-slate-100">
 
               <p>Web Development</p>
 
@@ -146,11 +155,11 @@ export default function Footer() {
           {/* Contact */}
           <div>
 
-            <h3 className="text-2xl font-semibold mb-6">
+            <h3 className="text-2xl font-bold mb-6">
               Contact
             </h3>
 
-            <div className="space-y-5 text-slate-400">
+            <div className="space-y-5 text-slate-100">
 
               <p>
                 📧 contact@tectha.com
@@ -161,7 +170,7 @@ export default function Footer() {
               </p>
 
               <p>
-                📍 Thirunelveli, Tamil Nadu
+                📍 Coimbatore, Tamil Nadu
               </p>
 
               <p>
@@ -187,7 +196,7 @@ export default function Footer() {
       })
     }
     className="
-      text-slate-400
+      text-slate-100
       hover:text-white
       transition
     "

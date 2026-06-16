@@ -12,7 +12,7 @@ export default function AboutUs() {
     <div>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-white px-6">
+      <section className="pt-4 pb-20 bg-white px-6">
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -20,7 +20,7 @@ export default function AboutUs() {
           viewport={{ once: true }}
           className="text-center max-w-5xl mx-auto"
         >
-          <span className="text-[#324896] font-semibold tracking-[0.25em] uppercase text-lg">
+          <span className="text-blue-800 font-bold tracking-[0.25em] uppercase text-2xl">
             About Us
           </span>
 
@@ -63,7 +63,7 @@ export default function AboutUs() {
                 viewport={{ once: true }}
                 className="max-w-xl"
               >
-                <span className="text-[#6366F1] font-semibold tracking-widest uppercase">
+                <span className="text-white font-semibold tracking-widest uppercase">
                   Our Story
                 </span>
 
@@ -80,7 +80,7 @@ export default function AboutUs() {
 
                 <a
                   href="#contact"
-                  className="inline-block mt-8 px-8 py-4 bg-[#324896] text-white rounded-xl font-semibold hover:bg-[#26376E] transition"
+                  className="inline-block mt-8 px-8 py-4 bg-blue-900 text-white rounded-xl font-semibold hover:bg-[#26376E] transition"
                 >
                   Contact Us
                 </a>
@@ -145,7 +145,7 @@ export default function AboutUs() {
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
               >
-                <span className="text-[#6366F1] font-semibold tracking-widest uppercase">
+                <span className="text-white font-semibold tracking-widest uppercase">
                   Who Are We?
                 </span>
 
@@ -177,7 +177,7 @@ export default function AboutUs() {
         <div className="max-w-7xl mx-auto px-6">
 
           <div className="text-center">
-            <span className="text-[#324896] font-semibold tracking-widest uppercase">
+            <span className="text-blue-900 text-2xl font-bold tracking-widest uppercase">
               Our Core Values
             </span>
 
@@ -239,9 +239,9 @@ export default function AboutUs() {
                   className="
                     w-16 h-16 mx-auto
                     rounded-full
-                    bg-gradient-to-br from-purple-100 to-indigo-100
+                    bg-gradient-to-br from-blue-100 to-blue-200
                     flex items-center justify-center
-                    text-[#7C3AED]
+                    text-[#061B4E]
                     shadow-lg
                     transition-all duration-500
                     group-hover:scale-110
