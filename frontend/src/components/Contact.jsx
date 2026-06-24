@@ -5,10 +5,106 @@ import {
   FaGithub,
 } from "react-icons/fa";
 
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
 export default function Contact() {
+
+  const navigate = useNavigate();
+
+  const [loading, setLoading] = useState(false);
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+
+  };
+
+  const handleSubmit = async (e) => {
+
+    e.preventDefault();
+
+    setLoading(true);
+
+    try {
+
+      await axios.post(
+        "http://localhost:5000/api/contact/create",
+
+        {
+          subject: "Website Contact Request",
+
+          message: `
+Name: ${formData.name}
+
+Email: ${formData.email}
+
+Phone: ${formData.phone}
+
+Message:
+${formData.message}
+          `,
+        },
+
+        {
+          withCredentials: true,
+        }
+      );
+
+      alert("✅ Message sent successfully!");
+
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
+
+    } catch (error) {
+
+      console.error(error);
+
+      if (
+        error.response?.status === 401
+      ) {
+
+        alert(
+          "Please login first"
+        );
+
+        navigate("/login");
+
+        return;
+
+      }
+
+      alert(
+        "Failed to send message"
+      );
+
+    } finally {
+
+      setLoading(false);
+
+    }
+
+  };
+
   return (
 
     
+
     <motion.section
       id="contact"
       className="py-24 bg-slate-100"
@@ -165,85 +261,106 @@ export default function Contact() {
     Fill out the form below and we'll get back to you soon.
   </p>
 
-  <form className="mt-10 space-y-6">
+  <form
+  onSubmit={handleSubmit}
+  className="mt-10 space-y-6"
+>
+    <input
+  type="text"
+  name="name"
+  value={formData.name}
+  onChange={handleChange}
+  placeholder="Your Name"
+  className="
+    w-full
+    border
+    border-slate-300
+    rounded-xl
+    px-5
+    py-4
+    focus:outline-none
+    focus:border-[#324896]
+  "
+/>
 
     <input
-      type="text"
-      placeholder="Your Name"
-      className="
-        w-full
-        border
-        border-slate-300
-        rounded-xl
-        px-5
-        py-4
-        focus:outline-none
-        focus:border-[#324896]
-      "
-    />
+  type="email"
+  name="email"
+  value={formData.email}
+  onChange={handleChange}
+  placeholder="Email Address"
+  className="
+    w-full
+    border
+    border-slate-300
+    rounded-xl
+    px-5
+    py-4
+    focus:outline-none
+    focus:border-[#324896]
+  "
+/>
 
     <input
-      type="email"
-      placeholder="Email Address"
-      className="
-        w-full
-        border
-        border-slate-300
-        rounded-xl
-        px-5
-        py-4
-        focus:outline-none
-        focus:border-[#324896]
-      "
-    />
-
-    <input
-      type="text"
-      placeholder="Phone Number"
-      className="
-        w-full
-        border
-        border-slate-300
-        rounded-xl
-        px-5
-        py-4
-        focus:outline-none
-        focus:border-[#324896]
-      "
-    />
+  type="text"
+  name="phone"
+  value={formData.phone}
+  onChange={handleChange}
+  placeholder="Phone Number"
+  className="
+    w-full
+    border
+    border-slate-300
+    rounded-xl
+    px-5
+    py-4
+    focus:outline-none
+    focus:border-[#324896]
+  "
+/>
 
     <textarea
-      rows="5"
-      placeholder="Tell us about your project..."
-      className="
-        w-full
-        border
-        border-slate-300
-        rounded-xl
-        px-5
-        py-4
-        resize-none
-        focus:outline-none
-        focus:border-[#324896]
-      "
-    />
+  rows="5"
+  name="message"
+  value={formData.message}
+  onChange={handleChange}
+  placeholder="Tell us about your project..."
+  className="
+    w-full
+    border
+    border-slate-300
+    rounded-xl
+    px-5
+    py-4
+    resize-none
+    focus:outline-none
+    focus:border-[#324896]
+  "
+/>
 
     <button
-      type="submit"
-      className="
-        w-full
-        bg-blue-900
-        hover:bg-[#1F2937]
-        text-white
-        py-4
-        rounded-xl
-        font-semibold
-        hover:bg-[#26376E]
-        transition
-      "
-    >
-      Send Message
-    </button>
+  type="submit"
+  disabled={loading}
+  className="
+    w-full
+    bg-blue-900
+    text-white
+    py-4
+    rounded-xl
+    font-semibold
+    transition
+    disabled:opacity-70
+  "
+>
+  {loading ? (
+    <div className="flex items-center justify-center gap-2">
+      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+      Sending...
+    </div>
+  ) : (
+    "Send Message"
+  )}
+</button>
 
   </form>
 

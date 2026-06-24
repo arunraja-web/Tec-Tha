@@ -17,10 +17,10 @@ model User {
   isVerified Boolean  @default(false)
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
-
+   userType String?
   // Internship Applications
   internshipApplications InternshipApplication[]
-
+  careerApplications CareerApplication[]
   contactConversations ContactConversation[]
 
   @@map("users")
@@ -70,53 +70,74 @@ model InternshipApplication {
 }
 
 model ContactConversation {
+  id Int @id @default(autoincrement())
 
-  id              Int       @id @default(autoincrement())
+  userId String
 
-  userId          String
+  subject String
 
-  subject         String
+  status ContactStatus @default(OPEN)
 
-  status          ContactStatus @default(OPEN)
+  deletedByUser Boolean @default(false)
 
-  deletedByUser   Boolean   @default(false)
+  deletedAt DateTime?
 
-  deletedAt       DateTime?
+  createdAt DateTime @default(now())
 
-  createdAt       DateTime  @default(now())
+  updatedAt DateTime @updatedAt
 
-  updatedAt       DateTime  @updatedAt
+  user User @relation(fields: [userId], references: [id])
 
-  user            User      @relation(
-    fields: [userId],
-    references: [id]
-  )
+  messages ContactMessage[]
+}
 
-  messages        ContactMessage[]
+model CareerApplication {
 
+  id Int @id @default(autoincrement())
+
+  userId String?
+  user User? @relation(fields: [userId], references: [id])
+
+  fullName String
+  email String
+  phone String
+
+  location String
+  qualification String
+  experience String
+
+  linkedin String?
+  github String?
+
+  jobRole String
+  expectedSalary String
+
+  whyJoin String
+
+  resumeUrl String
+
+  status ApplicationStatus @default(PENDING)
+
+  createdAt DateTime @default(now())
 }
 
 model ContactMessage {
 
-  id                Int       @id @default(autoincrement())
+  id             Int @id @default(autoincrement())
 
-  conversationId    String
-    userId          String
+  conversationId Int
 
-  
+  senderType     SenderType
 
-  senderType        SenderType
+  message        String
 
-  message           String
+  isDeleted      Boolean @default(false)
 
-  createdAt         DateTime  @default(now())
+  deletedAt      DateTime?
 
-  conversation      ContactConversation
-                    @relation(
-                      fields: [conversationId],
-                      references: [id],
-                      onDelete: Cascade
-                    )
+  createdAt      DateTime @default(now())
+
+  conversation ContactConversation @relation(fields: [conversationId],references: [id],onDelete: Cascade)
 
 }
 
@@ -132,19 +153,15 @@ enum ApplicationStatus {
 }
 
 enum ContactStatus {
-
   OPEN
 
   ADMIN_REPLIED
 
   USER_DELETED
-
 }
 
 enum SenderType {
-
   USER
 
   ADMIN
-
 }

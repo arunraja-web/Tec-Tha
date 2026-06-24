@@ -7,12 +7,14 @@ import dotenv from "dotenv";
 import session from "express-session";
 import passport from "./config/passport.js";
 import internshipRoutes from "./routes/internshipRoutes.js";
-
+import contactRoutes from "./routes/contactRoutes.js";
 import authRoutes from "./routes/auth.routes.js";
 import userRoutes from "./routes/user.routes.js";
 import { errorHandler } from "./middleware/error.middleware.js";
 import { notFound } from "./middleware/notFound.middleware.js";
-
+import adminRoutes from "./routes/adminRoutes.js";
+import careerRoutes
+from "./routes/careerRoutes.js";
 dotenv.config();
 
 const app = express();
@@ -24,6 +26,8 @@ app.use(helmet({
   crossOriginResourcePolicy: { policy: "cross-origin" },
   contentSecurityPolicy: false,
 }));
+
+
 
 // CORS
 app.use(cors({
@@ -82,6 +86,15 @@ app.get("/health", (req, res) => {
 app.use("/api/auth", authLimiter, authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/internships", internshipRoutes);
+app.use(
+  "/api/contact",
+  contactRoutes
+);
+app.use(
+  "/api/careers",
+  careerRoutes
+);
+app.use("/api/admin", adminRoutes);
 
 // Error handling
 app.use(notFound);

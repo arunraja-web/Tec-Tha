@@ -75,7 +75,7 @@ body {
 
 /* Primary button */
 .btn-primary {
-  @apply w-full py-3 px-6 bg-black hover:bg-neutral-800 text-white font-semibold rounded-none transition-all duration-200 flex items-center justify-center gap-2 text-sm;
+  @apply w-full py-3 px-6 bg-blue-900 hover:bg-blue-800 text-white font-semibold rounded-none transition-all duration-200 flex items-center justify-center gap-2 text-sm;
 }
 
 .btn-primary:hover {

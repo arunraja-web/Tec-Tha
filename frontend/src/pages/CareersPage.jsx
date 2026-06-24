@@ -461,57 +461,53 @@ export default function CareersPage() {
         {/* Hiring Process */}
         {/* Hiring Process */}
 {/* Hiring Process */}
-<section className="relative py-28 overflow-hidden bg-slate-50">
+<section className="relative py-20 overflow-hidden bg-slate-200">
 
-  {/* Left Office Background */}
-  <div className="hidden xl:block absolute left-0 top-0 h-full w-[28%] overflow-hidden rounded-r-[120px]">
 
-    <img
-      src="/office-bg3.jpg"
-      alt=""
-      className="w-full h-full object-cover"
-    />
 
     <div className="absolute inset-0 bg-white/50 backdrop-blur-sm"></div>
 
-  </div>
+  
+  {/* Left Office Background */}
+  
 
-  {/* Purple Dots */}
-  <div className="hidden xl:grid absolute top-20 right-16 grid-cols-5 gap-3">
+  {/* Blue Dots */}
+  <div className="hidden xl:grid absolute top-16 right-12 grid-cols-5 gap-2">
 
     {[...Array(25)].map((_, i) => (
       <div
         key={i}
-        className="w-1.5 h-1.5 rounded-full bg-indigo-300"
+        className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse"
       />
     ))}
 
   </div>
 
-  <div className="max-w-7xl mx-auto px-6 relative z-10">
+  <div className="max-w-6xl mx-auto px-6 relative z-10">
 
     <div className="text-center">
 
-      <span className="text-indigo-600 uppercase tracking-[4px] text-sm font-semibold">
+      <span className="text-blue-800 uppercase tracking-[4px] text-sm font-semibold">
         Hiring Process
       </span>
 
-      <h2 className="mt-4 text-5xl font-bold text-slate-900">
+      <h2 className="mt-3 text-4xl font-bold text-slate-900">
         Your Journey With Us
       </h2>
 
-      <p className="mt-6 text-slate-600 max-w-2xl mx-auto">
-        Our hiring process is designed to help you showcase your skills and find the right opportunity at Tec Tha.
+      <p className="mt-5 text-slate-600 max-w-2xl mx-auto">
+        Our hiring process is designed to help you showcase your skills
+        and find the right opportunity at Tec Tha.
       </p>
 
     </div>
 
-    <div className="relative mt-24">
+    <div className="relative mt-16">
 
       {/* Timeline */}
-      <div className="hidden lg:block absolute left-1/2 top-0 -translate-x-1/2 w-[4px] h-full bg-gradient-to-b from-indigo-300 via-indigo-600 to-indigo-300 shadow-[0_0_25px_rgba(99,102,241,0.5)]"></div>
+      <div className="hidden lg:block absolute left-1/2 top-0 -translate-x-1/2 w-[3px] h-full bg-gradient-to-b from-blue-900 via-blue-900 to-blue-900 shadow-[0_0_20px_rgba(37,99,235,0.4)]"></div>
 
-      <div className="space-y-20">
+      <div className="space-y-12">
 
         {steps.map((step, index) => {
 
@@ -523,47 +519,47 @@ export default function CareersPage() {
               key={step.number}
               initial={{
                 opacity: 0,
-                x: index % 2 === 0 ? -80 : 80,
+                x: index % 2 === 0 ? -50 : 50,
               }}
               whileInView={{
                 opacity: 1,
                 x: 0,
               }}
               transition={{
-                duration: 0.8,
+                duration: 0.6,
               }}
               viewport={{ once: true }}
               className={`relative flex items-center ${
                 index % 2 === 0
                   ? "lg:flex-row"
                   : "lg:flex-row-reverse"
-              } flex-col gap-10`}
+              } flex-col gap-6`}
             >
 
               {/* Card */}
               <div className="relative w-full lg:w-5/12">
 
-                <div className="bg-white rounded-3xl p-8 shadow-xl">
+                <div className="bg-white rounded-3xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
 
-                  <div className="flex items-center gap-5">
+                  <div className="flex items-center gap-4">
 
-                    <div className="w-20 h-20 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-600">
+                    <div className="w-16 h-16 rounded-full bg-blue-50 flex items-center justify-center text-blue-900 flex-shrink-0">
 
-                      <Icon size={38} />
+                      <Icon size={30} />
 
                     </div>
 
                     <div>
 
-                      <h3 className="text-4xl font-bold text-slate-900">
+                      <h3 className="text-3xl font-bold text-slate-900">
                         {step.title}
                       </h3>
 
-                      <p className="mt-3 text-slate-600">
+                      <p className="mt-2 text-slate-600">
                         {step.description}
                       </p>
 
-                      <div className="mt-5 w-12 h-1 rounded-full bg-indigo-600"></div>
+                      <div className="mt-4 w-10 h-1 rounded-full bg-blue-900"></div>
 
                     </div>
 
@@ -576,9 +572,9 @@ export default function CareersPage() {
               {/* Number */}
               <div className="relative z-20">
 
-                <div className="absolute inset-0 rounded-full bg-indigo-400 blur-xl opacity-40 animate-pulse"></div>
+                <div className="absolute inset-0 rounded-full bg-blue-400 blur-xl opacity-30 animate-pulse"></div>
 
-                <div className="relative w-24 h-24 rounded-full bg-indigo-600 ring-[12px] ring-indigo-100 flex items-center justify-center text-white text-3xl font-bold shadow-[0_0_35px_rgba(99,102,241,0.6)]">
+                <div className="relative w-20 h-20 rounded-full bg-blue-700 ring-[8px] ring-blue-100 flex items-center justify-center text-white text-2xl font-bold shadow-[0_0_25px_rgba(37,99,235,0.5)]">
 
                   {step.number}
 
@@ -586,73 +582,13 @@ export default function CareersPage() {
 
               </div>
 
-              {/* Empty */}
+              {/* Empty Space */}
               <div className="hidden lg:block w-5/12"></div>
 
             </motion.div>
 
           );
-        })}
 
-      </div>
-
-    </div>
-
-    {/* Bottom Benefits */}
-    <div className="mt-28 bg-white rounded-[40px] shadow-xl p-10">
-
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
-
-        {[
-          {
-            icon: Rocket,
-            title: "Growth Opportunities",
-            desc: "Learn, grow and advance your career.",
-          },
-          {
-            icon: Users,
-            title: "Great Culture",
-            desc: "Collaborate with talented teams.",
-          },
-          {
-            icon: Shield,
-            title: "Work-Life Balance",
-            desc: "We value your time and well-being.",
-          },
-          {
-            icon: Star,
-            title: "Make an Impact",
-            desc: "Work on meaningful projects.",
-          },
-        ].map((item) => {
-
-          const Icon = item.icon;
-
-          return (
-
-            <div key={item.title} className="flex gap-4">
-
-              <div className="w-16 h-16 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-600">
-
-                <Icon size={30} />
-
-              </div>
-
-              <div>
-
-                <h4 className="font-bold text-lg">
-                  {item.title}
-                </h4>
-
-                <p className="text-slate-600 text-sm">
-                  {item.desc}
-                </p>
-
-              </div>
-
-            </div>
-
-          );
         })}
 
       </div>
@@ -661,16 +597,21 @@ export default function CareersPage() {
 
   </div>
 
+
 </section>
+
+        
 <section
   className="relative py-24 overflow-hidden"
   style={{
-    backgroundImage: "url('/internship-bg.jpeg')",
+    backgroundImage: "url('/office-bg3.png')",
     backgroundSize: "cover",
     backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+  
   }}
 >
-    
+     <div className="absolute inset-0 bg-slate-800/60 -z-10" />
   <div className="max-w-5xl mx-auto px-6 lg:px-10">
     
 
@@ -684,7 +625,7 @@ export default function CareersPage() {
       "
     >
 
-      <span className="text-indigo-600 uppercase tracking-[4px] text-sm font-semibold">
+      <span className="text-blue-800  uppercase tracking-[4px] text-sm font-bold">
         Join Our Team
       </span>
 
@@ -703,7 +644,7 @@ export default function CareersPage() {
   onClick={() => navigate("/career-apply")}
   className="
     px-8 py-4
-    bg-black
+    bg-blue-800
     text-white
     rounded-xl
     font-semibold
@@ -724,8 +665,6 @@ export default function CareersPage() {
 
   </div>
 </section>
-        
-
         {/* Resume CTA */}
 
         {/* Resume CTA */}

@@ -127,7 +127,7 @@ const handleDashboard = () => {
   >
 
     <img
-      src="/TecTha Logo.jpeg"
+      src="/Logo.png"
       alt="Tec Tha Logo"
       className="
         w-14

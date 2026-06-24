@@ -90,14 +90,14 @@ const { user } = useAuth();
       <div
         className="absolute inset-0 -z-20"
         style={{
-          backgroundImage: "url('/internship-bg.jpeg')",
+          backgroundImage: "url('/internship-bg1.jpeg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       />
 
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-slate-900/80 -z-10" />
+      <div className="absolute inset-0 bg-slate-900/60 -z-10" />
 
       <div className="max-w-[1600px] mx-auto px-6 lg:px-10">
 

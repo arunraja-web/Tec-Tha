@@ -5,6 +5,8 @@ import {
   Bell,
   Settings,
   LogOut,
+  MessageCircle,
+  Briefcase
 } from "lucide-react";
 
 import { useAuth } from "../context/AuthContext";
@@ -15,7 +17,13 @@ import axios from "axios";
 export default function UserDashboard() {
   const [activeTab, setActiveTab] =
     useState("profile");
+    const [internships, setInternships] =
+  useState([]);
 
+const [jobs, setJobs] =
+  useState([]);
+const [messages, setMessages] =
+useState([]);
   const { user, logout } = useAuth();
 const [applications, setApplications] =
   useState([]);
@@ -37,23 +45,77 @@ const [applications, setApplications] =
       label: "My Profile",
       icon: User,
     },
-    {
-      id: "applications",
-      label: "My Applications",
-      icon: FileText,
-    },
+   {
+  id: "internships",
+  label: "My Internships",
+  icon: FileText
+},
+
+{
+  id: "jobs",
+  label: "My Jobs",
+  icon: Briefcase
+},
     {
       id: "notifications",
       label: "Notifications",
       icon: Bell,
     },
+     {
+      id:"messages",
+  icon: MessageCircle,
+  label: "Messages",
+},
     {
       id: "settings",
       label: "Settings",
       icon: Settings,
     },
+   
   ];
-  
+
+  useEffect(() => {
+
+  axios
+    .get(
+      "http://localhost:5000/api/contact/my-conversations",
+      {
+        withCredentials: true,
+      }
+    )
+    .then((res) => {
+
+      setMessages(
+        res.data.data
+      );
+
+    })
+    .catch(console.error);
+
+}, []);
+  useEffect(() => {
+
+  axios.get(
+
+    "http://localhost:5000/api/careers/my-applications",
+
+    {
+      withCredentials: true,
+    }
+
+  )
+
+  .then((res) => {
+
+    setJobs(
+      res.data.data
+    );
+
+  })
+
+  .catch(console.error);
+
+}, []);
   const cancelApplication =
   async (id) => {
 
@@ -106,6 +168,55 @@ const [applications, setApplications] =
     }
 
 };
+
+const deleteMessage =
+async (messageId) => {
+
+  const confirmed =
+    window.confirm(
+      "Delete this message?"
+    );
+
+  if (!confirmed) return;
+
+  try {
+
+    await axios.delete(
+
+      `http://localhost:5000/api/contact/message/${messageId}`,
+
+      {
+        withCredentials: true,
+      }
+
+    );
+
+    setMessages((prev) =>
+
+      prev.map((conv) => ({
+
+        ...conv,
+
+        messages:
+          conv.messages.filter(
+
+            (msg) =>
+              msg.id !== messageId
+
+          ),
+
+      }))
+
+    );
+
+  } catch (error) {
+
+    console.error(error);
+
+  }
+
+};
+
   useEffect(() => {
 
   axios.get(
@@ -298,7 +409,7 @@ const [applications, setApplications] =
             )}
 
             {/* Applications */}
-            {activeTab === "applications" && (
+            {activeTab === "internships" && (
               <div
                 className="
                   bg-white
@@ -461,10 +572,184 @@ const [applications, setApplications] =
     ))
 
   )}
-
+ 
 </div>
+
               </div>
+
+              
             )}
+            {/* Job Applications */}
+{activeTab === "jobs" && (
+
+  <div
+    className="
+      bg-white
+      rounded-3xl
+      shadow-lg
+      p-8
+    "
+  >
+
+    <h2 className="text-3xl font-bold">
+      My Job Applications
+    </h2>
+
+    <div className="mt-8 space-y-6">
+
+      {jobs.length === 0 ? (
+
+        <div className="text-center py-10">
+
+          <p className="text-slate-500 text-lg">
+            You haven't applied for any jobs yet.
+          </p>
+
+        </div>
+
+      ) : (
+
+        jobs.map((job) => (
+
+          <div
+            key={job.id}
+            className="
+              border
+              rounded-2xl
+              p-6
+            "
+          >
+
+            <h3 className="text-xl font-bold">
+              {job.jobRole}
+            </h3>
+
+            <p className="mt-2 text-slate-600">
+              Applied on:{" "}
+              {new Date(
+                job.createdAt
+              ).toLocaleDateString()}
+            </p>
+
+            <p className="mt-2 text-slate-600">
+              Qualification: {job.qualification}
+            </p>
+
+            <div className="mt-4">
+
+              {job.status === "PENDING" && (
+
+                <>
+                  <span
+                    className="
+                      inline-block
+                      px-4 py-2
+                      rounded-full
+                      bg-yellow-100
+                      text-yellow-700
+                      font-semibold
+                    "
+                  >
+                    Under Review
+                  </span>
+
+                  <button
+
+                    onClick={() =>
+                      cancelJobApplication(job.id)
+                    }
+
+                    className="
+                      ml-4
+                      px-4
+                      py-2
+                      bg-red-600
+                      text-white
+                      rounded-lg
+                      hover:bg-red-700
+                    "
+
+                  >
+
+                    Cancel Application
+
+                  </button>
+                </>
+
+              )}
+
+              {job.status === "APPROVED" && (
+
+                <div>
+
+                  <span
+                    className="
+                      inline-block
+                      px-4 py-2
+                      rounded-full
+                      bg-green-100
+                      text-green-700
+                      font-semibold
+                    "
+                  >
+                    Approved 🎉
+                  </span>
+
+                  <p className="mt-4 text-green-700">
+
+                    Congratulations! Your
+                    job application has been approved.
+                    Our team will contact you shortly.
+
+                  </p>
+
+                </div>
+
+              )}
+
+              {job.status === "REJECTED" && (
+
+                <div>
+
+                  <span
+                    className="
+                      inline-block
+                      px-4 py-2
+                      rounded-full
+                      bg-red-100
+                      text-red-700
+                      font-semibold
+                    "
+                  >
+                    Rejected
+                  </span>
+
+                  <p className="mt-4 text-red-600">
+
+                    Thank you for applying.
+                    We encourage you to apply
+                    again in the future.
+
+                  </p>
+
+                </div>
+
+              )}
+
+            </div>
+
+          </div>
+
+        ))
+
+      )}
+
+    </div>
+
+  </div>
+
+)}
+            
 
             {/* Notifications */}
             {activeTab === "notifications" && (
@@ -496,6 +781,99 @@ const [applications, setApplications] =
 
               </div>
             )}
+
+            {activeTab === "messages" && (
+
+<div className="bg-white p-6 rounded-2xl shadow">
+
+<h2 className="text-2xl font-bold mb-6">
+My Messages
+</h2>
+
+{messages.length === 0 ? (
+
+<p>No messages yet</p>
+
+) : (
+
+<div className="space-y-6">
+
+{messages.map((conversation) => (
+
+<div
+  key={conversation.id}
+  className="
+    border
+    rounded-xl
+    p-5
+    space-y-4
+    
+  "
+>
+
+<h3 className="font-bold text-lg space-y-4">
+  {conversation.subject}
+</h3>
+
+<div className="mt-4 space-y-3">
+
+{conversation.messages.map((msg) => (
+  
+
+<div
+  key={msg.id}
+  className={
+    msg.senderType === "ADMIN"
+      ? "bg-blue-100 p-3 rounded-lg"
+      : "bg-gray-100 p-3 rounded-lg"
+  }
+>
+
+<p className="font-semibold">
+  {msg.senderType}
+</p>
+
+<p>{msg.message}</p>
+
+{msg.senderType === "USER" &&
+ !conversation.messages.some(
+   (m) => m.senderType === "ADMIN"
+ ) && (
+
+  <button
+    onClick={() =>
+      deleteMessage(msg.id)
+    }
+    className="
+      mt-2
+      text-red-500
+      text-sm
+      hover:underline
+    "
+  >
+    Delete
+  </button>
+
+)}
+</div>
+
+
+))}
+
+</div>
+
+</div>
+
+))}
+
+</div>
+
+)} 
+
+
+</div>
+
+)}
 
             {/* Settings */}
             {activeTab === "settings" && (

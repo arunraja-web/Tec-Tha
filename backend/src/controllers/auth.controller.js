@@ -4,11 +4,14 @@ import { generateAccessToken, generateRefreshToken, verifyRefreshToken, setToken
 import { generateSecureOTP, getOTPExpiryTime } from "../utils/otp.utils.js";
 import { sendOTPEmail } from "../services/email.service.js";
 import { AppError } from "../middleware/error.middleware.js";
+import {
+  addUserToSheet
+} from "../services/userSheetService.js";
 
 // ─── Signup ───────────────────────────────────────────────────────────────────
 export const signup = async (req, res, next) => {
   try {
-    const { fullName, username, email, password } = req.body;
+    const { fullName, username, email, password,userType } = req.body;
 
     // Check existing user
     const existingUser = await prisma.user.findFirst({
@@ -31,9 +34,10 @@ export const signup = async (req, res, next) => {
 
     // Create user
     const user = await prisma.user.create({
-      data: { fullName, username, email, password: hashedPassword },
-      select: { id: true, fullName: true, username: true, email: true, isVerified: true, role: true },
+      data: { fullName, username, email, password: hashedPassword ,userType},
+      select: { id: true, fullName: true, username: true, email: true, isVerified: true, role: true,userType: true,createdAt: true, },
     });
+    await addUserToSheet(user);
 
     // Generate and send OTP
     const otp = generateSecureOTP();

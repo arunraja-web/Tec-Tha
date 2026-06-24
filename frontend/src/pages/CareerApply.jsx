@@ -2,9 +2,26 @@ import { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-
+import { useEffect } from "react";
+import { useAuth } from "../context/AuthContext";
 export default function CareerApply() {
   const navigate = useNavigate();
+
+  const { user } = useAuth();
+
+  useEffect(() => {
+
+    if (!user) {
+
+      toast.error(
+        "Please login first to apply"
+      );
+
+      navigate("/login");
+
+    }
+
+  }, [user, navigate]);
 
   const [loading, setLoading] = useState(false);
 

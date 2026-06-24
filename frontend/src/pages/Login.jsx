@@ -125,7 +125,7 @@ if (data.data.user.role === "ADMIN") {
       <button
         type="submit"
         disabled={loading}
-        className="btn-primary mt-2"
+        className="btn-primary mt-2  bg-blue-900 hover:bg-blue-800 w-full flex items-center justify-center gap-2"
       >
         {loading ? (
           <>
@@ -145,7 +145,7 @@ if (data.data.user.role === "ADMIN") {
         New to TEC?{" "}
         <Link
           to="/signup"
-          className="text-blue-600 hover:text-blue-700 font-semibold"
+          className="text-blue-800 hover:text-blue-700 font-bold"
         >
           Create Account
         </Link>

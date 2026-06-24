@@ -34,13 +34,13 @@
     return (
       <div className="space-y-1.5">
         {label && (
-          <label htmlFor={name} className="block text-sm font-semibold text-black">
+          <label htmlFor={name} className="block text-sm font-bold text-blue-900">
             {label} {required && <span className="text-red-400">*</span>}
           </label>
         )}
         <div className="relative">
           {Icon && (
-            <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400">
+            <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-blue-600">
               <Icon size={16} />
             </div>
           )}
@@ -251,13 +251,25 @@ export const AuthLayout = ({ children, title, subtitle }) => (
           {/* Logo */}
           <div className="text-center mb-8">
 
-            <div className="inline-flex items-center justify-center w-14 h-14 bg-black text-white text-2xl font-bold mb-4">
-              T
+            <div className="inline-flex items-center justify-center w-14 h-14 bg-blue-900 text-white text-2xl font-bold mb-4">
+              <img
+  src="/TecTha Logo.jpeg"
+  alt="Tec Tha Logo"
+  className="w-16 h-16 object-contain"
+/>
+       
             </div>
 
-            <h1 className="text-3xl font-bold text-Black/90 tracking-tight">
-              {title}
-            </h1>
+            <h1
+  className="
+    text-3xl
+    font-bold
+    text-blue-900
+    mb-2
+  "
+>
+  {title}
+</h1>
 
             <p className="text-slate-500 mt-2">
               {subtitle}

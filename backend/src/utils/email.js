@@ -38,3 +38,25 @@ export const sendEmail =
     });
 
 };
+
+export const sendCustomEmail =
+  async ({
+    to,
+    subject,
+    html,
+  }) => {
+
+    await transporter.sendMail({
+
+      from:
+        process.env.EMAIL_USER,
+
+      to,
+
+      subject,
+
+      html,
+
+    });
+
+};
