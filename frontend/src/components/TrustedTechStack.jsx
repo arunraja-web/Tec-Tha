@@ -80,7 +80,7 @@ export default function TrustedTechStack() {
 ];
 
   return (
-    <section className="py-20 bg-white dark:bg-[#020817] overflow-hidden">
+    <section className="py-6 bg-white dark:bg-[#020817] overflow-hidden">
 
       <div className="text-center mb-14">
 
@@ -107,14 +107,10 @@ export default function TrustedTechStack() {
                 h-24
                 px-8
 
-                bg-slate-
-                dark:bg-slate-900
+              
 
-                border
-                border-slate-200
-                dark:border-slate-700
-
-                rounded-2xl
+         
+               
 
                 flex
                 items-center

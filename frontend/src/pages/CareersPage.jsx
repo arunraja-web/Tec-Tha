@@ -109,7 +109,7 @@ export default function CareersPage() {
 
         {/* Open Positions */}
         {/* Open Positions */}
-<section className="pb-2 bg-slate-100 overflow-hidden">
+<section className="pb-2 bg-slate-100  overflow-hidden">
 
   {/* Banner */}
   <div
