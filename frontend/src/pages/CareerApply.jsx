@@ -139,8 +139,8 @@ export default function CareerApply() {
 </button>
 
         {/* Form Card */}
-        <div className="bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl p-10">
-          <h1 className="text-4xl font-bold text-center text-slate-900 mb-3">
+        <div className="bg-white/95  dark:bg-[#020817] backdrop-blur-md rounded-3xl shadow-2xl p-10">
+          <h1 className="text-4xl font-bold text-center text-slate-900 dark:text-white mb-3">
            Job Application Form
           </h1>
 
@@ -271,6 +271,7 @@ export default function CareerApply() {
   DevOps Engineer
 </option>
               </select>
+              
               <input
   type="text"
   name="expectedSalary"
