@@ -105,31 +105,52 @@ ${formData.message}
 
     
 
-    <motion.section
-      id="contact"
-      className="py-24 bg-slate-100"
-    >
+  <motion.section
+  id="contact"
+  className="
+    py-24
+    bg-slate-100
+    dark:bg-[#020817]
+    transition-all duration-500
+  "
+>
 
 
       
       <div className="max-w-7xl mx-auto px-6">
 
         <div
-          className="
-            grid
-            lg:grid-cols-[400px_1fr]
-            rounded-3xl
-            overflow-hidden
-            shadow-2xl
-          "
-        >
+  className="
+    grid
+    lg:grid-cols-[400px_1fr]
+    rounded-3xl
+    overflow-hidden
+    shadow-2xl
+
+    bg-white
+    dark:bg-slate-900
+
+    border
+    border-slate-200
+    dark:border-slate-800
+  "
+>
 {/* Left Side */}
 <motion.div
   initial={{ opacity: 0, x: -80 }}
   whileInView={{ opacity: 1, x: 0 }}
   transition={{ duration: 0.8 }}
   viewport={{ once: true }}
-  className="bg-blue-900 hover:bg-blue-900 text-white p-12 flex flex-col justify-between"
+  className="
+bg-gradient-to-br
+from-blue-900
+via-[#061B4E]
+to-slate-900
+
+text-white
+p-12
+flex flex-col justify-between
+"
 >
 
   <div>
@@ -250,12 +271,24 @@ ${formData.message}
   whileInView={{ opacity: 1, x: 0 }}
   transition={{ duration: 0.8, delay: 0.2 }}
   viewport={{ once: true }}
-  className="bg-white p-12"
+  className="
+bg-white
+dark:bg-slate-900
+p-12
+"
 >
 
-  <h2 className="text-5xl font-bold text-slate-900">
-    Let's Build Something Great
-  </h2>
+ <h2
+  className="
+  text-5xl
+  font-bold
+
+  text-slate-900
+  dark:text-white
+"
+>
+  Let's Build Something Great
+</h2>
 
   <p className="mt-4 text-slate-600">
     Fill out the form below and we'll get back to you soon.
@@ -272,15 +305,28 @@ ${formData.message}
   onChange={handleChange}
   placeholder="Your Name"
   className="
-    w-full
-    border
-    border-slate-300
-    rounded-xl
-    px-5
-    py-4
-    focus:outline-none
-    focus:border-[#324896]
-  "
+w-full
+
+bg-slate-50
+dark:bg-slate-800
+
+text-slate-900
+dark:text-white
+
+border
+border-slate-300
+dark:border-slate-700
+
+rounded-xl
+px-5 py-4
+
+placeholder:text-slate-400
+
+focus:outline-none
+focus:border-blue-600
+
+transition-all
+"
 />
 
     <input
@@ -289,16 +335,29 @@ ${formData.message}
   value={formData.email}
   onChange={handleChange}
   placeholder="Email Address"
-  className="
-    w-full
-    border
-    border-slate-300
-    rounded-xl
-    px-5
-    py-4
-    focus:outline-none
-    focus:border-[#324896]
-  "
+ className="
+w-full
+
+bg-slate-50
+dark:bg-slate-800
+
+text-slate-900
+dark:text-white
+
+border
+border-slate-300
+dark:border-slate-700
+
+rounded-xl
+px-5 py-4
+
+placeholder:text-slate-400
+
+focus:outline-none
+focus:border-blue-600
+
+transition-all
+"
 />
 
     <input
@@ -308,15 +367,28 @@ ${formData.message}
   onChange={handleChange}
   placeholder="Phone Number"
   className="
-    w-full
-    border
-    border-slate-300
-    rounded-xl
-    px-5
-    py-4
-    focus:outline-none
-    focus:border-[#324896]
-  "
+w-full
+
+bg-slate-50
+dark:bg-slate-800
+
+text-slate-900
+dark:text-white
+
+border
+border-slate-300
+dark:border-slate-700
+
+rounded-xl
+px-5 py-4
+
+placeholder:text-slate-400
+
+focus:outline-none
+focus:border-blue-600
+
+transition-all
+"
 />
 
     <textarea
@@ -326,31 +398,53 @@ ${formData.message}
   onChange={handleChange}
   placeholder="Tell us about your project..."
   className="
-    w-full
-    border
-    border-slate-300
-    rounded-xl
-    px-5
-    py-4
-    resize-none
-    focus:outline-none
-    focus:border-[#324896]
-  "
+w-full
+
+bg-slate-50
+dark:bg-slate-800
+
+text-slate-900
+dark:text-white
+
+border
+border-slate-300
+dark:border-slate-700
+
+rounded-xl
+px-5 py-4
+
+placeholder:text-slate-400
+
+focus:outline-none
+focus:border-blue-600
+
+transition-all
+"
 />
 
     <button
   type="submit"
   disabled={loading}
-  className="
-    w-full
-    bg-blue-900
-    text-white
-    py-4
-    rounded-xl
-    font-semibold
-    transition
-    disabled:opacity-70
-  "
+ className="
+w-full
+
+bg-blue-900
+hover:bg-blue-800
+
+text-white
+
+py-4
+rounded-xl
+
+font-semibold
+
+hover:-translate-y-1
+hover:shadow-xl
+
+transition-all duration-300
+
+disabled:opacity-70
+"
 >
   {loading ? (
     <div className="flex items-center justify-center gap-2">

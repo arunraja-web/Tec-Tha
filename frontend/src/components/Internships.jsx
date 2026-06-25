@@ -83,21 +83,22 @@ const { user } = useAuth();
 
   return (
     <section
-      id="internships"
-      className="relative py-28 overflow-hidden"
-    >
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 -z-20"
-        style={{
-          backgroundImage: "url('/internship-bg1.jpeg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      />
+  id="internships"
+  className="
+    relative
+    py-28
+    overflow-hidden
 
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-slate-900/60 -z-10" />
+    bg-slate-100
+    dark:bg-[#020817]
+
+    transition-all
+    duration-500
+  "
+>
+      {/* Background Image */}
+    
+
 
       <div className="max-w-[1600px] mx-auto px-6 lg:px-10">
 
@@ -109,15 +110,36 @@ const { user } = useAuth();
           viewport={{ once: true }}
           className="text-center max-w-4xl mx-auto"
         >
-          <h2 className="text-5xl lg:text-6xl font-extrabold text-white">
+          <h2 className="
+  text-5xl
+  lg:text-6xl
+  font-extrabold
+
+  text-slate-900
+  dark:text-white
+">
             Internship Program
           </h2>
 
-          <h3 className="mt-4 text-xl lg:text-2xl font-semibold text-slate-300">
+          <h3 className="
+  mt-4
+  text-xl
+  lg:text-2xl
+  font-semibold
+
+  text-slate-700
+  dark:text-blue-500
+">
             Launch Your Career With Tec Tha
           </h3>
 
-          <p className="mt-6 text-lg text-slate-400">
+         <p className="
+  mt-6
+  text-lg
+
+  text-slate-600
+  dark:text-slate-400
+">
             Gain real-world experience by working on live projects,
             collaborating with our development team and learning
             industry best practices.
@@ -137,26 +159,44 @@ const { user } = useAuth();
                 delay: index * 0.1,
               }}
               viewport={{ once: true }}
-              className="
-                bg-slate-50
-                rounded-3xl
-                border border-slate-800
-                p-8
-                shadow-sm
-                hover:shadow-2xl
-                hover:-translate-y-6
-                hover:border-indigo-500/50
-                transition-all
-                duration-300
-                flex flex-col
-              "
+             className="
+  bg-white
+  dark:bg-slate-900/80
+
+  rounded-3xl
+
+  border
+  border-slate-200
+  dark:border-slate-800
+
+  backdrop-blur-md
+
+  p-8
+
+  shadow-lg
+  hover:shadow-2xl
+
+  hover:-translate-y-6
+
+  transition-all
+  duration-300
+
+  flex flex-col
+"
             >
 
               {/* Accent Line */}
-              <div className="w-14 h-1 bg-indigo-500 rounded-full"></div>
+              <div className="w-14 h-1 bg-blue-500 rounded-full"></div>
 
               {/* Title */}
-              <h3 className="mt-8 text-2xl font-bold text-[#061B4E]">
+              <h3 className="
+  mt-8
+  text-2xl
+  font-bold
+
+  text-[#061B4E]
+  dark:text-white
+">
                 {internship.title}
               </h3>
 
@@ -167,13 +207,19 @@ const { user } = useAuth();
                   <div
                     key={logoIndex}
                     className="
-                      w-14 h-14
-                      rounded-2xl
-                      bg-slate-800
-                      flex items-center justify-center
-                      text-3xl
-                      shadow-sm
-                    "
+  w-14 h-14
+  rounded-2xl
+
+  bg-slate-100
+  dark:bg-slate-800
+
+  flex items-center
+  justify-center
+
+  text-3xl
+
+  shadow-sm
+"
                   >
                     {logo}
                   </div>
@@ -182,7 +228,16 @@ const { user } = useAuth();
               </div>
 
               {/* Description */}
-              <p className="mt-6 text-slate-70 leading-relaxed flex-grow">
+              <p className="
+  mt-6
+
+  text-slate-600
+  dark:text-slate-300
+
+  leading-relaxed
+
+  flex-grow
+">
                 {internship.description}
               </p>
 
@@ -190,21 +245,32 @@ const { user } = useAuth();
               <div className="mt-8 space-y-3">
 
                 <div className="flex justify-between">
-                  <span className="text-slate-500">
+                  <span className="
+  text-slate-500
+  dark:text-slate-400
+">
                     Duration
                   </span>
 
-                  <span className="text-black">
+                  <span className="
+  text-slate-900
+  dark:text-white
+">
                     {internship.duration}
                   </span>
                 </div>
 
                 <div className="flex justify-between">
-                  <span className="text-slate-600">
+                  <span className="
+  font-semibold
+
+  text-[#061B4E]
+  dark:text-blue-500
+">
                     Mode
                   </span>
 
-                  <span className="font-semibold text-[#061B4E]">
+                  <span className="font-semibold text-slate-400">
                     {internship.mode}
                   </span>
                 </div>
@@ -223,20 +289,41 @@ const { user } = useAuth();
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
           className="
-            mt-20
-            bg-white
-            rounded-[20px]
-            px-1
-            py-1
-            text-center
-          "
+  mt-20
+
+  bg-slate-50
+  dark:bg-slate-900
+
+  rounded-[20px]
+
+  border
+  border-slate-200
+  dark:border-slate-800
+
+  px-10
+  py-10
+
+  text-center
+"
         >
 
-          <br></br><h3 className="text-4xl font-bold text-slate-900">
+          <br></br><h3 className="
+  text-4xl
+  font-bold
+
+  text-slate-900
+  dark:text-white
+">
             Ready to Start Your Journey?
           </h3>
 
-          <p className="mt-3 text-lg text-slate-600">
+         <p className="
+  mt-3
+  text-lg
+
+  text-slate-600
+  dark:text-slate-300
+">
             Take the first step towards building real-world skills
             and gaining valuable industry experience with Tec Tha.
           </p>

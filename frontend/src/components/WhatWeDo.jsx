@@ -42,19 +42,20 @@ export default function WhatWeDo() {
 
   return (
     <section
-      id="WhatWeDo"
-      className="relative py-28 overflow-hidden"
-    >
-      {/* Background */}
-      <div
-        className="absolute inset-0 -z-20"
-        style={{
-          backgroundImage: "url('/office1.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-      />
+  id="WhatWeDo"
+  className="
+    relative
+    py-28
+    overflow-hidden
+
+    bg-slate-100
+    dark:bg-[#020817]
+
+    transition-all
+    duration-500
+  "
+>
+     
 
       {/* Overlay */}
       
@@ -69,15 +70,30 @@ export default function WhatWeDo() {
           viewport={{ once: true }}
           className="text-center max-w-3xl mx-auto"
         >
-          <span className="text-sm uppercase tracking-[4px] text-blue-900 text-xl font-semibold">
+          <span className="text-sm uppercase tracking-[4px] text-blue-600 text-xl font-bold">
             Our Services
           </span>
 
-          <h2 className="mt-4 text-5xl font-bold text-slate-900">
+          <h2 className="
+  mt-4
+  text-5xl
+  font-bold
+
+  text-slate-900
+  dark:text-white
+">
             What We Do
           </h2>
 
-          <p className="mt-6 text-lg text-slate-600 leading-relaxed">
+         <p className="
+  mt-6
+  text-lg
+
+  text-slate-600
+  dark:text-slate-300
+
+  leading-relaxed
+">
             We help startups and businesses build innovative
             digital products and scalable solutions.
           </p>
@@ -96,18 +112,31 @@ export default function WhatWeDo() {
                 delay: index * 0.12,
               }}
               viewport={{ once: true }}
-              className="
-                bg-white/90
-                backdrop-blur-sm
-                border border-white/50
-                overflow-hidden
-                shadow-lg
-                hover:shadow-2xl
-                transition-all
-                duration-300
-                hover:-translate-y-2
-                flex flex-col
-              "
+             className="
+  bg-white
+  dark:bg-slate-900/80
+
+  backdrop-blur-md
+
+  border
+  border-slate-200
+  dark:border-slate-800
+
+  rounded-3xl
+
+  overflow-hidden
+
+  shadow-lg
+  hover:shadow-2xl
+
+  transition-all
+  duration-300
+
+  hover:-translate-y-2
+
+  flex
+  flex-col
+"
             >
               {/* Image */}
               <div className="overflow-hidden">
@@ -130,12 +159,28 @@ export default function WhatWeDo() {
 
                 {/* Accent Line */}
                 <div className="w-12 h-1 bg-indigo-500 rounded-full mb-5"></div>
+<h3 className="
+  text-2xl
+  font-bold
 
-                <h3 className="text-2xl font-bold text-blue-900 mb-3">
+  text-blue-900
+  dark:text-blue-500
+
+  mb-3
+">
                   {service.title}
                 </h3>
 
-                <p className="mt-4 text-slate-600 leading-relaxed flex-grow">
+                <p className="
+  mt-4
+
+  text-slate-600
+  dark:text-slate-300
+
+  leading-relaxed
+
+  flex-grow
+">
                   {service.description}
                 </p>
 
