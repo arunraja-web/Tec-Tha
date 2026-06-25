@@ -20,7 +20,7 @@ export default function AboutUs() {
           viewport={{ once: true }}
           className="text-center max-w-5xl mx-auto"
         >
-          <span className="text-blue-700 font-bold tracking-[0.25em] uppercase text-2xl">
+          <span className="text-blue-800 font-extrabold tracking-[0.25em] uppercase text-2xl">
             About Us
           </span>
 
@@ -89,7 +89,7 @@ duration-500
                 viewport={{ once: true }}
                className="max-w-2xl"  
               >
-                <span className="text-black dark:text-white font-semibold  tracking-widest uppercase">
+                <span className="text-blue-800 dark:text-white font-bold  tracking-widest uppercase">
                   Our Story 
                 </span>
 
@@ -192,7 +192,7 @@ duration-500
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
               >
-                <span className="text-black
+                <span className="text-blue-800
 dark:text-white font-bold tracking-widest uppercase">
                   Who Are We?
                 </span>
@@ -240,7 +240,7 @@ max-w-xl
         <div className="max-w-7xl mx-auto px-6">
 
           <div className="text-center">
-            <span className="text-blue-700 text-2xl font-bold tracking-widest uppercase">
+            <span className="text-blue-800 text-2xl font-extrabold tracking-widest uppercase">
               Our Core Values
             </span>
 

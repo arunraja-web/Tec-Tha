@@ -56,8 +56,27 @@ body {
 
 /* Input styles */
 .auth-input {
-  @apply w-full px-4 py-3 bg-white/80 border border-blue-100 rounded-xl text-slate-800 placeholder-slate-400 text-sm font-medium transition-all duration-200 outline-none;
-}
+  @apply w-full px-4 py-4 rounded-xl
+
+  border border-cyan-500/20
+
+  bg-white
+  dark:bg-slate-900/60
+
+  text-slate-900
+  dark:text-white
+
+  placeholder:text-slate-400
+  dark:placeholder:text-slate-500
+
+  backdrop-blur-xl
+
+  focus:outline-none
+  focus:ring-2
+  focus:ring-cyan-400
+
+  transition-all duration-300;
+} 
 
 .auth-input:focus {
   @apply border-blue-400 bg-white ring-2 ring-blue-100;

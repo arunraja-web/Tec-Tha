@@ -24,7 +24,7 @@ const { user } = useAuth();
       title: "Frontend Developer Intern",
       logos: [
         <FaReact className="text-sky-500" />,
-        <SiTailwindcss className="text-cyan-500" />,
+        <SiTailwindcss className="text-blue-500" />,
         <SiJavascript className="text-yellow-400" />,
       ],
       duration: "8 Weeks",
@@ -125,9 +125,9 @@ const { user } = useAuth();
   mt-4
   text-xl
   lg:text-2xl
-  font-semibold
+  font-bold
 
-  text-slate-700
+  text-blue-800
   dark:text-blue-500
 ">
             Launch Your Career With Tec Tha
@@ -246,7 +246,7 @@ const { user } = useAuth();
 
                 <div className="flex justify-between">
                   <span className="
-  text-slate-500
+  text-black
   dark:text-slate-400
 ">
                     Duration
@@ -264,13 +264,13 @@ const { user } = useAuth();
                   <span className="
   font-semibold
 
-  text-[#061B4E]
+  text-blue-800
   dark:text-blue-500
 ">
                     Mode
                   </span>
 
-                  <span className="font-semibold text-slate-400">
+                  <span className="font-semibold text-slate-1000 dark:text-slate:400">
                     {internship.mode}
                   </span>
                 </div>

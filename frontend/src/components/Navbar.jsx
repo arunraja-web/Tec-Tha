@@ -105,14 +105,14 @@ const navLink = (section) => `
   dark:text-white
 
   hover:text-blue-900
-  dark:hover:text-cyan-400
+  dark:hover:text-blue-400
 
   transition-all
   duration-300
 
   ${
     activeSection === section
-      ? "text-[#061B4E] dark:text-cyan-400 after:absolute after:left-0 after:-bottom-2 after:w-full after:h-[2px] after:bg-gradient-to-r after:from-blue-900 after:to-cyan-700"
+      ? "text-[#061B4E] dark:text-blue-400 after:absolute after:left-0 after:-bottom-2 after:w-full after:h-[2px] after:bg-gradient-to-r after:from-blue-900 after:to-blue-700"
       : ""
   }
 `;
@@ -422,7 +422,7 @@ transition-all
       text-blue-900
       dark:text-white
       font-semibold
-      hover:text-cyan-500
+      hover:text-blue-500
       transition
     "
   >

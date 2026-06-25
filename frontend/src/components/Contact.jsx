@@ -108,7 +108,7 @@ ${formData.message}
   <motion.section
   id="contact"
   className="
-    py-24
+    py-20
     bg-slate-100
     dark:bg-[#020817]
     transition-all duration-500

@@ -70,7 +70,7 @@ export default function WhatWeDo() {
           viewport={{ once: true }}
           className="text-center max-w-3xl mx-auto"
         >
-          <span className="text-sm uppercase tracking-[4px] text-blue-600 text-xl font-bold">
+          <span className="text-sm uppercase tracking-[4px] text-blue-800 text-xl font-bold">
             Our Services
           </span>
 

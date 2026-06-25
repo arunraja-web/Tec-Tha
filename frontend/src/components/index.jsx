@@ -34,7 +34,14 @@
     return (
       <div className="space-y-1.5">
         {label && (
-          <label htmlFor={name} className="block text-sm font-bold text-blue-900">
+          <label htmlFor={name} className="
+  block
+  text-sm
+  font-bold
+
+  text-blue-900
+  dark:text-white 
+">
             {label} {required && <span className="text-red-400">*</span>}
           </label>
         )}
@@ -81,7 +88,14 @@
     return (
       <div className="space-y-1.5">
         {label && (
-         <label htmlFor={name} className="block text-sm font-semibold text-white">
+         <label htmlFor={name} className="
+  block
+  text-sm
+  font-semibold
+
+  text-blue-900
+  dark:text-blue-900
+">
             {label} <span className="text-red-400">*</span>
           </label>
         )}
@@ -222,7 +236,7 @@ export const AuthLayout = ({ children, title, subtitle }) => (
     />
 
     {/* Dark Overlay */}
-    <div className="absolute inset-0 bg-black/75 backdrop-blur-[2px]" />
+    <div className="absolute inset-0 bg-black/85 backdrop-blur-[2px]" />
 
     {/* Main Content */}
     <div className="relative z-10 h-screen flex items-center justify-center px-6">
@@ -245,7 +259,23 @@ export const AuthLayout = ({ children, title, subtitle }) => (
             duration: 0.7,
             ease: "easeOut",
           }}
-          className="bg-white/100 backdrop-blur-xl border border-white/20 p-8 shadow-2xl"
+          className="
+  bg-white/95
+  dark:bg-slate-950/95
+
+  backdrop-blur-xl
+ rounded-xl
+  border
+  border-slate-200
+  dark:border-slate-700
+
+  p-8
+
+  shadow-2xl
+
+  transition-all
+  duration-500
+"
         >
 
           {/* Logo */}
@@ -262,16 +292,26 @@ export const AuthLayout = ({ children, title, subtitle }) => (
 
             <h1
   className="
-    text-3xl
-    font-bold
-    text-blue-900
-    mb-2
-  "
+  text-3xl
+  font-bold
+
+  text-blue-900
+  dark:text-white
+
+  mb-2
+"
 >
   {title}
 </h1>
 
-            <p className="text-slate-500 mt-2">
+           <p
+  className="
+    text-slate-500
+    dark:text-slate-400
+
+    mt-2
+  "
+>
               {subtitle}
             </p>
 
@@ -299,7 +339,16 @@ export const AuthLayout = ({ children, title, subtitle }) => (
   export const Divider = ({ text = 'or' }) => (
     <div className="relative flex items-center gap-3 my-5">
       <div className="flex-1 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
-      <span className="text-xs text-black/80 font-medium px-1">{text}</span>
+      <span
+  className="
+    text-xs
+    text-slate-700
+    dark:text-slate-300
+
+    font-medium
+    px-1
+  "
+>{text}</span>
       <div className="flex-1 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
     </div>
   );

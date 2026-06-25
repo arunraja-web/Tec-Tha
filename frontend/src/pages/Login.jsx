@@ -86,14 +86,30 @@ if (data.data.user.role === "ADMIN") {
         <div className="flex items-center justify-between">
           <label
             htmlFor="password"
-            className="block text-sm font-semibold text-blue-900"
+            className="
+block
+text-sm
+font-semibold
+
+text-blue-900
+dark:text-white
+"
           >
             Password <span className="text-red-400">*</span>
           </label>
 
           <Link
             to="/forgot-password"
-            className="text-xs text-black-600 hover:text-black-700 font-semibold"
+           className="
+text-xs
+font-semibold
+
+text-slate-700
+dark:text-slate-300
+
+hover:text-blue-900
+dark:hover:text-blue-400
+"
           >
             Forgot password?
           </Link>
@@ -117,7 +133,14 @@ if (data.data.user.role === "ADMIN") {
           checked={form.rememberMe}
           onChange={handleChange}
         />
-<span className="text-sm text-black">
+<span
+  className="
+    text-sm
+
+    text-slate-700
+    dark:text-slate-300
+  "
+>
           Keep me signed in
         </span>
       </label>
@@ -125,7 +148,24 @@ if (data.data.user.role === "ADMIN") {
       <button
         type="submit"
         disabled={loading}
-        className="btn-primary mt-2  bg-blue-900 hover:bg-blue-800 w-full flex items-center justify-center gap-2"
+       className="
+btn-primary
+mt-2
+
+bg-blue-900
+hover:bg-blue-800
+
+dark:bg-blue-900
+dark:hover:bg-blue-400
+dark:text-white
+
+w-full
+
+flex
+items-center
+justify-center
+gap-2
+"
       >
         {loading ? (
           <>
@@ -141,11 +181,27 @@ if (data.data.user.role === "ADMIN") {
 
       <GoogleButton />
 
-      <p className="text-center text-sm text-slate-500">
+      <p
+  className="
+    text-center
+    text-sm
+
+    text-slate-500
+    dark:text-slate-400
+  "
+>
         New to TEC?{" "}
         <Link
           to="/signup"
-          className="text-blue-800 hover:text-blue-700 font-bold"
+          className="
+text-blue-800
+dark:text-blue-500
+
+hover:text-blue-700
+dark:hover:text-blue-300
+
+font-bold
+"
         >
           Create Account
         </Link>

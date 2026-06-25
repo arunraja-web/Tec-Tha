@@ -8,7 +8,7 @@ export default function Footer() {
   return (
     <footer
       className="
-        bg-slate-200
+        bg-white
         dark:bg-slate-950
 
         text-slate-900
@@ -89,7 +89,7 @@ export default function Footer() {
                       hover:bg-blue-900
                       hover:text-white
 
-                      dark:hover:bg-cyan-500
+                      dark:hover:bg-blue-500
                       dark:hover:text-black
 
                       transition-all duration-300
@@ -126,7 +126,7 @@ export default function Footer() {
                 className="
                   block
                   hover:text-blue-900
-                  dark:hover:text-cyan-400
+                  dark:hover:text-blue-400
                   transition
                 "
               >
@@ -138,7 +138,7 @@ export default function Footer() {
                 className="
                   block
                   hover:text-blue-900
-                  dark:hover:text-cyan-400
+                  dark:hover:text-blue-400
                   transition
                 "
               >
@@ -150,7 +150,7 @@ export default function Footer() {
                 className="
                   block
                   hover:text-blue-900
-                  dark:hover:text-cyan-400
+                  dark:hover:text-blue-400
                   transition
                 "
               >
@@ -162,7 +162,7 @@ export default function Footer() {
                 className="
                   block
                   hover:text-blue-900
-                  dark:hover:text-cyan-400
+                  dark:hover:text-blue-400
                   transition
                 "
               >
@@ -174,7 +174,7 @@ export default function Footer() {
                 className="
                   block
                   hover:text-blue-900
-                  dark:hover:text-cyan-400
+                  dark:hover:text-blue-400
                   transition
                 "
               >
@@ -186,7 +186,7 @@ export default function Footer() {
                 className="
                   block
                   hover:text-blue-900
-                  dark:hover:text-cyan-400
+                  dark:hover:text-blue-400
                   transition
                 "
               >
@@ -294,7 +294,7 @@ export default function Footer() {
               dark:text-slate-300
 
               hover:text-blue-900
-              dark:hover:text-cyan-400
+              dark:hover:text-blue-400
 
               transition
             "
