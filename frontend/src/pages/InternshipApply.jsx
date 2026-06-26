@@ -77,7 +77,7 @@ export default function InternshipApply() {
   };
 
   const inputStyle =
-    "w-full border border-slate-400 rounded-xl px-4 py-3 bg-white text-slate-700 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all";
+  "w-full border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-3 bg-white dark:bg-slate-900 text-slate-700 dark:text-white placeholder:text-slate-500 dark:placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all";
 
   return (
     <div
@@ -118,12 +118,12 @@ export default function InternshipApply() {
 </button>
 
         {/* Form Card */}
-        <div className="bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl p-10">
-          <h1 className="text-4xl font-bold text-center text-slate-900 mb-3">
+        <div className="bg-white/95 dark:bg-[#020817]/95 border border-slate-200 dark:border-slate-800 backdrop-blur-md rounded-3xl shadow-2xl p-10">
+          <h1 className="text-4xl font-bold text-center text-slate-900 dark:text-white mb-3">
             Internship Application
           </h1>
 
-          <p className="text-center text-slate-500 mb-10">
+          <p className="text-center text-slate-500 dark:text-slate-400 mb-10">
             Complete the form below to apply for your desired internship opportunity.
           </p>
 
@@ -249,7 +249,7 @@ export default function InternshipApply() {
 
             {/* Resume Upload */}
             <div className="md:col-span-2">
-              <label className="block mb-3 text-sm font-medium text-slate-700">
+              <label className="block mb-3 text-sm font-medium text-slate-700 dark:text-slate-300">
                 Upload Resume (PDF)
               </label>
 
@@ -259,23 +259,28 @@ export default function InternshipApply() {
                 accept=".pdf"
                 onChange={handleChange}
                 className="
-                  w-full
-                  border
-                  border-slate-400
-                  rounded-xl
-                  px-4
-                  py-3
-                  bg-white
-                  file:mr-4
-                  file:px-4
-                  file:py-2
-                  file:rounded-lg
-                  file:border-0
-                  file:bg-slate-900
-                  file:text-white
-                  file:cursor-pointer
-                  cursor-pointer
-                "
+  w-full
+  border
+  border-slate-300
+  dark:border-slate-700
+  rounded-xl
+  px-4
+  py-3
+  bg-white
+  dark:bg-slate-900
+  text-slate-700
+  dark:text-white
+  file:mr-4
+  file:px-4
+  file:py-2
+  file:rounded-lg
+  file:border-0
+  file:bg-slate-900
+  dark:file:bg-blue-700
+  file:text-white
+  file:cursor-pointer
+  cursor-pointer
+"
                 required
               />
             </div>
@@ -287,8 +292,7 @@ export default function InternshipApply() {
               className="
                 md:col-span-2
                 w-full
-                bg-slate-900
-                hover:bg-blue-600
+                bg-blue-700 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-500
                 text-white
                 py-4
                 rounded-xl
