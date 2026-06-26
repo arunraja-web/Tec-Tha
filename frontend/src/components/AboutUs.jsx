@@ -135,7 +135,7 @@ max-w-xl
                   className="rounded-3xl"
                 >
                   <img
-                    src="/about-team.jpg"
+                    src="/aboutus.png"
                     alt="About Tec Tha"
                    className="
 w-full
@@ -179,7 +179,7 @@ duration-500
                   className="rounded-3xl"
                 >
                   <img
-                    src="/who-we-are.jpg"
+                    src="/careeres.png"
                     alt="Who We Are"
                     className="w-[80%] mx-auto rounded-3xl shadow-2xl"
                   />
