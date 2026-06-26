@@ -60,10 +60,13 @@ export const sendOTPEmail = async ({ to, otp, type = "verify" }) => {
         <div class="body">
           <p class="greeting">Hello,</p>
           <p class="message">
-            ${isReset
-      ? "We received a request to reset your password. Use the OTP below to complete the process. If you didn't request this, please ignore this email."
-      : "Thank you for signing up! To complete your registration, please verify your email address using the OTP below."
-    }
+      ${isReset
+? `We received a request to reset the password for your account. Please use the One-Time Password (OTP) below to continue. This OTP is valid for a limited time and can only be used once.
+If you did not request a password reset, you can safely ignore this email. Your account remains secure, and no changes will be made without successful verification.`:`Welcome! Thank you for signing up.
+To complete your registration and activate your account, please verify your email address using the One-Time Password (OTP) provided below. This verification helps us protect your account and ensures that only you can access it.
+The OTP is valid for a limited time. Once verified, you'll have full access to all the features and services available on our platform.`
+}
+
           </p>
           <div class="otp-box">
             <div class="otp-label">Your One-Time Password</div>
@@ -75,8 +78,8 @@ export const sendOTPEmail = async ({ to, otp, type = "verify" }) => {
           </div>
         </div>
         <div class="footer">
-          <p>This email was sent by <span class="company">AuthSystem</span>. If you didn't request this, you can safely ignore this email.</p>
-          <p style="margin-top: 8px;">© ${new Date().getFullYear()} AuthSystem. All rights reserved.</p>
+          <p>This email was sent by <span class="company">TecTha</span>. If you didn't request this, you can safely ignore this email.</p>
+          <p style="margin-top: 8px;">© ${new Date().getFullYear()} TecTha. All rights reserved.</p>
         </div>
       </div>
     </body>
