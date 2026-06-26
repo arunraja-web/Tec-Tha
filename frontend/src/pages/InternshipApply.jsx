@@ -87,19 +87,20 @@ export default function InternshipApply() {
       }}
     >
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/50"></div>
+      <div className="absolute inset-0 bg-black/85"></div>
 
       <div className="relative z-10 max-w-5xl mx-auto">
         {/* Back Button */}
 <button
   onClick={() => navigate("/")}
   className="
-    mb-8
+    mb-2
     ml-[-50px]
     flex
     items-center
     gap-2
     bg-white/90
+    dark:blue-900
     backdrop-blur-md
     text-black
     px-6
@@ -114,7 +115,7 @@ export default function InternshipApply() {
     duration-300
   "
 >
-  ← Internship
+  ← 
 </button>
 
         {/* Form Card */}
@@ -292,7 +293,7 @@ export default function InternshipApply() {
               className="
                 md:col-span-2
                 w-full
-                bg-blue-700 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-500
+                bg-blue-800 hover:bg-blue-600 dark:bg-blue-800 dark:hover:bg-blue-500
                 text-white
                 py-4
                 rounded-xl

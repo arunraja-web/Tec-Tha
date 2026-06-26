@@ -55,9 +55,14 @@ body {
 }
 
 .auth-input {
-  @apply w-full px-4 py-4 rounded-xl
+  @apply
+  w-full
+  px-4
+  py-4
+  rounded-xl
 
-  border border-cyan-500/20
+  border border-blue-900/30
+  dark:border-blue-500/20
 
   bg-white
   dark:bg-slate-900/60
@@ -68,20 +73,36 @@ body {
   placeholder:text-slate-400
   dark:placeholder:text-slate-500
 
-  backdrop-blur-xl
+  placeholder:font-normal
 
   focus:outline-none
   focus:ring-2
-  focus:ring-cyan-400
+  focus:ring-blue-600
+  dark:focus:ring-blue-400
 
   transition-all duration-300;
+
+  color: inherit;
+  -webkit-text-fill-color: currentColor;
 }
 
+/* Light Mode */
 .auth-input:focus {
-  @apply border-blue-400 bg-white ring-2 ring-blue-100;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+  color: #0f172a; /* slate-900 */
+  -webkit-text-fill-color: #0f172a;
 }
 
+/* Dark Mode */
+.dark .auth-input {
+  color: white;
+  -webkit-text-fill-color: white;
+  
+}
+
+.dark .auth-input:focus {
+  color: white;
+  -webkit-text-fill-color: white;
+}
 .auth-input.error {
   @apply border-red-300 bg-red-50/50;
 }
@@ -262,4 +283,25 @@ body {
   to {
     transform: translateX(-50%);
   }
+}
+
+/* Chrome Autofill Fix */
+
+.auth-input:-webkit-autofill,
+.auth-input:-webkit-autofill:hover,
+.auth-input:-webkit-autofill:focus,
+.auth-input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px white inset !important;
+  -webkit-text-fill-color: #0f172a !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Dark Mode */
+
+.dark .auth-input:-webkit-autofill,
+.dark .auth-input:-webkit-autofill:hover,
+.dark .auth-input:-webkit-autofill:focus,
+.dark .auth-input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px rgba(15, 23, 42, 0.6) inset !important;
+  -webkit-text-fill-color: white !important;
 }

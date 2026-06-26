@@ -60,7 +60,16 @@
             onChange={onChange}
             onBlur={onBlur}
             autoComplete={autoComplete}
-            className={`auth-input ${Icon ? 'pl-10' : ''} ${rightElement ? 'pr-12' : ''} ${error ? 'error' : ''}`}
+              className={`
+    auth-input
+    text-slate-900
+    dark:text-white
+    caret-slate-900
+    dark:caret-white
+    ${Icon ? 'pl-10' : ''}
+    ${rightElement ? 'pr-12' : ''}
+    ${error ? 'error' : ''}
+  `}
           />
           {rightElement && (
             <div className="absolute right-3.5 top-1/2 -translate-y-1/2">

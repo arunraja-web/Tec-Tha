@@ -11,6 +11,7 @@ import {
   getMyCareerApplications,
   getAllCareerApplications,
    updateCareerStatus,
+   cancelCareerApplication,
 } from "../controllers/careerController.js";
 
 const router = express.Router();
@@ -42,6 +43,11 @@ router.get(
   authenticate,
   requireRole("ADMIN"),
   getAllCareerApplications
+);
+
+router.delete(
+  "/cancel/:id",
+  cancelCareerApplication
 );
 
 router.patch(

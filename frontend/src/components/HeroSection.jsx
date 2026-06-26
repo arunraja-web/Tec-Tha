@@ -56,9 +56,19 @@ export default function HeroSection({ darkMode}) {
 
         <div className="mt-10 flex flex-wrap gap-5">
 
-          <button className="px-6 py-4 bg-blue-800 rounded-lg text-white text-lg font-bold  hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+       <a
+  href="#contact"
+  className="
+    inline-block
+    px-8 py-4
+    bg-blue-800
+    text-white
+    rounded-xl
+    font-bold
+  "
+>
   Book a Consultation →
-</button>
+</a>
 
           <button className="px-8 py-4 border border-slate-500 text-blue-900 rounded-lg font-extrabold hover:bg-white/10 transition dark:text-white">
             Explore Our Works

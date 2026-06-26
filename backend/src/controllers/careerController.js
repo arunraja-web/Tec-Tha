@@ -7,6 +7,34 @@ import {
 
 const prisma = new PrismaClient();
 
+export const cancelCareerApplication = async (req, res) => {
+  try {
+
+    const { id } = req.params;
+
+    await prisma.careerApplication.delete({
+      where: {
+        id: parseInt(id),
+      },
+    });
+
+    return res.status(200).json({
+      success: true,
+      message: "Application cancelled successfully",
+    });
+
+  } catch (error) {
+
+    console.log(error);
+
+    return res.status(500).json({
+      success: false,
+      message: "Failed to cancel application",
+    });
+
+  }
+};
+
 export const applyCareer = async (
   req,
   res

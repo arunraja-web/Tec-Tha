@@ -1,6 +1,6 @@
 import { Router } from "express";
 import passport from "passport";
-
+import upload from "../middleware/upload.middleware.js";
 import {
   signup,
   login,
@@ -11,6 +11,7 @@ import {
   resetPassword,
   resendOTP,
   getMe,
+  updateProfile,
 } from "../controllers/auth.controller.js";
 import {
   signupSchema,
@@ -38,6 +39,8 @@ router.get(
     scope: ["profile", "email"],
   })
 );
+
+
 
 router.get(
   "/google/callback",
@@ -73,5 +76,11 @@ router.post("/resend-otp", validate(resendOTPSchema), resendOTP);
 
 // Protected routes
 router.get("/me", authenticate, getMe);
+router.put(
+  "/update-profile",
+  authenticate,
+  upload.single("profileImage"),
+  updateProfile
+);
 
 export default router;

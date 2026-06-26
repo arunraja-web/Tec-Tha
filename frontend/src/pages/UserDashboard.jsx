@@ -15,19 +15,33 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function UserDashboard() {
+const [profileImage, setProfileImage] =
+  useState(null);
   const [activeTab, setActiveTab] =
     useState("profile");
-    const [internships, setInternships] =
-  useState([]);
 
-const [jobs, setJobs] =
-  useState([]);
-const [messages, setMessages] =
-useState([]);
-  const { user, logout } = useAuth();
-const [applications, setApplications] =
-  useState([]);
+  const [internships, setInternships] =
+    useState([]);
+
+  const [jobs, setJobs] =
+    useState([]);
+
+  const [messages, setMessages] =
+    useState([]);
+
+  const [applications, setApplications] =
+    useState([]);
+
+  const { user, setUser, logout } = useAuth();
+
+  const [form, setForm] = useState({
+    fullName: user?.fullName || "",
+    username: user?.username || "",
+  });
+
   const navigate = useNavigate();
+
+ 
 
   const handleLogout = async () => {
     try {
@@ -56,11 +70,7 @@ const [applications, setApplications] =
   label: "My Jobs",
   icon: Briefcase
 },
-    {
-      id: "notifications",
-      label: "Notifications",
-      icon: Bell,
-    },
+
      {
       id:"messages",
   icon: MessageCircle,
@@ -168,6 +178,38 @@ const [applications, setApplications] =
     }
 
 };
+const cancelJobApplication = async (id) => {
+
+  const confirmed = window.confirm(
+    "Are you sure you want to cancel this job application?"
+  );
+
+  if (!confirmed) return;
+
+  try {
+
+    await axios.delete(
+      `http://localhost:5000/api/careers/cancel/${id}`,
+      {
+        withCredentials: true,
+      }
+    );
+
+    setJobs(
+      jobs.filter((job) => job.id !== id)
+    );
+
+    alert("Job application cancelled successfully");
+
+  } catch (error) {
+
+    alert(
+      error.response?.data?.message ||
+      "Failed to cancel job application"
+    );
+
+  }
+};
 
 const deleteMessage =
 async (messageId) => {
@@ -216,6 +258,60 @@ async (messageId) => {
   }
 
 };
+const handleProfileUpdate = async () => {
+  try {
+
+    const formData = new FormData();
+
+    formData.append(
+      "fullName",
+      form.fullName
+    );
+
+    formData.append(
+      "username",
+      form.username
+    );
+
+    if (profileImage) {
+      formData.append(
+        "profileImage",
+        profileImage
+      );
+    }
+
+    const { data } = await axios.put(
+      "http://localhost:5000/api/auth/update-profile",
+
+      formData,
+
+      {
+        withCredentials: true,
+
+        headers: {
+          "Content-Type":
+            "multipart/form-data",
+        },
+      }
+    );
+
+    setUser(data.user);
+
+    alert(
+      "Profile updated successfully"
+    );
+
+  } catch (error) {
+
+    console.log(error);
+
+    alert(
+      error.response?.data?.message ||
+      "Failed to update profile"
+    );
+
+  }
+};
 
   useEffect(() => {
 
@@ -236,7 +332,19 @@ async (messageId) => {
 }, []);
 
   return (
-    <div className="min-h-screen bg-slate-100">
+    <div
+  className="
+    min-h-screen
+
+    bg-slate-100
+    dark:bg-slate-950
+
+    text-slate-900
+    dark:text-white
+
+    transition-all duration-500
+  "
+>
 
       <div className="max-w-7xl mx-auto px-6 py-10">
 
@@ -245,36 +353,49 @@ async (messageId) => {
           {/* Sidebar */}
           <div
             className="
-              bg-white
-              rounded-3xl
-              shadow-lg
-              p-6
-              h-fit
-            "
+  bg-white
+  dark:bg-slate-900
+
+  rounded-3xl
+
+  border
+  border-slate-200
+  dark:border-slate-800
+
+  shadow-xl
+  p-6
+  h-fit
+
+  transition-all duration-300
+"
           >
 
             <div className="text-center">
 
               <div
-                className="
-                  w-20 h-20
-                  mx-auto
-                  rounded-full
-                  bg-indigo-100
-                  flex items-center justify-center
-                "
+               className="
+w-20 h-20
+mx-auto
+rounded-full
+bg-blue-400
+dark:bg-blue-900/40
+flex items-center justify-center
+"
               >
-                <User
-                  size={36}
-                  className="text-indigo-600"
-                />
+               <User
+ size={36}
+ className="
+ text-indigo-600
+ dark:text-cyan-400
+ "
+/>
               </div>
 
-              <h2 className="mt-4 text-xl font-bold">
+              <h2 className="mt-4 text-xl font-bold text-slate-900 dark:text-white">
                 {user?.fullName}
               </h2>
 
-              <p className="text-slate-500">
+              <p className="text-slate-500 dark:text-slate-400">
                 {user?.email}
               </p>
 
@@ -302,9 +423,19 @@ async (messageId) => {
                       transition-all
                       duration-300
                       ${
-                        activeTab === item.id
-                          ? "bg-indigo-600 text-white"
-                          : "hover:bg-slate-100"
+                       activeTab === item.id
+? `
+   bg-blue-800
+   text-white
+   shadow-lg
+ `
+: `
+   text-slate-700
+   dark:text-slate-300
+
+   hover:bg-slate-100
+   dark:hover:bg-slate-800
+ `
                       }
                     `}
                   >
@@ -320,21 +451,24 @@ async (messageId) => {
             <button
               onClick={handleLogout}
               className="
-                w-full
-                mt-10
-                flex
-                items-center
-                justify-center
-                gap-2
-                px-5
-                py-4
-                rounded-2xl
-                bg-red-50
-                text-red-600
-                hover:bg-red-100
-                transition-all
-                duration-300
-              "
+w-full
+mt-10
+flex items-center justify-center gap-2
+px-5 py-4
+
+rounded-2xl
+
+bg-red-50
+dark:bg-red-900/20
+
+text-red-600
+dark:text-red-400
+
+hover:bg-red-100
+dark:hover:bg-red-900/30
+
+transition-all duration-300
+"
             >
               <LogOut size={20} />
 
@@ -347,79 +481,306 @@ async (messageId) => {
           <div className="lg:col-span-3">
 
             {/* Profile */}
-            {activeTab === "profile" && (
-              <div
-                className="
-                  bg-white
-                  rounded-3xl
-                  shadow-lg
-                  p-8
-                "
-              >
+           {activeTab === "profile" && (
 
-                <h2 className="text-3xl font-bold">
-                  My Profile
-                </h2>
+  <div
+    className="
+      bg-white
+      dark:bg-slate-900
 
-                <div className="mt-8 space-y-6">
+      rounded-3xl
+      p-8
 
-                  <div>
-                    <p className="text-slate-500">
-                      Full Name
-                    </p>
+      border
+      border-slate-200
+      dark:border-slate-800
 
-                    <p className="text-xl font-semibold">
-                      {user?.fullName}
-                    </p>
-                  </div>
+      shadow-sm
+    "
+  >
 
-                  <div>
-                    <p className="text-slate-500">
-                      Username
-                    </p>
+    <h2 className="
+      text-3xl
+      font-bold
 
-                    <p className="text-xl font-semibold">
-                      {user?.username}
-                    </p>
-                  </div>
+      text-slate-900
+      dark:text-white
+    ">
+      My Profile
+    </h2>
 
-                  <div>
-                    <p className="text-slate-500">
-                      Email
-                    </p>
+    <p className="
+      mt-2
+      text-slate-500
+      dark:text-slate-400
+    ">
+      Manage your account information.
+    </p>
 
-                    <p className="text-xl font-semibold">
-                      {user?.email}
-                    </p>
-                  </div>
+    {/* Profile Avatar */}
 
-                  <div>
-                    <p className="text-slate-500">
-                      Role
-                    </p>
+ <div className="mt-10 flex flex-col items-center">
 
-                    <p className="text-xl font-semibold">
-                      {user?.role}
-                    </p>
-                  </div>
+  {/* Profile Avatar */}
+  <div
+    className="
+      w-32 h-32
+      rounded-full
+      overflow-hidden
+      border-4 border-blue-700
+    "
+  >
 
-                </div>
+    {profileImage ? (
 
-              </div>
-            )}
+      <img
+        src={URL.createObjectURL(profileImage)}
+        alt="Preview"
+        className="w-full h-full object-cover"
+      />
+
+    ) : user?.profileImage ? (
+
+      <img
+        src={user.profileImage}
+        alt="Profile"
+        className="w-full h-full object-cover"
+      />
+
+    ) : (
+
+      <div
+        className="
+          w-full h-full
+          bg-blue-700
+          flex items-center justify-center
+          text-4xl
+          text-white
+          font-bold
+        "
+      >
+        {user?.fullName?.charAt(0)}
+      </div>
+
+    )}
+
+  </div>
+
+  {/* Upload Button */}
+  <label
+    className="
+      mt-5
+      px-6 py-3
+      bg-blue-800
+      text-white
+      rounded-xl
+      cursor-pointer
+      hover:bg-blue-900
+      transition-all duration-300
+    "
+  >
+    Upload Photo
+
+    <input
+      type="file"
+      hidden
+      accept="image/*"
+      onChange={(e) =>
+        setProfileImage(e.target.files[0])
+      }
+    />
+
+  </label>
+
+</div>
+
+    {/* Form */}
+
+    <div className="mt-10 space-y-6">
+
+      {/* Full Name */}
+
+      <div>
+
+        <label className="
+          block mb-2
+
+          font-semibold
+
+          text-slate-700
+          dark:text-slate-300
+        ">
+          Full Name
+        </label>
+
+        <input
+          type="text"
+
+          value={form.fullName}
+
+          onChange={(e) =>
+            setForm({
+              ...form,
+              fullName: e.target.value,
+            })
+          }
+
+          className="
+            w-full
+            p-4
+
+            rounded-xl
+
+            bg-slate-100
+            dark:bg-slate-800
+
+            border
+            border-slate-300
+            dark:border-slate-700
+
+            text-slate-900
+            dark:text-white
+          "
+        />
+
+      </div>
+
+      {/* Username */}
+
+      <div>
+
+        <label className="
+          block mb-2
+
+          font-semibold
+
+          text-slate-700
+          dark:text-slate-300
+        ">
+          Username
+        </label>
+
+        <input
+          type="text"
+
+          value={form.username}
+
+          onChange={(e) =>
+            setForm({
+              ...form,
+              username: e.target.value,
+            })
+          }
+
+          className="
+            w-full
+            p-4
+
+            rounded-xl
+
+            bg-slate-100
+            dark:bg-slate-800
+
+            border
+            border-slate-300
+            dark:border-slate-700
+
+            text-slate-900
+            dark:text-white
+          "
+        />
+
+      </div>
+
+      {/* Email */}
+
+      <div>
+
+        <label className="
+          block mb-2
+
+          font-semibold
+
+          text-slate-700
+          dark:text-slate-300
+        ">
+          Email Address
+        </label>
+
+        <input
+          disabled
+
+          value={user?.email}
+
+          className="
+            w-full
+            p-4
+
+            rounded-xl
+
+            bg-slate-200
+            dark:bg-slate-700
+
+            text-slate-500
+            dark:text-slate-300
+          "
+        />
+
+      </div>
+
+      {/* Save Button */}
+
+      <button
+        onClick={handleProfileUpdate}
+
+        className="
+          w-full
+
+          py-4
+
+          rounded-xl
+
+          bg-blue-800
+          hover:bg-blue-900
+
+          text-white
+          font-semibold
+
+          transition-all
+          duration-300
+        "
+      >
+        Save Changes
+      </button>
+
+    </div>
+
+  </div>
+
+)}
 
             {/* Applications */}
             {activeTab === "internships" && (
               <div
                 className="
-                  bg-white
-                  rounded-3xl
-                  shadow-lg
-                  p-8
-                "
+bg-white
+dark:bg-slate-900
+
+rounded-3xl
+
+border
+border-slate-200
+dark:border-slate-800
+
+shadow-xl
+
+p-8
+
+transition-all duration-300
+"
               >
 
-                <h2 className="text-3xl font-bold">
+                <h2 className="text-3xl font-bold text-slate-900 dark:text-white">
                   My Applications
                 </h2>
 
@@ -441,11 +802,21 @@ async (messageId) => {
 
       <div
         key={app.id}
-        className="
-          border
-          rounded-2xl
-          p-6
-        "
+       className="
+border
+border-slate-200
+dark:border-slate-700
+
+bg-slate-50
+dark:bg-slate-800/50
+
+rounded-2xl
+p-6
+
+hover:shadow-lg
+
+transition-all duration-300
+"
       >
 
         <h3 className="text-xl font-bold">
@@ -583,15 +954,25 @@ async (messageId) => {
 {activeTab === "jobs" && (
 
   <div
-    className="
-      bg-white
-      rounded-3xl
-      shadow-lg
-      p-8
-    "
+className="
+bg-white
+dark:bg-slate-900
+
+rounded-3xl
+
+border
+border-slate-200
+dark:border-slate-800
+
+shadow-xl
+
+p-8
+
+transition-all duration-300
+"
   >
 
-    <h2 className="text-3xl font-bold">
+    <h2 className="text-3xl font-bold text-slate-900 dark:text-white">
       My Job Applications
     </h2>
 
@@ -613,11 +994,19 @@ async (messageId) => {
 
           <div
             key={job.id}
-            className="
-              border
-              rounded-2xl
-              p-6
-            "
+           className="
+bg-white
+dark:bg-slate-900
+
+p-6
+rounded-2xl
+
+border
+border-slate-200
+dark:border-slate-800
+
+shadow-xl
+"
           >
 
             <h3 className="text-xl font-bold">
@@ -751,42 +1140,28 @@ async (messageId) => {
 )}
             
 
-            {/* Notifications */}
-            {activeTab === "notifications" && (
-              <div
-                className="
-                  bg-white
-                  rounded-3xl
-                  shadow-lg
-                  p-8
-                "
-              >
 
-                <h2 className="text-3xl font-bold">
-                  Notifications
-                </h2>
-
-                <div className="mt-8 space-y-5">
-
-                  <div className="border rounded-2xl p-5">
-                    Your internship application
-                    has been submitted successfully.
-                  </div>
-
-                  <div className="border rounded-2xl p-5">
-                    Stay tuned for future updates.
-                  </div>
-
-                </div>
-
-              </div>
-            )}
 
             {activeTab === "messages" && (
 
-<div className="bg-white p-6 rounded-2xl shadow">
+<div className="
+bg-white
+dark:bg-slate-900
 
-<h2 className="text-2xl font-bold mb-6">
+rounded-3xl
+
+border
+border-slate-200
+dark:border-slate-800
+
+shadow-xl
+
+p-8
+
+transition-all duration-300
+">
+
+<h2 className="text-3xl font-bold text-slate-900 dark:text-white">
 My Messages
 </h2>
 
@@ -803,8 +1178,7 @@ My Messages
 <div
   key={conversation.id}
   className="
-    border
-    rounded-xl
+  
     p-5
     space-y-4
     
@@ -823,9 +1197,25 @@ My Messages
 <div
   key={msg.id}
   className={
-    msg.senderType === "ADMIN"
-      ? "bg-blue-100 p-3 rounded-lg"
-      : "bg-gray-100 p-3 rounded-lg"
+   msg.senderType === "ADMIN"
+? `
+  bg-blue-100
+  dark:bg-blue-900/30
+
+  text-slate-900
+  dark:text-white
+
+  p-3 rounded-lg
+`
+: `
+  bg-slate-100
+  dark:bg-slate-800
+
+  text-slate-900
+  dark:text-white
+
+  p-3 rounded-lg
+`
   }
 >
 
@@ -878,12 +1268,22 @@ My Messages
             {/* Settings */}
             {activeTab === "settings" && (
               <div
-                className="
-                  bg-white
-                  rounded-3xl
-                  shadow-lg
-                  p-8
-                "
+              className="
+bg-white
+dark:bg-slate-900
+
+rounded-3xl
+
+border
+border-slate-200
+dark:border-slate-800
+
+shadow-xl
+
+p-8
+
+transition-all duration-300
+"
               >
 
                 <h2 className="text-3xl font-bold">

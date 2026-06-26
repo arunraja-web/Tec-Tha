@@ -109,11 +109,12 @@ ${formData.message}
   id="contact"
   className="
     py-20
-    bg-slate-100
+    bg-white
     dark:bg-[#020817]
     transition-all duration-500
   "
 >
+
 
 
       

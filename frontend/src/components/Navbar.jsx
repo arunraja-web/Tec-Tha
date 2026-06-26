@@ -310,19 +310,48 @@ dark:hover:bg-slate-700
       "
     >
 
-      <div
-        className="
-          w-9 h-9
-          rounded-full
-          bg-blue-700
-          text-white
-          flex items-center justify-center
-          font-bold
-          dark:text-white
-        "
-      >
-        {user.fullName?.charAt(0)}
-      </div >
+    <div
+  className="
+    w-10 h-10
+    rounded-full
+    overflow-hidden
+    border-2 border-blue-600
+    flex-shrink-0
+  "
+>
+
+  {user?.profileImage ? (
+
+    <img
+      src={user.profileImage}
+      alt="Profile"
+      className="
+        w-full
+        h-full
+        object-cover
+      "
+    />
+
+  ) : (
+
+    <div
+      className="
+        w-full
+        h-full
+        bg-blue-700
+        flex
+        items-center
+        justify-center
+        text-white
+        font-bold
+      "
+    >
+      {user?.fullName?.charAt(0)}
+    </div>
+
+  )}
+
+</div>
 
       <span className="font-semibold dark:text-white">
         {user.fullName}
@@ -398,37 +427,37 @@ transition-all
 
 ) : (
 
-  <button
-    onClick={() => navigate("/login")}
-    className="
-      px-6 py-3
-      bg-blue-800
-      text-slate-50
-      font-medium
-      hover:bg-[#061B4E]
-      transition-all duration-300
-      rounded-xl
+   <>
+    <button
+      onClick={() => navigate("/login")}
+      className="
+        px-6 py-3
+        bg-blue-800
+        text-slate-50
+        font-medium
+        hover:bg-[#061B4E]
+        transition-all duration-300
+        rounded-xl
+      "
+    >
+      Login
+    </button>
 
-    "
-  >
-    Login
-  </button>
-  
+    <button
+      onClick={() => navigate("/signup")}
+      className="
+        text-blue-900
+        dark:text-white
+        font-semibold
+        hover:text-blue-500
+        transition
+      "
+    >
+      Sign Up
+    </button>
+  </>
 
 )}
-  <button
-    onClick={() => navigate("/signup")}
-    className="
-      text-blue-900
-      dark:text-white
-      font-semibold
-      hover:text-blue-500
-      transition
-    "
-  >
-    Sign Up
-  </button>
-
           </div>
 
         </div>

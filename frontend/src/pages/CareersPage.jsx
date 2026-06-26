@@ -109,7 +109,7 @@ export default function CareersPage() {
 
         {/* Open Positions */}
         {/* Open Positions */}
-<section className="pb-2 bg-slate-100  overflow-hidden">
+<section className="pb-2 bg-slate-100 dark:bg-[#020817] overflow-hidden">
 
   {/* Banner */}
   <div
@@ -146,7 +146,7 @@ export default function CareersPage() {
       {/* Heading */}
       <div className="max-w-2xl">
 
-        <span className="text-indigo-400 uppercase tracking-[4px] text-sm font-semibold">
+        <span className="text-blue-800 uppercase tracking-[4px] text-sm font-semibold">
           Open Positions
         </span>
 
@@ -189,6 +189,7 @@ export default function CareersPage() {
           w-14 h-14
           rounded-full
           bg-white/95
+          
           backdrop-blur-sm
           shadow-xl
           flex items-center justify-center
@@ -235,6 +236,7 @@ export default function CareersPage() {
           <div
             className="
               bg-white
+              dark:bg-[#020817]
               rounded-3xl
               overflow-hidden
               shadow-sm
@@ -260,11 +262,21 @@ export default function CareersPage() {
             {/* Content */}
             <div className="p-6 flex flex-col h-[250px]">
 
-              <h3 className="text-2xl font-bold text-slate-900">
+              <h3 className="
+  text-2xl
+  font-bold
+  text-slate-900
+  dark:text-white
+">
                 {job.title}
               </h3>
 
-              <div className="mt-4 space-y-3 text-slate-600">
+             <div className="
+  mt-4
+  space-y-3
+  text-slate-600
+  dark:text-slate-400
+">
 
                 <div className="flex items-center gap-2">
                   <Briefcase size={16} />
@@ -278,7 +290,13 @@ export default function CareersPage() {
 
               </div>
 
-              <p className="mt-5 text-slate-600 leading-relaxed flex-grow">
+             <p className="
+  mt-5
+  text-slate-600
+  dark:text-slate-400
+  leading-relaxed
+  flex-grow
+">
                 {job.description}
               </p>
 
@@ -298,22 +316,34 @@ export default function CareersPage() {
         
 
         {/* Why Join Tec Tha */}
-        <section className="py-20 bg-white">
+        <section className="py-20 dark:bg-[#020817] bg-white">
 
   <div className="max-w-7xl mx-auto px-6 lg:px-10">
 
     {/* Heading */}
     <div className="text-center max-w-3xl mx-auto">
 
-      <span className="text-indigo-600 uppercase tracking-[4px] text-sm font-semibold">
+     <span className="
+  text-indigo-600
+  dark:text-blue-400
+  uppercase
+  tracking-[4px]
+  text-sm
+  font-semibold
+">
         Why Join Tec Tha
       </span>
 
-      <h2 className="mt-4 text-5xl font-bold text-slate-900">
+      <h2 className="mt-4 text-5xl font-bold dark:text-white text-slate-900">
         Build More Than a Career
       </h2>
 
-      <p className="mt-6 text-lg text-slate-600">
+      <p className="
+  mt-6
+  text-lg
+  text-slate-600
+  dark:text-slate-400
+">
         Join a team where innovation thrives, ideas matter,
         and every contribution creates impact.
       </p>
@@ -345,6 +375,7 @@ export default function CareersPage() {
             bottom-8
             left-8
             bg-white/90
+            dark:bg-[#020817]
             backdrop-blur-md
             rounded-3xl
             p-6
@@ -352,11 +383,19 @@ export default function CareersPage() {
           "
         >
 
-          <p className="text-3xl font-bold text-slate-900">
+          <p className="
+  text-3xl
+  font-bold
+  text-slate-900
+  dark:text-white
+">
             50+
           </p>
 
-          <p className="text-slate-600">
+          <p className="
+  text-slate-600
+  dark:text-slate-400
+">
             Passionate professionals driving innovation.
           </p>
 
@@ -396,16 +435,22 @@ export default function CareersPage() {
 
           <div
             key={item.number}
-            className="
-              bg-slate-50
-              border border-slate-200
-              rounded-3xl
-              p-8
-              hover:shadow-xl
-              transition-all
-              duration-300
-              hover:-translate-y-1
-            "
+           className="
+  bg-slate-50
+  dark:bg-slate-900
+
+  border
+  border-slate-200
+  dark:border-slate-800
+
+  rounded-3xl
+  p-8
+
+  hover:shadow-xl
+  transition-all
+  duration-300
+  hover:-translate-y-1
+"
           >
 
             <div className="flex items-start gap-6">
@@ -418,7 +463,10 @@ export default function CareersPage() {
                   flex-shrink-0
                   rounded-2xl
                   bg-indigo-100
-                  text-indigo-600
+dark:bg-blue-500/10
+
+text-indigo-600
+dark:text-blue-400
                   flex
                   items-center
                   justify-center
@@ -432,11 +480,21 @@ export default function CareersPage() {
               {/* Text */}
               <div>
 
-                <h3 className="text-2xl font-bold text-slate-900">
+                <h3 className="
+  text-2xl
+  font-bold
+  text-slate-900
+  dark:text-white
+">
                   {item.title}
                 </h3>
 
-                <p className="mt-3 text-slate-600 leading-relaxed">
+                <p className="
+  mt-3
+  text-slate-600
+  dark:text-slate-400
+  leading-relaxed
+">
                   {item.description}
                 </p>
 
@@ -461,11 +519,29 @@ export default function CareersPage() {
         {/* Hiring Process */}
         {/* Hiring Process */}
 {/* Hiring Process */}
-<section className="relative py-20 overflow-hidden bg-slate-200">
+<section
+  className="
+    relative
+    py-20
+    overflow-hidden
+
+    bg-slate-200
+    dark:bg-slate-950
+
+    transition-all duration-500
+  "
+>
 
 
 
-    <div className="absolute inset-0 bg-white/50 backdrop-blur-sm"></div>
+  <div className="
+absolute inset-0
+
+bg-white/50
+dark:bg-slate-950/40
+
+backdrop-blur-sm
+"></div>
 
   
   {/* Left Office Background */}
@@ -487,15 +563,37 @@ export default function CareersPage() {
 
     <div className="text-center">
 
-      <span className="text-blue-800 uppercase tracking-[4px] text-sm font-semibold">
+      <span className="
+text-blue-800
+dark:text-blue-400
+uppercase
+tracking-[4px]
+text-sm
+font-semibold
+">
         Hiring Process
       </span>
 
-      <h2 className="mt-3 text-4xl font-bold text-slate-900">
+     <h2 className="
+mt-3
+text-4xl
+font-bold
+
+text-slate-900
+dark:text-white
+">
         Your Journey With Us
       </h2>
 
-      <p className="mt-5 text-slate-600 max-w-2xl mx-auto">
+     <p className="
+mt-5
+
+text-slate-600
+dark:text-slate-400
+
+max-w-2xl
+mx-auto
+">
         Our hiring process is designed to help you showcase your skills
         and find the right opportunity at Tec Tha.
       </p>
@@ -539,7 +637,22 @@ export default function CareersPage() {
               {/* Card */}
               <div className="relative w-full lg:w-5/12">
 
-                <div className="bg-white rounded-3xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
+               <div className="
+  bg-white
+  dark:bg-slate-900
+
+  border
+  border-slate-200
+  dark:border-slate-800
+
+  rounded-3xl
+  p-6
+
+  shadow-lg
+  hover:shadow-xl
+
+  transition-all duration-300
+">
 
                   <div className="flex items-center gap-4">
 
@@ -551,11 +664,22 @@ export default function CareersPage() {
 
                     <div>
 
-                      <h3 className="text-3xl font-bold text-slate-900">
+                      <h3 className="
+text-3xl
+font-bold
+
+text-slate-900
+dark:text-white
+">
                         {step.title}
                       </h3>
 
-                      <p className="mt-2 text-slate-600">
+                      <p className="
+mt-2
+
+text-slate-600
+dark:text-slate-400
+">
                         {step.description}
                       </p>
 
@@ -616,20 +740,33 @@ export default function CareersPage() {
     
 
     <div
-      className="
-        bg-white
-        rounded-[40px]
-        p-12 lg:p-16
-        text-center
-        shadow-2xl
-      "
-    >
+  className="
+    bg-white
+    dark:bg-slate-900
+
+    border
+    border-slate-200
+    dark:border-slate-800
+
+    rounded-[40px]
+    p-12 lg:p-16
+    text-center
+    shadow-2xl
+  "
+>
 
       <span className="text-blue-800  uppercase tracking-[4px] text-sm font-bold">
         Join Our Team
       </span>
 
-      <h2 className="mt-4 text-5xl font-bold text-slate-900">
+      <h2 className="
+mt-4
+text-5xl
+font-bold
+
+text-slate-900
+dark:text-white
+">
         Ready to Take the Next Step?
       </h2>
 
@@ -642,17 +779,25 @@ export default function CareersPage() {
 
         <button
   onClick={() => navigate("/career-apply")}
-  className="
-    px-8 py-4
-    bg-blue-800
-    text-white
-    rounded-xl
-    font-semibold
-    hover:bg-slate-800
-    hover:-translate-y-1
-    transition-all
-    duration-300
-  "
+ className="
+px-8 py-4
+
+bg-blue-800
+dark:bg-blue-900
+
+text-white
+dark:text-white
+
+rounded-xl
+font-semibold
+
+hover:bg-slate-800
+dark:hover:bg-blue-400
+
+hover:-translate-y-1
+transition-all
+duration-300
+"
 >
   Submit Your Resume
 </button>
