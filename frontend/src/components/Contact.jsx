@@ -174,19 +174,11 @@ flex flex-col justify-between
         </p>
 
         <p className="mt-2 text-lg font-medium">
-          contact@tectha.com
+          connecttecthaofficial@gmail.com
         </p>
       </div>
 
-      <div>
-        <p className="text-sm uppercase tracking-widest text-slate-300">
-          Phone
-        </p>
-
-        <p className="mt-2 text-lg font-medium">
-          +91 XXXXX XXXXX
-        </p>
-      </div>
+   
 
       <div>
         <p className="text-sm uppercase tracking-widest text-slate-300">
@@ -194,7 +186,7 @@ flex flex-col justify-between
         </p>
 
         <p className="mt-2 text-lg font-medium">
-          Thirunelveli, Tamil Nadu
+          Coimbatore, Tamil Nadu
         </p>
       </div>
 

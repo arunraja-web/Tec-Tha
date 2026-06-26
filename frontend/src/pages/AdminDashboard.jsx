@@ -575,9 +575,7 @@ useEffect(() => {
             {active}
           </h2>
 
-          <button className="px-5 py-3 bg-black text-white">
-            Logout
-          </button>
+        
         </div>
 
       {active === "Dashboard" && (

@@ -357,7 +357,7 @@ export default function CareersPage() {
       <div className="relative">
 
         <img
-          src="/careersin.png"
+          src="/about-team.jpg"
           alt="Tec Tha Team"
           className="
             w-full

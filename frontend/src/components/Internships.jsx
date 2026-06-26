@@ -265,12 +265,12 @@ const { user } = useAuth();
   font-semibold
 
   text-blue-800
-  dark:text-blue-500
+  dark:text-white
 ">
                     Mode
                   </span>
 
-                  <span className="font-semibold text-slate-1000 dark:text-slate:400">
+                  <span className="font-semibold text-slate-1000 dark:text-white">
                     {internship.mode}
                   </span>
                 </div>

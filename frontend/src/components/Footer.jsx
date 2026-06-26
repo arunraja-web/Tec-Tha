@@ -232,16 +232,14 @@ export default function Footer() {
 
             <div
               className="
-                space-y-5
+                space-y-7
 
                 text-slate-600
                 dark:text-slate-400
               "
             >
 
-              <p>📧 contact@tectha.com</p>
-
-              <p>📞 +91 XXXXX XXXXX</p>
+              <p>📧connecttecthaofficial@gmail.com  </p>
 
               <p>📍 Coimbatore, Tamil Nadu</p>
 
