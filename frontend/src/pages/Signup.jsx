@@ -202,7 +202,7 @@ export default function Signup() {
 
       <div>
 
-  <label className="block text-sm font-medium text-slate-700 mb-2">
+  <label className="block text-sm font-medium text-slate-700 dark:text-white mb-2">
     Purpose of Visit
   </label>
 

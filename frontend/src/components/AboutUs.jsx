@@ -9,6 +9,7 @@ import {
 
 export default function AboutUs() {
   return (
+    
     <div className="bg-white dark:bg-[#020817] transition-all duration-500">
 
       {/* Hero Section */}

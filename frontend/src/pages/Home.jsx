@@ -21,11 +21,11 @@ export default function Home() {
         darkMode={darkMode}
         setDarkMode={setDarkMode}
       />
-
+    
       <div id="home">
         <HeroSection darkMode={darkMode} />
       </div>
-
+      
       <div id="WhatWeDo">
         <WhatWeDo />
       </div>

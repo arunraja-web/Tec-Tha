@@ -41,23 +41,53 @@ export default function WhatWeDo() {
   ];
 
   return (
-    <section
+   <section
   id="WhatWeDo"
   className="
     relative
     py-28
     overflow-hidden
 
-    bg-slate-100
-    dark:bg-[#020817]
-
     transition-all
     duration-500
   "
 >
-     
 
-      {/* Overlay */}
+  {/* Light Background */}
+  <div
+    className="
+      absolute inset-0
+      bg-cover bg-center
+      dark:hidden
+      -z-10
+    "
+    style={{
+      backgroundImage: "url('/allbg.jpeg')",
+    }}
+  />
+
+  {/* Dark Background */}
+  <div
+    className="
+      absolute inset-0
+      bg-cover bg-center
+      hidden dark:block
+      -z-10
+    "
+    style={{
+      backgroundImage: "url('/darkall.jpeg')",
+    }}
+  />
+
+  {/* Overlay */}
+  <div
+    className="
+      absolute inset-0
+    
+      dark:bg-slate-950/80
+      -z-10
+    "
+  />
       
 
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
@@ -196,5 +226,6 @@ export default function WhatWeDo() {
       </div>
       
     </section>
+   
   );
 }

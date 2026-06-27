@@ -76,11 +76,7 @@ const [profileImage, setProfileImage] =
   icon: MessageCircle,
   label: "Messages",
 },
-    {
-      id: "settings",
-      label: "Settings",
-      icon: Settings,
-    },
+    
    
   ];
 
@@ -332,12 +328,18 @@ const handleProfileUpdate = async () => {
 }, []);
 
   return (
-    <div
+   <div
   className="
     min-h-screen
 
-    bg-slate-100
-    dark:bg-slate-950
+    bg-gradient-to-br
+    from-slate-100
+    via-blue-50
+    to-slate-200
+
+    dark:from-slate-950
+    dark:via-slate-900
+    dark:to-blue-950
 
     text-slate-900
     dark:text-white
@@ -363,7 +365,7 @@ const handleProfileUpdate = async () => {
   dark:border-slate-800
 
   shadow-xl
-  p-6
+  p-5
   h-fit
 
   transition-all duration-300
@@ -823,7 +825,7 @@ transition-all duration-300
           {app.internshipRole}
         </h3>
 
-        <p className="mt-2 text-slate-600">
+        <p className="mt-2 text-slate-600 dark:text-slate-400">
           Applied on:{" "}
           {new Date(
             app.createdAt
@@ -1013,14 +1015,14 @@ shadow-xl
               {job.jobRole}
             </h3>
 
-            <p className="mt-2 text-slate-600">
+            <p className="mt-2 text-slate-600 dark:text-slate-300">
               Applied on:{" "}
               {new Date(
                 job.createdAt
               ).toLocaleDateString()}
             </p>
 
-            <p className="mt-2 text-slate-600">
+            <p className="mt-2 text-slate-600 dark:text-slate-300">
               Qualification: {job.qualification}
             </p>
 
@@ -1223,7 +1225,9 @@ My Messages
   {msg.senderType}
 </p>
 
-<p>{msg.message}</p>
+<p className="whitespace-pre-line leading-7">
+  {msg.message}
+</p>
 
 {msg.senderType === "USER" &&
  !conversation.messages.some(
@@ -1265,39 +1269,7 @@ My Messages
 
 )}
 
-            {/* Settings */}
-            {activeTab === "settings" && (
-              <div
-              className="
-bg-white
-dark:bg-slate-900
-
-rounded-3xl
-
-border
-border-slate-200
-dark:border-slate-800
-
-shadow-xl
-
-p-8
-
-transition-all duration-300
-"
-              >
-
-                <h2 className="text-3xl font-bold">
-                  Settings
-                </h2>
-
-                <p className="mt-6 text-slate-600">
-                  Account settings and
-                  preferences will appear here.
-                </p>
-
-              </div>
-            )}
-
+         
           </div>
 
         </div>

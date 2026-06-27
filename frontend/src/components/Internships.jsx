@@ -21,7 +21,7 @@ export default function Internships() {
 const { user } = useAuth();
   const internships = [
     {
-      title: "Frontend Developer Intern",
+      title: "Business Developer Intern",
       logos: [
         <FaReact className="text-sky-500" />,
         <SiTailwindcss className="text-blue-500" />,
@@ -89,14 +89,48 @@ const { user } = useAuth();
     py-28
     overflow-hidden
 
-    bg-slate-100
-    dark:bg-[#020817]
+  
 
     transition-all
     duration-500
   "
 >
       {/* Background Image */}
+        {/* Light Background */}
+  <div
+    className="
+      absolute inset-0
+      bg-cover bg-center
+      dark:hidden
+      -z-10
+    "
+    style={{
+      backgroundImage: "url('/allbg.jpeg')",
+    }}
+  />
+
+  {/* Dark Background */}
+  <div
+    className="
+      absolute inset-0
+      bg-cover bg-center
+      hidden dark:block
+      -z-10
+    "
+    style={{
+      backgroundImage: "url('/darkall.jpeg')",
+    }}
+  />
+
+  {/* Overlay */}
+  <div
+    className="
+      absolute inset-0
+    
+      dark:bg-slate-950/80
+      -z-10
+    "
+  />
     
 
 

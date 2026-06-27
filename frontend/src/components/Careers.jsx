@@ -14,6 +14,7 @@ export default function Careers() {
         transition-all duration-500
       "
     >
+      
       {/* Heading */}
       <div className="max-w-5xl mx-auto text-center px-6">
 

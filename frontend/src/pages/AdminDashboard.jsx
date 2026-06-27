@@ -378,19 +378,7 @@ useState(null);
     alert(
       "Reply sent successfully"
     );
-     await axios.post(
-
-  `http://localhost:5000/api/contact/reply/${selectedContact.id}`,
-
-  {
-    message: replyText,
-  },
-
-  {
-    withCredentials: true,
-  }
-
-);
+    
 
 setContacts((prev) =>
   prev.map((contact) =>
