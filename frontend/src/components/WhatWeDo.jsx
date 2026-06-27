@@ -1,200 +1,198 @@
 import { motion } from "framer-motion";
+import {
+  Globe,
+  Smartphone,
+  Layers3,
+  PencilRuler,
+  Cloud,
+  Bot,
+} from "lucide-react";
 
 export default function WhatWeDo() {
   const services = [
     {
-      image: "/service1.png",
       title: "Web Development",
+      icon: Globe,
       description:
-        "Modern, responsive and scalable websites tailored for startups and businesses.",
+        "Modern, fast and scalable websites built with the latest technologies.",
     },
     {
-      image: "/service2.png",
       title: "Mobile App Development",
+      icon: Smartphone,
       description:
-        "High-performance Android and iOS applications built for growth.",
+        "High performance mobile apps for iOS and Android platforms.",
     },
     {
-      image: "/service3.png",
       title: "Full Stack Solutions",
+      icon: Layers3,
       description:
-        "Complete frontend, backend and database development services.",
+        "End-to-end development with robust backend and beautiful frontend.",
     },
     {
-      image: "/service4.png",
       title: "UI / UX Design",
+      icon: PencilRuler,
       description:
-        "User-focused interfaces that create engaging digital experiences.",
+        "User-centered designs that create engaging experiences.",
     },
     {
-      image: "/service5.png",
       title: "Cloud Deployment",
+      icon: Cloud,
       description:
-        "Reliable hosting, deployment and cloud infrastructure solutions.",
-    },
-    {
-      image: "/service6.png",
-      title: "AI Solutions",
-      description:
-        "Smart automation, AI integration and intelligent business systems.",
+        "Secure, reliable and scalable cloud solutions for businesses.",
     },
   ];
 
   return (
     <section
-  id="WhatWeDo"
-  className="
-    relative
-    py-28
-    overflow-hidden
-
-    bg-slate-100
-    dark:bg-[#020817]
-
-    transition-all
-    duration-500
-  "
->
-     
-
+      id="WhatWeDo"
+      className="relative py-32 overflow-hidden bg-cover bg-center"
+      style={{
+        backgroundImage: "url('/herosectionbg.png')",
+      }}
+    >
       {/* Overlay */}
-      
+      <div className="absolute inset-0 bg-white/75 dark:bg-[#020817]/80 backdrop-blur-sm"></div>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+      <div className="relative z-10 max-w-[1600px] mx-auto px-6">
 
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="text-center max-w-3xl mx-auto"
+          transition={{ duration: 0.7 }}
+          className="text-center max-w-4xl mx-auto"
         >
-          <span className="text-sm uppercase tracking-[4px] text-blue-800 text-xl font-bold">
-            Our Services
+          <span className="text-blue-600 font-bold tracking-[8px] uppercase">
+            What We Do
           </span>
 
-          <h2 className="
-  mt-4
-  text-5xl
-  font-bold
+          <h2 className="mt-6 text-5xl lg:text-7xl font-bold leading-tight text-black dark:text-white">
+            Solutions that drive
+            <br />
 
-  text-slate-900
-  dark:text-white
-">
-            What We Do
+            <span className="text-blue-600">
+              real impact.
+            </span>
           </h2>
 
-         <p className="
-  mt-6
-  text-lg
-
-  text-slate-600
-  dark:text-slate-300
-
-  leading-relaxed
-">
-            We help startups and businesses build innovative
-            digital products and scalable solutions.
+          <p className="mt-8 text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl mx-auto">
+            We design and build digital experiences, products and
+            solutions that help businesses grow and create
+            meaningful connections.
           </p>
         </motion.div>
 
-        {/* Services Grid */}
-        <div className="mt-20 grid md:grid-cols-2 lg:grid-cols-3 gap-20">
-
-          {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.6,
-                delay: index * 0.12,
-              }}
-              viewport={{ once: true }}
-             className="
-  bg-white
-  dark:bg-slate-900/80
-
-  backdrop-blur-md
-
-  border
-  border-slate-200
-  dark:border-slate-800
-
-  rounded-3xl
-
-  overflow-hidden
-
-  shadow-lg
-  hover:shadow-2xl
-
-  transition-all
-  duration-300
-
-  hover:-translate-y-2
-
-  flex
-  flex-col
-"
-            >
-              {/* Image */}
-              <div className="overflow-hidden">
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="
-                    w-full
-                    h-56
-                    object-cover
-                    transition-transform
-                    duration-500
-                    hover:scale-110
-                  "
-                />
-              </div>
-
-              {/* Content */}
-              <div className="p-6 flex flex-col flex-grow">
-
-                {/* Accent Line */}
-                <div className="w-12 h-1 bg-indigo-500 rounded-full mb-5"></div>
-<h3 className="
-  text-2xl
-  font-bold
-
-  text-blue-900
-  dark:text-blue-500
-
-  mb-3
+        {/* Cards */}
+        <div className="
+            mt-20
+            grid
+            grid-cols-1
+            md:grid-cols-2
+            lg:grid-cols-5
+            gap-6
+            max-w-[1800px]
+            mx-auto
+            px-6
 ">
+          {services.map((service, index) => {
+            const Icon = service.icon;
+
+            return (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.1,
+                }}
+                className="
+                  group
+                  bg-white/90
+                  dark:bg-slate-900/90
+                  backdrop-blur-xl
+
+                  border
+                  border-white/50
+                  dark:border-slate-700
+
+                  rounded-[36px]
+
+                  p-10
+
+                  min-h-[430px]
+
+                  shadow-lg
+                  hover:shadow-2xl
+
+                  hover:-translate-y-4
+
+                  transition-all
+                  duration-500
+
+                  flex
+                  flex-col
+                "
+              >
+                {/* Icon */}
+                <div
+                  className="
+                    w-24
+                    h-24
+
+                    rounded-[30px]
+
+                    bg-blue-50
+                    dark:bg-slate-800
+
+                    flex
+                    items-center
+                    justify-center
+
+                    mb-10
+
+                    group-hover:scale-110
+
+                    transition-all
+                    duration-500
+                  "
+                >
+                  <Icon
+                    size={50}
+                    className="text-blue-600"
+                  />
+                </div>
+
+                {/* Title */}
+                <h3 className="text-[2rem] leading-tight font-bold text-black dark:text-white">
                   {service.title}
                 </h3>
 
-                <p className="
-  mt-4
+                {/* Description */}
+                <p
+                  className="
+                    mt-8
 
-  text-slate-600
-  dark:text-slate-300
+                    text-lg
 
-  leading-relaxed
+                    text-slate-600
+                    dark:text-slate-400
 
-  flex-grow
-">
+                    leading-10
+
+                    flex-grow
+                  "
+                >
                   {service.description}
                 </p>
-
-             
-
-              </div>
-
-            </motion.div>
-          ))}
-
+              </motion.div>
+            );
+          })}
         </div>
 
       </div>
-      
     </section>
   );
 }

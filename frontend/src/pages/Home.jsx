@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import Navbar from "../components/Navbar";
 import HeroSection from "../components/HeroSection";
+import TrustedPartners from "../components/TrustedPartners";
 import WhatWeDo from "../components/WhatWeDo";
 import Internships from "../components/Internships";
 import Careers from "../components/Careers";
@@ -26,10 +27,11 @@ export default function Home() {
         <HeroSection darkMode={darkMode} />
       </div>
 
+      <TrustedPartners />
       <div id="WhatWeDo">
         <WhatWeDo />
       </div>
-
+      
       <TrustedTechStack />
 
       <div id="internships">
