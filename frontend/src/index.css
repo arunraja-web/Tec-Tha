@@ -305,3 +305,19 @@ body {
   -webkit-box-shadow: 0 0 0 1000px rgba(15, 23, 42, 0.6) inset !important;
   -webkit-text-fill-color: white !important;
 }
+@keyframes scrollPartners {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.animate-scroll {
+  animation: scrollPartners 15s linear infinite;
+}
+
+.animate-scroll:hover {
+  animation-play-state: paused;
+}
