@@ -1,7 +1,7 @@
 const { google } = require("googleapis");
 
 const auth = new google.auth.GoogleAuth({
-  keyFile: "./config/google-service-account.json",
+  keyFile: "./tec-tha-data2-8d75bbc353b0.json",
   scopes: [
     "https://www.googleapis.com/auth/spreadsheets",
   ],

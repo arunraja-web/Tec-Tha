@@ -314,6 +314,10 @@ body {
     transform: translateX(-50%);
   }
 }
+html,
+body {
+  overflow-x: hidden;
+}
 .animate-scroll {
   animation: scrollPartners 15s linear infinite;
 }

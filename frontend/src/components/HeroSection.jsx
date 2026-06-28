@@ -70,9 +70,6 @@ export default function HeroSection({ darkMode}) {
   Book a Consultation →
 </a>
 
-          <button className="px-8 py-4 border border-slate-500 text-blue-900 rounded-lg font-extrabold hover:bg-white/10 transition dark:text-white">
-            Explore Our Works
-          </button>
 
         </div>
 

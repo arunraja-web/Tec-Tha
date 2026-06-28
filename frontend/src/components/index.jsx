@@ -235,7 +235,7 @@
  import { motion } from "framer-motion";
 
 export const AuthLayout = ({ children, title, subtitle }) => (
-  <div className="relative h-screen w-screen overflow-hidden">
+  <div className="relative h-screen w-full overflow-hidden">
 
     {/* Background Image */}
     <img

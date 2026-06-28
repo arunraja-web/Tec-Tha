@@ -13,7 +13,7 @@ export default function AboutUs() {
     <div className="bg-white dark:bg-[#020817] transition-all duration-500">
 
       {/* Hero Section */}
-    <section className="max-w-7xl mx-auto px-6 py-10 lg:py-16">
+    <section className="max-w-7xl mx-auto px-6 py-10 lg:py-26">
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -2,14 +2,14 @@ import { useState } from "react";
 
 import Navbar from "../components/Navbar";
 import HeroSection from "../components/HeroSection";
-import TrustedPartners from "../components/TrustedPartners";
+
 import WhatWeDo from "../components/WhatWeDo";
 import Internships from "../components/Internships";
 import Careers from "../components/Careers";
 import AboutUs from "../components/AboutUs";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
-import TrustedTechStack from "../components/TrustedTechStack";
+
 export default function Home() {
 
   const [darkMode, setDarkMode] = useState(
@@ -26,12 +26,12 @@ export default function Home() {
       <div id="home">
         <HeroSection darkMode={darkMode} />
       </div>
-      
+     
       <div id="WhatWeDo">
         <WhatWeDo />
       </div>
       
-      <TrustedTechStack />
+
 
       <div id="internships">
         <Internships />

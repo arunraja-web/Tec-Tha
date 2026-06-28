@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "tec-tha-sheets",
+  "private_key_id": "1ceebb8326a5a884d3931e2e1480c14861b42a76",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDOej028KgBjlJG\nlFuVbVnO2QqbdFB57kISFWjxKkeT5l1duiuAV7BqH2fPpR5RyMCebDY31JNSPvSU\nw7fntJEJPBz7BRVKGO8e6cqU+g/BASaJFJ6mZ3jgJWmsiVuc/kQ4jZ1GlHdZ1tip\nT5+cqnQBo5thtUA2rX8omB1BXdtAuT0nsGP0fTaDvT8Nqlm4G2Dcylzxl16OFmS8\nPpozVSY83mUJqMGXZeSZbrX7BCp1B8MDfbQXuy6Sws759XyTJI270pDo3ObzzNb2\n68chNAu53Vyt5iXyzI2PcYT/nyaYFHSzHSDphyfpnOaeC6o+grswiJIiSA0OOzP5\nx7ggaB/nAgMBAAECggEAEZ4sivuN2lQigRM3nVBvUU8DsLAEDeNej9xzz+Ajq2ME\npHK2M4VH8EYtvXIBXEkc5melWK4yw9nLVMY+cu7dUURn1KNiZagq/yBDwOJ1ZaqL\ndzbjMp+xmK6YjbhKsOKhP5IV0WfppyjF4+x/WgbRTzJ+l5+3kvLK3tPb6y/u/V6p\nsKj7XQOvnOKSF1KMEx42/9njzojub6+nCwd7z0/Cgz0IuNqGBfBCek/PLBfESGqM\nXs1Qe8GLVsIoHhGwCr1mOMKyoiwHJx5sMpTK9BDpEpjsykvtBIDV2u5d3XaHdZX/\ntbteGBBSSYEvNMMXujEIasGqj9bVm/wrxF7U7aVDAQKBgQDsy5yC8lu6bpmGZhC1\nwlL60T7ezGRO6VE/pLp2XYkKkD0m24+k0kNnAbQSUnHAeu71bxv21Mn8pXprhuNM\nll5htcn+94gwClzMIO/4EVTcOuQs44BXhybKmGRMhlhfk7DFWSp5iARMBjHZH+1j\nsKDT6G9ZLCqw7BFAL8xnrMFesQKBgQDfOSmrQ11V972WgggWswXUXwGeuJOFLXbU\nB9XdNNsKUuwj6F1IsokEndmzmCPLBYD2K4+NPEHPB2Z4rlGiDQF1WvVe0BCInzPT\n2rMKWmhKEhwB3QsCxdcYff//5dkMDDJd4DdU0gTD/9Nl2ZKIme739IBCDGQpGO0r\nEOms56X+FwKBgQC+ukXHR1TQ9lKcaUteSzYxJicgp7rHwLAbtiAmRLKkGofW65Ro\nqp91sW6ML3HGGn6sm6EHkF9dKyBOyaf9QUSmKRmZT2GXaFFUbdc7lSIn/RtaeKgg\nWBDLsDFhXfiCi2AfpPFMUF09quOtwkSgPl1cMeS2C5gbRxmh/J4Eh6Z9EQKBgQDJ\nD13e6wBo7IqRxHGwsHNxxFlbM3l8nWTIun4Bjxg0hlg4R5WuY1FTHTL3tvOWbFCq\narYUStAjv9CmpqzUv84ufE1CpzodNPiju/tEOgZxoTok24qNZtHFN8icH9WOKnY7\nZDeyaLDuMcGhnYWFENHT+SCFXU/iTJdjEQrJOKWk5QKBgQCuaSYC/bTrVVwz1p+p\n7YndtR3iCLYeO1lHbBbdGoX6X0VmV3vZX+hzGv7MdnI3UYzdGr/DIePmNneU9Ep7\nVzCEbD3Ff72X4GdLahASTQoZiVIOdJ90sboeb9jkQRqKGPi2+KMXrEpGd3r0vUK7\nLYjgxhoi7mmInF7F8U2HKFBY3Q==\n-----END PRIVATE KEY-----\n",
+  "client_email": "tec-tha-sheets@tec-tha-sheets.iam.gserviceaccount.com",
+  "client_id": "110611813533376773669",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/tec-tha-sheets%40tec-tha-sheets.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

@@ -1,7 +1,7 @@
 import { google } from "googleapis";
 
 const auth = new google.auth.GoogleAuth({
-  keyFile: "google-service-account.json",
+  keyFile: "tec-tha-data2-8d75bbc353b0.json",
   scopes: [
     "https://www.googleapis.com/auth/spreadsheets",
   ],
@@ -20,7 +20,7 @@ export const addCareerToGoogleSheet =
       await sheets.spreadsheets.values.append({
 
         spreadsheetId:
-          "15Jp35ApZFAD37HRcgW7mb0cZhkK_W1R_js6yzbjBhes",
+          "1W9QHkjF8nMRMQ71wIcERR__gxbja97sMqio39adS-gA",
 
         range: "Sheet1!A:N",
 
