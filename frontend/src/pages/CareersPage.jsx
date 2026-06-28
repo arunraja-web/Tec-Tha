@@ -24,39 +24,42 @@ import { fillOffset } from "framer-motion";
 
 const jobs = [
   {
-    title: "Frontend Developer",
-    image: "/frontend-career.png",
+    title: "Business Developer",
+    image: "/business.png",
     type: "Full Time",
-    location: "Hybrid",
-    description: "Build modern and responsive user interfaces.",
+    mode: "Hybrid",
+    description:
+      "Drive business growth by building client relationships and identifying new opportunities.",
   },
   {
-    title: "Backend Developer",
-    image: "/backend-career.webp",
+    title: "DevOps Engineer",
+    image: "/role-devops.png",
     type: "Full Time",
-    location: "Remote",
-    description: "Design APIs and scalable backend systems.",
+    mode: "Remote",
+    description:
+      "Manage CI/CD pipelines, cloud infrastructure and deployment automation.",
   },
   {
     title: "Full Stack Developer",
     image: "/fullstack-intern.png",
     type: "Full Time",
-    location: "Hybrid",
+    mode: "Hybrid",
     description: "Work across frontend and backend technologies.",
   },
   {
     title: "UI/UX Designer",
     image: "/uiux-career.jpg",
     type: "Full Time",
-    location: "On Site",
+    mode: "On Site",
     description: "Craft intuitive and delightful user experiences.",
   },
   {
-    title: "Project Manager",
-    image: "/project-manager.webp",
+    title: "AI Engineer",
+    image: "/aiengineer.png" ,
     type: "Full Time",
-    location: "Remote",
-    description: "Lead and manage software development projects.",
+    mode: "Hybrid",
+    description:
+      "Develop intelligent AI solutions, machine learning models and automation systems.",
   },
 ];
 const steps = [
@@ -725,17 +728,28 @@ dark:text-slate-400
 </section>
 
         
-<section
-  className="relative py-24 overflow-hidden"
-  style={{
-    backgroundImage: "url('/office-bg3.png')",
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
+<section className="relative py-24 overflow-hidden">
+
+  {/* Light Mode Background */}
+  <div
+    className="absolute inset-0 bg-cover bg-center dark:hidden -z-10"
+    style={{
+      backgroundImage: "url('/office-white.png')",
+    }}
+  />
+
+  {/* Dark Mode Background */}
+  <div
+    className="absolute inset-0 bg-cover bg-center hidden dark:block -z-10"
+    style={{
+      backgroundImage: "url('/office-dark.png')",
+    }}
+  />
+
+  {/* Overlay */}
+  <div className="absolute inset-0 bg-white/40 dark:bg-slate-900/60 -z-10" />
   
-  }}
->
-     <div className="absolute inset-0 bg-slate-800/60 -z-10" />
+     
   <div className="max-w-5xl mx-auto px-6 lg:px-10">
     
 

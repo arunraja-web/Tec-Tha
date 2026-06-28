@@ -21,7 +21,7 @@ export default function Internships() {
 const { user } = useAuth();
   const internships = [
     {
-      title: "Frontend Developer Intern",
+      title: "Business Developer Intern",
       logos: [
         <FaReact className="text-sky-500" />,
         <SiTailwindcss className="text-blue-500" />,
@@ -33,7 +33,7 @@ const { user } = useAuth();
         "Build responsive and modern user interfaces using industry-standard frontend technologies.",
     },
     {
-      title: "Backend Developer Intern",
+      title: "Data Analyst Intern",
       logos: [
         <FaNodeJs className="text-green-500" />,
         <SiExpress className="text-slate-300" />,
