@@ -18,6 +18,7 @@ from "./routes/careerRoutes.js";
 dotenv.config();
 
 const app = express();
+app.set("trust proxy", 1);
 app.use("/uploads", express.static("uploads"));
 const PORT = process.env.PORT || 5000;
 
