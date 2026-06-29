@@ -53,7 +53,7 @@ export const sendOTPEmail = async ({ to, otp, type = "verify" }) => {
     <body>
       <div class="container">
         <div class="header">
-          <div class="logo">📧</div>
+          
           <h1>${isReset ? "Tec Tha" : "Email Verification"}</h1>
           <p></p>
         </div>
