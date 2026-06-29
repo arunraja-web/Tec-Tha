@@ -1,12 +1,30 @@
 
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+import { useAuth  } from "../context/AuthContext";
+import { ChevronDown } from "lucide-react";
+import { useState } from "react";
+import {
+
+  FaGithub,
+  FaDocker,
+} from "react-icons/fa";
+
+import {
+
+ 
+  SiPostgresql,
+  SiFirebase,
+  SiVercel,
+} from "react-icons/si";
 import {
   FaReact,
   FaNodeJs,
   FaFigma,
   FaDatabase,
+  FaSalesforce,
+  FaLinkedin,
+  FaPython,
 } from "react-icons/fa";
 
 import {
@@ -14,36 +32,100 @@ import {
   SiJavascript,
   SiExpress,
   SiMongodb,
+  SiHubspot,
+  SiGoogleanalytics,
+  SiGoogleads,
 } from "react-icons/si";
 
 export default function Internships() {
+  const [openIndex, setOpenIndex] = useState(0);
   const navigate = useNavigate();
 const { user } = useAuth();
+const techs = [
+  {
+    name: "React",
+    icon: <FaReact className="text-[#61DAFB]" />,
+  },
+
+  {
+    name: "Node.js",
+    icon: <FaNodeJs className="text-[#68A063]" />,
+  },
+
+  {
+    name: "Tailwind CSS",
+    icon: <SiTailwindcss className="text-[#06B6D4]" />,
+  },
+
+  {
+    name: "JavaScript",
+    icon: <SiJavascript className="text-[#F7DF1E]" />,
+  },
+
+  {
+    name: "Express.js",
+    icon: <SiExpress className="text-black dark:text-white" />,
+  },
+
+  {
+    name: "MongoDB",
+    icon: <SiMongodb className="text-[#47A248]" />,
+  },
+
+  {
+    name: "PostgreSQL",
+    icon: <SiPostgresql className="text-[#336791]" />,
+  },
+
+  {
+    name: "Figma",
+    icon: <FaFigma className="text-[#F24E1E]" />,
+  },
+
+  {
+    name: "Firebase",
+    icon: <SiFirebase className="text-[#FFCA28]" />,
+  },
+
+  {
+    name: "GitHub",
+    icon: <FaGithub className="text-black dark:text-white" />,
+  },
+
+  {
+    name: "Docker",
+    icon: <FaDocker className="text-[#2496ED]" />,
+  },
+
+  {
+    name: "Vercel",
+    icon: <SiVercel className="text-black dark:text-white" />,
+  },
+];
   const internships = [
     {
       title: "Business Developer Intern",
       logos: [
-        <FaReact className="text-sky-500" />,
-        <SiTailwindcss className="text-blue-500" />,
-        <SiJavascript className="text-yellow-400" />,
-      ],
-      duration: "8 Weeks",
-      mode: "Hybrid",
-      description:
-        "Build responsive and modern user interfaces using industry-standard frontend technologies.",
-    },
-    {
-      title: "Data Analyst Intern",
-      logos: [
-        <FaNodeJs className="text-green-500" />,
-        <SiExpress className="text-slate-300" />,
-        <SiMongodb className="text-green-400" />,
+        <FaLinkedin className="text-[#0A66C2]" />,
+    <SiHubspot className="text-[#FF7A59]" />,
+    <SiGoogleanalytics className="text-[#E37400]" />,
       ],
       duration: "8 Weeks",
       mode: "Remote",
       description:
-        "Develop secure APIs, manage databases and work with backend systems.",
+         "Gain hands-on experience in business strategy, client communication, market analysis, and lead generation while contributing to the growth and expansion of the organization.",
     },
+    {
+      title: "Data Analyst Intern",
+      logos: [
+            <FaPython className="text-[#3776AB]" />,
+    <FaDatabase className="text-indigo-500" />,
+    <SiGoogleanalytics className="text-[#E37400]" />,
+      ],
+      duration: "8 Weeks",
+      mode: "Remote",
+      description:
+"Analyze and interpret data to identify trends, generate insights, and support data-driven decision making while working with real-world datasets and analytical tools.",    },
     {
       title: "Full Stack Developer Intern",
       logos: [
@@ -52,7 +134,7 @@ const { user } = useAuth();
         <FaDatabase className="text-indigo-400" />,
       ],
       duration: "12 Weeks",
-      mode: "Hybrid",
+      mode: "Remote",
       description:
         "Gain hands-on experience in both frontend and backend development workflows.",
     },
@@ -135,6 +217,7 @@ const { user } = useAuth();
 
 
       <div className="max-w-[1600px] mx-auto px-6 lg:px-10">
+        
 
         {/* Heading */}
         <motion.div
@@ -180,141 +263,315 @@ const { user } = useAuth();
           </p>
         </motion.div>
 
-        {/* Internship Cards */}
-        <div className="mt-20 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8">
 
-          {internships.map((internship, index) => (
-            <motion.div
-              key={internship.title}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.9,
-                delay: index * 0.1,
-              }}
-              viewport={{ once: true }}
-             className="
-  bg-white
-  dark:bg-slate-900/80
+      <div className="relative">
 
-  rounded-3xl
+        <div className="flex marquee whitespace-nowrap">
 
-  border
-  border-slate-200
-  dark:border-slate-800
+          {[...techs, ...techs].map((tech, index) => (
+            <div
+              key={index}
+              className="
+                mx-6
+                min-w-[250px]
+                h-24
+                px-8
 
-  backdrop-blur-md
+              
 
-  p-8
+         
+               
 
-  shadow-lg
-  hover:shadow-2xl
+                flex
+                items-center
+                justify-center
+                gap-4
 
-  hover:-translate-y-6
-
-  transition-all
-  duration-300
-
-  flex flex-col
-"
+                shadow-sm
+              "
             >
-
-              {/* Accent Line */}
-              <div className="w-14 h-1 bg-blue-500 rounded-full"></div>
-
-              {/* Title */}
-              <h3 className="
-  mt-8
-  text-2xl
-  font-bold
-
-  text-[#061B4E]
-  dark:text-white
-">
-                {internship.title}
-              </h3>
-
-              {/* Stack Logos */}
-              <div className="mt-6 flex items-center gap-4">
-
-                {internship.logos.map((logo, logoIndex) => (
-                  <div
-                    key={logoIndex}
-                    className="
-  w-14 h-14
-  rounded-2xl
-
-  bg-slate-100
-  dark:bg-slate-800
-
-  flex items-center
-  justify-center
-
-  text-3xl
-
-  shadow-sm
-"
-                  >
-                    {logo}
-                  </div>
-                ))}
-
+              <div className="text-4xl ">
+                {tech.icon}
               </div>
 
-              {/* Description */}
-              <p className="
-  mt-6
-
-  text-slate-600
-  dark:text-slate-300
-
-  leading-relaxed
-
-  flex-grow
-">
-                {internship.description}
-              </p>
-
-              {/* Duration & Mode */}
-              <div className="mt-8 space-y-3">
-
-                <div className="flex justify-between">
-                  <span className="
-  text-black
-  dark:text-slate-400
-">
-                    Duration
-                  </span>
-
-                  <span className="
-  text-slate-900
-  dark:text-white
-">
-                    {internship.duration}
-                  </span>
-                </div>
-
-                <div className="flex justify-between">
-                  <span className="
-  font-semibold
-
-  text-blue-800
-  dark:text-white
-">
-                    Mode
-                  </span>
-
-                  <span className="font-semibold text-slate-1000 dark:text-white">
-                    {internship.mode}
-                  </span>
-                </div>
-
-              </div>
-
-            </motion.div>
+              <span className="text-xl font-semibold text-slate-800 dark:text-white">
+                {tech.name}
+              </span>
+            </div>
           ))}
 
         </div>
+
+      </div>
+        {/* Internship Cards */}
+      {/* Zig-Zag Internship Section */}
+{/* Premium Zig-Zag Internship Section */}
+{/* Premium Compact Accordion Section */}
+
+<div className="mt-16 max-w-6xl mx-auto px-4">
+
+  {internships.map((internship, index) => (
+
+    <motion.div
+      key={internship.title}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: 0.5,
+        delay: index * 0.1,
+      }}
+      viewport={{ once: true }}
+
+      className="
+        border-b
+        border-slate-200
+        dark:border-slate-700
+      "
+    >
+
+      {/* Header */}
+
+      <button
+        onClick={() =>
+          setOpenIndex(
+            openIndex === index ? -1 : index
+          )
+        }
+
+        className="
+          w-full
+
+          py-6
+
+          flex
+          items-center
+          justify-between
+
+          text-left
+
+          group
+        "
+      >
+
+        <div>
+
+          <span
+            className="
+              text-xs
+
+              uppercase
+
+              tracking-[4px]
+
+              font-semibold
+
+              text-blue-800
+              dark:text-blue-500
+            "
+          >
+            Internship 0{index + 1}
+          </span>
+
+          <h3
+            className="
+              mt-2
+
+              text-2xl
+              lg:text-3xl
+
+              font-bold
+
+              text-slate-900
+              dark:text-white
+
+              group-hover:text-blue-700
+
+              transition-all
+              duration-300
+            "
+          >
+            {internship.title}
+          </h3>
+
+        </div>
+
+        <motion.div
+          animate={{
+            rotate:
+              openIndex === index ? 180 : 0,
+          }}
+
+          transition={{
+            duration: 0.3,
+          }}
+        >
+
+          <ChevronDown
+            size={30}
+            className="
+              text-slate-500
+              dark:text-slate-400
+            "
+          />
+
+        </motion.div>
+
+      </button>
+
+      {/* Expand Content */}
+
+      <motion.div
+        initial={false}
+
+        animate={{
+          height:
+            openIndex === index
+              ? "auto"
+              : 0,
+
+          opacity:
+            openIndex === index
+              ? 1
+              : 0,
+        }}
+
+        transition={{
+          duration: 0.4,
+        }}
+
+        className="overflow-hidden"
+      >
+
+        <div className="pb-8">
+
+          {/* Description */}
+
+          <p
+            className="
+              text-base
+
+              leading-8
+
+              text-slate-600
+              dark:text-slate-400
+
+              max-w-3xl
+            "
+          >
+            {internship.description}
+          </p>
+
+          {/* Tech Stack */}
+
+          <div className="flex gap-3 mt-8 flex-wrap">
+
+            {internship.logos.map(
+              (logo, logoIndex) => (
+
+                <div
+                  key={logoIndex}
+
+                  className="
+                    w-14
+                    h-14
+
+                    rounded-2xl
+
+                    bg-slate-100
+                    dark:bg-slate-800
+
+                    flex
+                    items-center
+                    justify-center
+
+                    text-2xl
+
+                    shadow-md
+                  "
+                >
+                  {logo}
+                </div>
+
+              )
+            )}
+
+          </div>
+
+          {/* Duration & Mode */}
+
+          <div className="flex gap-10 mt-8">
+
+
+            <div>
+
+              <p
+                className="
+                  text-sm
+
+                  text-slate-500
+                "
+              >
+                Mode
+              </p>
+
+              <h4
+                className="
+                  mt-1
+
+                  text-lg
+
+                  font-bold
+
+                  text-slate-900
+                  dark:text-white
+                "
+              >
+                {internship.mode}
+              </h4>
+
+            </div>
+
+          </div>
+
+          {/* Apply Button */}
+
+          <button
+            onClick={handleApply}
+
+            className="
+              mt-8
+
+              px-7
+              py-3
+
+              rounded-xl
+
+              bg-blue-900
+              hover:bg-blue-800
+
+              text-white
+
+              font-semibold
+
+              transition-all
+              duration-300
+
+              hover:-translate-y-1
+              hover:shadow-xl
+            "
+          >
+            Apply Now →
+          </button>
+
+        </div>
+
+      </motion.div>
+
+    </motion.div>
+
+  ))}
+
+</div>
 
         {/* Apply CTA */}
         <motion.div
