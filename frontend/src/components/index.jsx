@@ -365,7 +365,7 @@ export const AuthLayout = ({ children, title, subtitle }) => (
   // ─── GoogleButton ─────────────────────────────────────────────────────────────
  export const GoogleButton = () => {
   const handleGoogleLogin = () => {
-    window.location.href = "http://localhost:5000/api/auth/google";
+    window.location.href = "https://tec-tha-xuvu.onrender.com/api/auth/google";
   };
 
   return (

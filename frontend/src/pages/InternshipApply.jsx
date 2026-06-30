@@ -44,7 +44,7 @@ export default function InternshipApply() {
       });
 
      await axios.post(
-  "http://localhost:5000/api/internships/apply",
+  "https://tec-tha-xuvu.onrender.com/api/internships/apply",
   formData,
   {
     withCredentials: true,

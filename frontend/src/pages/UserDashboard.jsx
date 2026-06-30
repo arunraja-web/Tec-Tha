@@ -84,7 +84,7 @@ const [profileImage, setProfileImage] =
 
   axios
     .get(
-      "http://localhost:5000/api/contact/my-conversations",
+      "https://tec-tha-xuvu.onrender.com/api/contact/my-conversations",
       {
         withCredentials: true,
       }
@@ -103,7 +103,7 @@ const [profileImage, setProfileImage] =
 
   axios.get(
 
-    "http://localhost:5000/api/careers/my-applications",
+    "https://tec-tha-xuvu.onrender.com/api/careers/my-applications",
 
     {
       withCredentials: true,
@@ -138,7 +138,7 @@ const [profileImage, setProfileImage] =
 
       await axios.delete(
 
-        `http://localhost:5000/api/internships/cancel/${id}`,
+        `https://tec-tha-xuvu.onrender.com/api/internships/cancel/${id}`,
 
         {
           withCredentials: true,
@@ -185,7 +185,7 @@ const cancelJobApplication = async (id) => {
   try {
 
     await axios.delete(
-      `http://localhost:5000/api/careers/cancel/${id}`,
+      `https://tec-tha-xuvu.onrender.com/api/careers/cancel/${id}`,
       {
         withCredentials: true,
       }
@@ -221,7 +221,7 @@ async (messageId) => {
 
     await axios.delete(
 
-      `http://localhost:5000/api/contact/message/${messageId}`,
+      `https://tec-tha-xuvu.onrender.com/api/contact/message/${messageId}`,
 
       {
         withCredentials: true,
@@ -277,7 +277,7 @@ const handleProfileUpdate = async () => {
     }
 
     const { data } = await axios.put(
-      "http://localhost:5000/api/auth/update-profile",
+      "https://tec-tha-xuvu.onrender.com/api/auth/update-profile",
 
       formData,
 
@@ -313,7 +313,7 @@ const handleProfileUpdate = async () => {
 
   axios.get(
 
-    "http://localhost:5000/api/internships/my-applications",
+    "https://tec-tha-xuvu.onrender.com/api/internships/my-applications",
 
     {
       withCredentials: true,

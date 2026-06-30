@@ -51,7 +51,7 @@ export const addToGoogleSheet =
 
             application.linkedin || "",
 
-            `http://localhost:5000${application.resumeUrl}`,
+            `https://tec-tha-xuvu.onrender.com${application.resumeUrl}`,
 
             new Date(
               application.createdAt

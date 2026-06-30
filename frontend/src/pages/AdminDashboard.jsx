@@ -14,7 +14,7 @@ const sendEmail = async () => {
 
     await axios.post(
 
-      "http://localhost:5000/api/admin/send-email",
+      "https://tec-tha-xuvu.onrender.com/api/admin/send-email",
 
       emailData,
 
@@ -82,22 +82,22 @@ const [dashboardStats, setDashboardStats] =
       ] = await Promise.all([
 
         axios.get(
-          "http://localhost:5000/api/user/all",
+          "https://tec-tha-xuvu.onrender.com/api/user/all",
           { withCredentials: true }
         ),
 
         axios.get(
-          "http://localhost:5000/api/internships",
+          "https://tec-tha-xuvu.onrender.com/api/internships",
           { withCredentials: true }
         ),
 
         axios.get(
-          "http://localhost:5000/api/careers",
+          "https://tec-tha-xuvu.onrender.com/api/careers",
           { withCredentials: true }
         ),
 
         axios.get(
-  "http://localhost:5000/api/contact/all",
+  "https://tec-tha-xuvu.onrender.com/api/contact/all",
   { withCredentials: true }
 ),
 
@@ -140,7 +140,7 @@ const fetchUsers = async () => {
   try {
 
     const res = await axios.get(
-      "http://localhost:5000/api/user/all",
+      "https://tec-tha-xuvu.onrender.com/api/user/all",
       {
         withCredentials: true,
       }
@@ -158,7 +158,7 @@ const deleteUser = async (id) => {
 
     await axios.delete(
 
-      `http://localhost:5000/api/user/${id}`,
+      `https://tec-tha-xuvu.onrender.com/api/user/${id}`,
 
       {
         withCredentials: true,
@@ -241,7 +241,7 @@ useState(null);
 
       await axios.patch(
 
-        `http://localhost:5000/api/internships/${id}/status`,
+        `https://tec-tha-xuvu.onrender.com/api/internships/${id}/status`,
 
         {
           status,
@@ -313,7 +313,7 @@ useState(null);
 
     await axios.patch(
 
-      `http://localhost:5000/api/careers/${id}/status`,
+      `https://tec-tha-xuvu.onrender.com/api/careers/${id}/status`,
 
       { status },
 
@@ -363,7 +363,7 @@ useState(null);
 
     await axios.post(
 
-      `http://localhost:5000/api/contact/reply/${selectedContact.id}`,
+      `https://tec-tha-xuvu.onrender.com/api/contact/reply/${selectedContact.id}`,
 
       {
         message: replyText,
@@ -413,7 +413,7 @@ useEffect(() => {
 
   axios.get(
 
-    "http://localhost:5000/api/careers/all",
+    "https://tec-tha-xuvu.onrender.com/api/careers/all",
 
     {
       withCredentials: true,
@@ -434,7 +434,7 @@ useEffect(() => {
 
     axios.get(
 
-      "http://localhost:5000/api/internships",
+      "https://tec-tha-xuvu.onrender.com/api/internships",
 
       {
         withCredentials: true,
@@ -488,7 +488,7 @@ useEffect(() => {
     });
     axios
 .get(
-  "http://localhost:5000/api/contact/all",
+  "https://tec-tha-xuvu.onrender.com/api/contact/all",
   {
     withCredentials: true,
   }
@@ -1357,7 +1357,7 @@ useEffect(() => {
              <td className="space-x-2">
 
   <a
-    href={`http://localhost:5000${app.resumeUrl}`}
+    href={`https://tec-tha-xuvu.onrender.com${app.resumeUrl}`}
     target="_blank"
     rel="noopener noreferrer"
     className="
@@ -1658,7 +1658,7 @@ useEffect(() => {
               <td className="space-x-2">
 
                 <a
-                  href={`http://localhost:5000/${job.resumeUrl}`}
+                  href={`https://tec-tha-xuvu.onrender.com/${job.resumeUrl}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="

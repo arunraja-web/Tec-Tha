@@ -63,7 +63,7 @@ export default function CareerApply() {
       });
 
      await axios.post(
-  "http://localhost:5000/api/careers/apply",
+  "https://tec-tha-xuvu.onrender.com/api/careers/apply",
   formData,
   {
     withCredentials: true,

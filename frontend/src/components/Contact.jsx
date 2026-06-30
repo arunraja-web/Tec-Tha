@@ -40,7 +40,7 @@ export default function Contact() {
     try {
 
       await axios.post(
-        "http://localhost:5000/api/contact/create",
+        "https://tec-tha-xuvu.onrender.com/api/contact/create",
 
         {
           subject: "Website Contact Request",
