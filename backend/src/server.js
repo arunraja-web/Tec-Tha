@@ -30,15 +30,29 @@ app.use(helmet({
 
 
 // CORS
-app.use(cors({
-  origin: [
-    "https://tec-tha-virid.vercel.app",
-    "http://localhost:5173",
-    "http://localhost:5174"
-  ],
-  credentials: true,
-}));
+const allowedOrigins = [
+  "https://tec-tha-virid.vercel.app",
+  "http://localhost:5173",
+  "http://localhost:5174",
+];
 
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      // Postman or server-to-server requests
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 // Rate limiting
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
