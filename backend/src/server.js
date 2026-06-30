@@ -31,7 +31,7 @@ app.use(helmet({
 
 // CORS
 app.use(cors({
-  origin: process.env.CLIENT_URL || "https://tec-tha-virid.vercel.app/",
+  origin: process.env.CLIENT_URL || "https://tec-tha-virid.vercel.app",
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
   allowedHeaders: ["Content-Type", "Authorization"],
