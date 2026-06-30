@@ -5,31 +5,36 @@ import cookieParser from "cookie-parser";
 import { rateLimit } from "express-rate-limit";
 import dotenv from "dotenv";
 import session from "express-session";
+
 import passport from "./config/passport.js";
+
 import internshipRoutes from "./routes/internshipRoutes.js";
 import contactRoutes from "./routes/contactRoutes.js";
 import authRoutes from "./routes/auth.routes.js";
 import userRoutes from "./routes/user.routes.js";
+import adminRoutes from "./routes/adminRoutes.js";
+import careerRoutes from "./routes/careerRoutes.js";
+
 import { errorHandler } from "./middleware/error.middleware.js";
 import { notFound } from "./middleware/notFound.middleware.js";
-import adminRoutes from "./routes/adminRoutes.js";
-import careerRoutes
-from "./routes/careerRoutes.js";
+
 dotenv.config();
 
 const app = express();
-app.use("/uploads", express.static("uploads"));
 const PORT = process.env.PORT || 5000;
 
+// Static files
+app.use("/uploads", express.static("uploads"));
+
 // Security middleware
-app.use(helmet({
-  crossOriginResourcePolicy: { policy: "cross-origin" },
-  contentSecurityPolicy: false,
-}));
+app.use(
+  helmet({
+    crossOriginResourcePolicy: { policy: "cross-origin" },
+    contentSecurityPolicy: false,
+  })
+);
 
-
-
-// CORS
+// CORS Configuration
 const allowedOrigins = [
   "https://tec-tha-virid.vercel.app",
   "http://localhost:5173",
@@ -38,88 +43,100 @@ const allowedOrigins = [
 
 app.use(
   cors({
-    origin: function (origin, callback) {
-      // Postman or server-to-server requests
+    origin: (origin, callback) => {
+      // Allow requests with no origin (Postman, mobile apps)
       if (!origin) return callback(null, true);
 
       if (allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
+        return callback(null, true);
       }
+
+      return callback(null, true); // Temporary: allow all origins
+      // For strict mode use:
+      // return callback(new Error("Not allowed by CORS"));
     },
+
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    allowedHeaders: [
+      "Origin",
+      "X-Requested-With",
+      "Content-Type",
+      "Accept",
+      "Authorization",
+    ],
   })
 );
-// Rate limiting
+
+// Handle preflight requests
+app.options("*", cors());
+
+// Rate Limiting
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
+  windowMs: 15 * 60 * 1000,
   max: 100,
-  message: { success: false, message: "Too many requests, please try again later." },
-  standardHeaders: true,
-  legacyHeaders: false,
+  message: {
+    success: false,
+    message: "Too many requests, please try again later.",
+  },
 });
 
-// Body parsing
+app.use(limiter);
+
+// Body Parser
 app.use(express.json({ limit: "10kb" }));
 app.use(express.urlencoded({ extended: true, limit: "10kb" }));
 app.use(cookieParser());
 
-// Google OAuth Session
+// Session
 app.use(
   session({
     secret: process.env.JWT_ACCESS_SECRET || "google-auth-secret",
     resave: false,
     saveUninitialized: false,
+    cookie: {
+      secure: process.env.NODE_ENV === "production",
+      sameSite:
+        process.env.NODE_ENV === "production" ? "none" : "lax",
+    },
   })
 );
 
+// Passport
 app.use(passport.initialize());
 
-const authLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 100000,
-  message: { success: false, message: "Too many authentication attempts, please try again later." },
-  standardHeaders: true,
-  legacyHeaders: false,
+// Health Route
+app.get("/", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "TecTha Backend Running Successfully 🚀",
+  });
 });
 
-app.use(limiter);
-
-// Body parsing
-app.use(express.json({ limit: "10kb" }));
-app.use(express.urlencoded({ extended: true, limit: "10kb" }));
-app.use(cookieParser());
-
-// Health check
 app.get("/health", (req, res) => {
-  res.json({ success: true, message: "Server is running", timestamp: new Date().toISOString() });
+  res.status(200).json({
+    success: true,
+    message: "Server is running",
+    timestamp: new Date().toISOString(),
+  });
 });
 
 // Routes
-app.use("/api/auth", authLimiter, authRoutes);
+app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/internships", internshipRoutes);
-app.use(
-  "/api/contact",
-  contactRoutes
-);
-app.use(
-  "/api/careers",
-  careerRoutes
-);
+app.use("/api/contact", contactRoutes);
+app.use("/api/careers", careerRoutes);
 app.use("/api/admin", adminRoutes);
 
-// Error handling
+// Error Handling
 app.use(notFound);
 app.use(errorHandler);
 
+// Start Server
 app.listen(PORT, () => {
-  console.log(`\n🚀 Server running on port ${PORT}`);
-  console.log(`📍 Environment: ${process.env.NODE_ENV}`);
-  console.log(`🌐 Client URL: ${process.env.CLIENT_URL}\n`);
+  console.log(`🚀 Server running on port ${PORT}`);
+  console.log(`🌍 Environment: ${process.env.NODE_ENV}`);
 });
 
 export default app;
