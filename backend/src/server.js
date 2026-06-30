@@ -35,12 +35,27 @@ app.use(
 );
 
 // CORS Configuration
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://tec-tha-virid.vercel.app",
+];
+
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://tec-tha-virid.vercel.app",
-    ],
+    origin: (origin, callback) => {
+      console.log("Request Origin:", origin);
+
+      // Postman, mobile apps, server-to-server requests
+      if (!origin) {
+        return callback(null, true);
+      }
+
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      return callback(new Error("Not allowed by CORS"));
+    },
 
     credentials: true,
 
@@ -48,6 +63,7 @@ app.use(
       "GET",
       "POST",
       "PUT",
+      "PATCH",
       "DELETE",
       "OPTIONS",
     ],
