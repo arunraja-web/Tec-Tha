@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from './context/AuthContext';
 import { ProtectedRoute } from './components';
@@ -17,9 +17,8 @@ import AboutUs from "./components/AboutUs";
 import Contact from "./components/Contact";
 export default function App() {
   return (
-    <BrowserRouter>
-      <AuthProvider>
-        <Toaster
+    <AuthProvider>
+      <Toaster
           position="top-right"
           gutter={8}
           toastOptions={{
@@ -75,6 +74,5 @@ export default function App() {
          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </AuthProvider>
-    </BrowserRouter>
   );
 }
