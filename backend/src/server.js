@@ -31,23 +31,13 @@ app.use(helmet({
 
 
 // CORS
-const allowedOrigins = [
-  "http://localhost:5173",
-  "https://tec-tha-olive.vercel.app",
-];
-
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true,
-  })
-);
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://tec-tha-neon.vercel.app"
+  ],
+  credentials: true,
+}));
 
 // Rate limiting
 const limiter = rateLimit({
