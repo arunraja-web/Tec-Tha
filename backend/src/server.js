@@ -21,6 +21,7 @@ import { notFound } from "./middleware/notFound.middleware.js";
 dotenv.config();
 
 const app = express();
+app.set("trust proxy", 1);
 const PORT = process.env.PORT || 5000;
 
 // Static files
@@ -88,11 +89,10 @@ app.options("*", cors(corsOptions));
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100,
-  message: {
-    success: false,
-    message: "Too many requests, please try again later.",
-  },
+  standardHeaders: true,
+  legacyHeaders: false,
 });
+
 
 app.use(limiter);
 
