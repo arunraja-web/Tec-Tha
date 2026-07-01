@@ -100,3 +100,15 @@ export const verifyEmailConfig = async () => {
   const transporter = createTransporter();
   return await transporter.verify();
 };
+
+try {
+  console.log("Sending OTP to:", to);
+
+  const info = await transporter.sendMail(mailOptions);
+
+  console.log("Mail Sent:", info.messageId);
+
+} catch (err) {
+  console.error("MAIL ERROR:", err);
+  throw err;
+}
