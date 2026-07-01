@@ -33,31 +33,62 @@ export const signup = async (req, res, next) => {
     );
 
     // Create user
-    const user = await prisma.user.create({
-      data: { fullName, username, email, password: hashedPassword ,userType},
-      select: { id: true, fullName: true, username: true, email: true, isVerified: true, role: true,userType: true,createdAt: true, },
-    });
-    //await addUserToSheet(user);
+   const user = await prisma.user.create({
+  data: {
+    fullName,
+    username,
+    email,
+    password: hashedPassword,
+    userType,
+  },
+  select: {
+    id: true,
+    fullName: true,
+    username: true,
+    email: true,
+    isVerified: true,
+    role: true,
+    userType: true,
+    createdAt: true,
+  },
+});
 
-    // Generate and send OTP
-    const otp = generateSecureOTP();
-    const expiresAt = getOTPExpiryTime();
+console.log("STEP 1 - User Created");
 
-    await prisma.otpVerification.deleteMany({ where: { email } });
-    await prisma.otpVerification.create({ data: { email, otp, expiresAt } });
+// await addUserToSheet(user);
 
-    await sendOTPEmail({ to: email, otp, type: "verify" });
+const otp = generateSecureOTP();
+const expiresAt = getOTPExpiryTime();
 
-    res.status(201).json({
-      success: true,
-      message: "Account created successfully. Please check your email for the verification OTP.",
-      data: { user },
-    });
-  } catch (error) {
-    next(error);
-  }
-};
+console.log("STEP 2 - OTP Generated");
 
+await prisma.otpVerification.deleteMany({
+  where: { email },
+});
+
+await prisma.otpVerification.create({
+  data: {
+    email,
+    otp,
+    expiresAt,
+  },
+});
+
+console.log("STEP 3 - OTP Saved");
+
+await sendOTPEmail({
+  to: email,
+  otp,
+  type: "verify",
+});
+
+console.log("STEP 4 - sendOTPEmail Finished");
+
+res.status(201).json({
+  success: true,
+  message: "Account created successfully. Please check your email for the verification OTP.",
+  data: { user },
+});
 // ─── Login ────────────────────────────────────────────────────────────────────
 export const login = async (req, res, next) => {
   try {
