@@ -16,6 +16,9 @@ export const sendOTPEmail = async ({
   otp,
   type = "verify",
 }) => {
+    console.log("========== SEND OTP START ==========");
+  console.log("TO:", to);
+  console.log("OTP:", otp);
   try {
     const isReset = type === "reset";
 
