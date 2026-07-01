@@ -13,6 +13,7 @@
     "db:seed": "node src/utils/seed.js"
   },
   "dependencies": {
+    "@getbrevo/brevo": "^5.0.4",
     "@prisma/client": "^5.10.0",
     "axios": "^1.18.0",
     "bcryptjs": "^2.4.3",
@@ -38,4 +39,3 @@
     "prisma": "^5.10.0"
   }
 }
-

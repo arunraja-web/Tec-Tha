@@ -1,62 +1,43 @@
-import nodemailer from "nodemailer";
+import dotenv from "dotenv";
+import Brevo from "@getbrevo/brevo";
 
-const transporter =
-  nodemailer.createTransport({
+dotenv.config();
 
-    service: "gmail",
+const apiInstance = new Brevo.TransactionalEmailsApi();
 
-    auth: {
+apiInstance.setApiKey(
+  Brevo.TransactionalEmailsApiApiKeys.apiKey,
+  process.env.BREVO_API_KEY
+);
 
-      user:
-        process.env.EMAIL_USER,
-
-      pass:
-        process.env.EMAIL_PASS,
-
+export const sendEmail = async (
+  to,
+  subject,
+  html
+) => {
+  await apiInstance.sendTransacEmail({
+    sender: {
+      name: "Tec Tha",
+      email: process.env.EMAIL_FROM,
     },
-
-});
-
-export const sendEmail =
-  async (
-    to,
+    to: [{ email: to }],
     subject,
-    html
-  ) => {
-
-    await transporter.sendMail({
-
-      from:
-        process.env.EMAIL_USER,
-
-      to,
-
-      subject,
-
-      html,
-
-    });
-
+    htmlContent: html,
+  });
 };
 
-export const sendCustomEmail =
-  async ({
-    to,
+export const sendCustomEmail = async ({
+  to,
+  subject,
+  html,
+}) => {
+  await apiInstance.sendTransacEmail({
+    sender: {
+      name: "Tec Tha",
+      email: process.env.EMAIL_FROM,
+    },
+    to: [{ email: to }],
     subject,
-    html,
-  }) => {
-
-    await transporter.sendMail({
-
-      from:
-        process.env.EMAIL_USER,
-
-      to,
-
-      subject,
-
-      html,
-
-    });
-
+    htmlContent: html,
+  });
 };

@@ -1,27 +1,20 @@
-import nodemailer from "nodemailer";
 import dotenv from "dotenv";
+import Brevo from "@getbrevo/brevo";
 
 dotenv.config();
 
-const createTransporter = () => {
-  return nodemailer.createTransport({
-    host: process.env.EMAIL_HOST,
-    port: Number(process.env.EMAIL_PORT) || 587,
-    secure: process.env.EMAIL_SECURE === "true",
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
-    },
-  });
-};
+const apiInstance = new Brevo.TransactionalEmailsApi();
+
+apiInstance.setApiKey(
+  Brevo.TransactionalEmailsApiApiKeys.apiKey,
+  process.env.BREVO_API_KEY
+);
 
 export const sendOTPEmail = async ({
   to,
   otp,
   type = "verify",
 }) => {
-  const transporter = createTransporter();
-
   const isReset = type === "reset";
 
   const subject = isReset
@@ -30,14 +23,16 @@ export const sendOTPEmail = async ({
 
   const html = `
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
+<title>${subject}</title>
 <style>
 body{
+margin:0;
+padding:30px;
 font-family:Arial,sans-serif;
 background:#f4f6f9;
-padding:30px;
 }
 
 .container{
@@ -61,7 +56,7 @@ padding:30px;
 }
 
 .otp{
-font-size:34px;
+font-size:36px;
 font-weight:bold;
 letter-spacing:8px;
 text-align:center;
@@ -75,9 +70,9 @@ color:#1e40af;
 .footer{
 padding:20px;
 font-size:13px;
-color:#666;
 text-align:center;
 border-top:1px solid #eee;
+color:#666;
 }
 </style>
 </head>
@@ -95,13 +90,11 @@ border-top:1px solid #eee;
 <p>Hello,</p>
 
 <p>
-
 ${
   isReset
     ? "Use the OTP below to reset your password."
     : "Thank you for registering. Please verify your email using the OTP below."
 }
-
 </p>
 
 <div class="otp">
@@ -114,7 +107,7 @@ OTP expires in
 </p>
 
 <p>
-Do not share this OTP with anyone.
+Please do not share this OTP with anyone.
 </p>
 
 </div>
@@ -129,33 +122,39 @@ Do not share this OTP with anyone.
 </html>
 `;
 
-  const mailOptions = {
-    from:
-      process.env.EMAIL_FROM ||
-      `"Tec Tha" <${process.env.EMAIL_USER}>`,
-    to,
-    subject,
-    html,
-  };
-
   try {
-    console.log("========== EMAIL DEBUG ==========");
-    console.log("HOST:", process.env.EMAIL_HOST);
-    console.log("PORT:", process.env.EMAIL_PORT);
-    console.log("SECURE:", process.env.EMAIL_SECURE);
-    console.log("USER:", process.env.EMAIL_USER);
-    console.log("FROM:", process.env.EMAIL_FROM);
+    console.log("========== BREVO EMAIL ==========");
     console.log("TO:", to);
 
-    const info = await transporter.sendMail(mailOptions);
+    const response = await apiInstance.sendTransacEmail({
+      sender: {
+        name: "Tec Tha",
+        email: process.env.EMAIL_FROM,
+      },
+
+      to: [
+        {
+          email: to,
+        },
+      ],
+
+      subject,
+
+      htmlContent: html,
+    });
 
     console.log("✅ Email Sent Successfully");
-    console.log(info.messageId);
+    console.log(response);
 
-    return info;
+    return response;
   } catch (error) {
-    console.error("❌ EMAIL ERROR");
-    console.error(error);
+    console.error("❌ BREVO EMAIL ERROR");
+
+    if (error.response?.body) {
+      console.error(error.response.body);
+    } else {
+      console.error(error);
+    }
 
     throw error;
   }
@@ -163,17 +162,11 @@ Do not share this OTP with anyone.
 
 export const verifyEmailConfig = async () => {
   try {
-    const transporter = createTransporter();
-
-    await transporter.verify();
-
-    console.log("✅ SMTP Connection Successful");
-
+    console.log("✅ Brevo API Connected");
     return true;
   } catch (error) {
-    console.error("❌ SMTP Connection Failed");
+    console.error("❌ Brevo Connection Failed");
     console.error(error);
-
     throw error;
   }
 };
