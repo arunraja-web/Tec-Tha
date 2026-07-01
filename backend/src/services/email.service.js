@@ -93,7 +93,25 @@ The OTP is valid for a limited time. Once verified, you'll have full access to a
     html,
   };
 
-  await transporter.sendMail(mailOptions);
+try {
+  console.log("========== EMAIL DEBUG ==========");
+  console.log("HOST:", process.env.EMAIL_HOST);
+  console.log("PORT:", process.env.EMAIL_PORT);
+  console.log("SECURE:", process.env.EMAIL_SECURE);
+  console.log("USER:", process.env.EMAIL_USER);
+  console.log("FROM:", process.env.EMAIL_FROM);
+  console.log("TO:", to);
+
+  const info = await transporter.sendMail(mailOptions);
+
+  console.log("✅ Email Sent");
+  console.log(info);
+
+} catch (error) {
+  console.error("❌ EMAIL ERROR");
+  console.error(error);
+  throw error;
+}
 };
 
 export const verifyEmailConfig = async () => {
