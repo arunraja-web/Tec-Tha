@@ -13,7 +13,6 @@
     "db:seed": "node src/utils/seed.js"
   },
   "dependencies": {
-    "@getbrevo/brevo": "^5.0.4",
     "@prisma/client": "^5.10.0",
     "axios": "^1.18.0",
     "bcryptjs": "^2.4.3",
@@ -32,6 +31,7 @@
     "nodemailer": "^6.9.11",
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0",
+    "sib-api-v3-sdk": "^8.5.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {

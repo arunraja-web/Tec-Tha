@@ -1,29 +1,50 @@
+import SibApiV3Sdk from "sib-api-v3-sdk";
 import dotenv from "dotenv";
-import Brevo from "@getbrevo/brevo";
 
 dotenv.config();
 
-const apiInstance = new Brevo.TransactionalEmailsApi();
+const client = SibApiV3Sdk.ApiClient.instance;
 
-apiInstance.setApiKey(
-  Brevo.TransactionalEmailsApiApiKeys.apiKey,
-  process.env.BREVO_API_KEY
-);
+const apiKey = client.authentications["api-key"];
+apiKey.apiKey = process.env.BREVO_API_KEY;
 
-export const sendEmail = async (
-  to,
-  subject,
-  html
-) => {
-  await apiInstance.sendTransacEmail({
-    sender: {
+const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
+
+export const sendEmail = async (to, subject, html) => {
+  try {
+    const sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
+
+    sendSmtpEmail.sender = {
       name: "Tec Tha",
       email: process.env.EMAIL_FROM,
-    },
-    to: [{ email: to }],
-    subject,
-    htmlContent: html,
-  });
+    };
+
+    sendSmtpEmail.to = [
+      {
+        email: to,
+      },
+    ];
+
+    sendSmtpEmail.subject = subject;
+    sendSmtpEmail.htmlContent = html;
+
+    const response = await apiInstance.sendTransacEmail(sendSmtpEmail);
+
+    console.log("✅ Email Sent Successfully");
+    console.log(response);
+
+    return response;
+  } catch (error) {
+    console.error("❌ Email Sending Failed");
+
+    if (error.response) {
+      console.error(error.response.body);
+    } else {
+      console.error(error);
+    }
+
+    throw error;
+  }
 };
 
 export const sendCustomEmail = async ({
@@ -31,13 +52,38 @@ export const sendCustomEmail = async ({
   subject,
   html,
 }) => {
-  await apiInstance.sendTransacEmail({
-    sender: {
+  try {
+    const sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
+
+    sendSmtpEmail.sender = {
       name: "Tec Tha",
       email: process.env.EMAIL_FROM,
-    },
-    to: [{ email: to }],
-    subject,
-    htmlContent: html,
-  });
+    };
+
+    sendSmtpEmail.to = [
+      {
+        email: to,
+      },
+    ];
+
+    sendSmtpEmail.subject = subject;
+    sendSmtpEmail.htmlContent = html;
+
+    const response = await apiInstance.sendTransacEmail(sendSmtpEmail);
+
+    console.log("✅ Custom Email Sent Successfully");
+    console.log(response);
+
+    return response;
+  } catch (error) {
+    console.error("❌ Custom Email Failed");
+
+    if (error.response) {
+      console.error(error.response.body);
+    } else {
+      console.error(error);
+    }
+
+    throw error;
+  }
 };
