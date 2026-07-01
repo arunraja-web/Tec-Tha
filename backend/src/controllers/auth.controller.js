@@ -37,7 +37,7 @@ export const signup = async (req, res, next) => {
       data: { fullName, username, email, password: hashedPassword ,userType},
       select: { id: true, fullName: true, username: true, email: true, isVerified: true, role: true,userType: true,createdAt: true, },
     });
-    await addUserToSheet(user);
+    //await addUserToSheet(user);
 
     // Generate and send OTP
     const otp = generateSecureOTP();
