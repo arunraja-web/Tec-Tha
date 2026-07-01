@@ -11,84 +11,121 @@ import {
 // ─── Signup ───────────────────────────────────────────────────────────────────
 export const signup = async (req, res, next) => {
   try {
-    const { fullName, username, email, password,userType } = req.body;
+    const { fullName, username, email, password, userType } = req.body;
+
+    console.log("🚀 Signup request received:", email);
 
     // Check existing user
     const existingUser = await prisma.user.findFirst({
-      where: { OR: [{ email }, { username }] },
+      where: {
+        OR: [
+          { email },
+          { username }
+        ],
+      },
     });
 
     if (existingUser) {
-      const field = existingUser.email === email ? "email" : "username";
+      console.log("❌ User already exists");
+
+      const field =
+        existingUser.email === email ? "email" : "username";
+
       return res.status(409).json({
         success: false,
         message: `An account with this ${field} already exists.`,
       });
     }
 
-    // Hash password
+    console.log("✅ User does not exist");
+
+    // Hash Password
     const hashedPassword = await bcrypt.hash(
       password,
-      parseInt(process.env.BCRYPT_ROUNDS) || 12
+      Number(process.env.BCRYPT_ROUNDS) || 12
     );
 
-    // Create user
-   const user = await prisma.user.create({
-  data: {
-    fullName,
-    username,
-    email,
-    password: hashedPassword,
-    userType,
-  },
-  select: {
-    id: true,
-    fullName: true,
-    username: true,
-    email: true,
-    isVerified: true,
-    role: true,
-    userType: true,
-    createdAt: true,
-  },
-});
+    console.log("✅ Password hashed");
 
-console.log("STEP 1 - User Created");
+    // Create User
+    const user = await prisma.user.create({
+      data: {
+        fullName,
+        username,
+        email,
+        password: hashedPassword,
+        userType,
+      },
+      select: {
+        id: true,
+        fullName: true,
+        username: true,
+        email: true,
+        isVerified: true,
+        role: true,
+        userType: true,
+        createdAt: true,
+      },
+    });
 
-// await addUserToSheet(user);
+    console.log("✅ User created");
 
-const otp = generateSecureOTP();
-const expiresAt = getOTPExpiryTime();
+    // Google Sheet (Optional)
+    /*
+    try {
+      await addUserToSheet(user);
+      console.log("✅ Added to Google Sheet");
+    } catch (err) {
+      console.error("Google Sheet Error:", err);
+    }
+    */
 
-console.log("STEP 2 - OTP Generated");
+    // Generate OTP
+    const otp = generateSecureOTP();
+    const expiresAt = getOTPExpiryTime();
 
-await prisma.otpVerification.deleteMany({
-  where: { email },
-});
+    console.log("✅ OTP Generated:", otp);
 
-await prisma.otpVerification.create({
-  data: {
-    email,
-    otp,
-    expiresAt,
-  },
-});
+    // Remove old OTP
+    await prisma.otpVerification.deleteMany({
+      where: { email },
+    });
 
-console.log("STEP 3 - OTP Saved");
+    // Save new OTP
+    await prisma.otpVerification.create({
+      data: {
+        email,
+        otp,
+        expiresAt,
+      },
+    });
 
-await sendOTPEmail({
-  to: email,
-  otp,
-  type: "verify",
-});
+    console.log("✅ OTP Saved");
 
-console.log("STEP 4 - sendOTPEmail Finished");
+    // Send Email
+    console.log("📧 Sending OTP Email...");
 
-res.status(201).json({
-  success: true,
-  message: "Account created successfully. Please check your email for the verification OTP.",
-  data: { user },
-});
+    await sendOTPEmail({
+      to: email,
+      otp,
+      type: "verify",
+    });
+
+    console.log("✅ OTP Email Sent");
+
+    return res.status(201).json({
+      success: true,
+      message:
+        "Account created successfully. Please check your email for the verification OTP.",
+      data: { user },
+    });
+
+  } catch (error) {
+    console.error("❌ Signup Error:", error);
+    next(error);
+  }
+};
+
 // ─── Login ────────────────────────────────────────────────────────────────────
 export const login = async (req, res, next) => {
   try {
