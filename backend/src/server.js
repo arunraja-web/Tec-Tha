@@ -35,47 +35,54 @@ app.use(
 );
 
 // CORS Configuration
+// ================= CORS =================
 const allowedOrigins = [
   "http://localhost:5173",
+  "http://localhost:5174",
+
+  // Production Frontend
+  "https://tec-tha-neon.vercel.app",
   "https://tec-tha-virid.vercel.app",
 ];
 
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      console.log("Request Origin:", origin);
+const corsOptions = {
+  origin: function (origin, callback) {
+    console.log("🌍 Request Origin:", origin);
 
-      // Postman, mobile apps, server-to-server requests
-      if (!origin) {
-        return callback(null, true);
-      }
+    // Allow Postman, mobile apps, server-to-server requests
+    if (!origin) {
+      return callback(null, true);
+    }
 
-      if (allowedOrigins.includes(origin)) {
-        return callback(null, true);
-      }
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
 
-      return callback(new Error("Not allowed by CORS"));
-    },
+    console.log("❌ Blocked by CORS:", origin);
+    return callback(new Error("Not allowed by CORS"));
+  },
 
-    credentials: true,
+  credentials: true,
 
-    methods: [
-      "GET",
-      "POST",
-      "PUT",
-      "PATCH",
-      "DELETE",
-      "OPTIONS",
-    ],
+  methods: [
+    "GET",
+    "POST",
+    "PUT",
+    "PATCH",
+    "DELETE",
+    "OPTIONS",
+  ],
 
-    allowedHeaders: [
-      "Content-Type",
-      "Authorization",
-    ],
-  })
-);
-// Handle preflight requests
-app.options("*", cors());
+  allowedHeaders: [
+    "Content-Type",
+    "Authorization",
+  ],
+};
+
+app.use(cors(corsOptions));
+
+// Handle Preflight Requests
+app.options("*", cors(corsOptions));
 
 // Rate Limiting
 const limiter = rateLimit({
